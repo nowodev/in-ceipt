@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 
-class InvoicesController extends Controller
+class InvoiceController extends Controller
 {
     public function index()
     {
-        //
+        return inertia('Backend/Invoice/Index');
     }
 
     public function create()

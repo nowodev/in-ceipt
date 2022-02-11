@@ -1,15 +1,15 @@
 <template>
     <div>
-        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-            <h1 class="text-black font-bold text-4xl">Choose an <span
+        <div class="p-6 bg-white border-b border-gray-200 sm:px-20">
+            <h1 class="text-4xl font-bold text-black">Choose an <span
                 class="underline decoration-double decoration decoration-cyan-500">Option</span></h1>
         </div>
 
         <div
-            class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 flex justify-center text-center gap-x-4 gap-y-6 p-6 sm:px-20">
-            <a href="" v-for="card in cards"
-               class="p-6 bg-cyan-300 rounded-lg h-64 flex items-center outline outline-black">
-                <h2 class="text-2xl font-semibold uppercase w-full outline outline-red-600">{{ card.name }}</h2>
+            class="flex grid grid-cols-1 gap-x-4 gap-y-6 justify-center p-6 text-center bg-gray-200 bg-opacity-25 md:grid-cols-2 lg:grid-cols-3 sm:px-20">
+            <a :href="card.href" v-for="card in cards"
+               class="flex items-center p-6 h-64 bg-cyan-300 rounded-lg outline-black outline">
+                <h1 class="w-full font-mono text-4xl font-bold uppercase">{{ card.name }}</h1>
             </a>
         </div>
     </div>
@@ -17,7 +17,7 @@
 
 <script>
     const cards = [
-        { name: 'Invoice', href: 'something' },
+        { name: 'Invoice', href: route('invoice.index') },
         { name: 'Receipt', href: 'something' },
         { name: 'History', href: 'something' },
     ]
