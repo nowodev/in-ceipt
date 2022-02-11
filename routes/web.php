@@ -30,8 +30,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::controller(InvoiceController::class)->group(function () {
-        Route::get('/invoice', 'index')->name('invoice.index');
-        Route::get('/invoice/create', 'create')->name('invoice.create');
-    });
+    Route::resource('invoice', InvoiceController::class);
+//    Route::controller(InvoiceController::class)->group(function () {
+//        Route::get('/invoice', 'index')->name('invoice.index');
+//        Route::get('/invoice/create', 'create')->name('invoice.create');
+//    });
 });
