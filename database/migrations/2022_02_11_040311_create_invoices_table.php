@@ -12,7 +12,7 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('customer_id')->index();
-            $table->string('serial_no');
+            $table->integer('serial_no');
             $table->date('issue_date');
             $table->date('due_date');
             $table->timestamps();
