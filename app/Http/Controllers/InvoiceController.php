@@ -14,7 +14,7 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        //
+        return inertia('Backend/Invoice/Create');
     }
 
     public function store(Request $request)
