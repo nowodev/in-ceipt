@@ -38,11 +38,11 @@ class InvoiceController extends Controller
                 'issue_date' => ['required', 'date'],
                 'due_date' => ['required', 'date'],
                 'description' => ['required', 'string', 'max:255'],
-                'unit_price' => ['required', 'integer'],
+                'unit_price' => ['required', 'numeric'],
                 'quantity' => ['required', 'integer'],
-                'sub_total' => ['required', 'integer'],
+                'sub_total' => ['required', 'numeric'],
                 'discount' => ['required', 'integer'],
-                'total' => ['required', 'integer'],
+                'total' => ['required', 'numeric'],
             ]);
 
             $user = auth()->user();
