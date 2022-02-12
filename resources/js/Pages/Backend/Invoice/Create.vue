@@ -2,6 +2,9 @@
     <app-layout title="Create Invoice">
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
+                <Link :href="route('invoice.index')">
+                    <i class="fa-regular fa-circle-left text-xl text-black mr-4"></i>
+                </Link>
                 Create Invoice
             </h2>
         </template>
@@ -122,7 +125,7 @@
 <script>
 
     import { defineComponent } from 'vue'
-    import { useForm } from "@inertiajs/inertia-vue3";
+    import { Link, useForm } from "@inertiajs/inertia-vue3";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import CardLayout from "@/Jetstream/CardLayout";
     import Input from "@/Jetstream/Input";
@@ -130,6 +133,7 @@
     import ValidationErrors from "@/Jetstream/ValidationErrors";
     import Button from "@/Jetstream/Button";
     import InputError from "@/Jetstream/InputError";
+
 
     export default defineComponent({
 
@@ -142,6 +146,7 @@
             CardLayout,
             AppLayout,
             Input,
+            Link
         },
         setup() {
             const form = useForm({
