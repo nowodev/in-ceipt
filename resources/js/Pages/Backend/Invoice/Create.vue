@@ -25,7 +25,7 @@
 
                     <div>
                         <Label class="">Mobile Number</Label>
-                        <Input type="number" v-model="form.number" placeholder="08000000000" class="w-full" />
+                        <Input type="number" v-model="form.number" min="11" placeholder="08000000000" class="w-full" />
                         <InputError v-if="form.errors.number" :message="form.errors.number" />
                     </div>
 

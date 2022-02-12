@@ -19,7 +19,12 @@ return new class extends Migration {
             $table->string('email')->nullable();
             $table->longText('address_1')->nullable();
             $table->longText('address_2')->nullable();
+            $table->unsignedBigInteger('user_id')->index();
             $table->timestamps();
+        });
+
+        Schema::table('customers', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
