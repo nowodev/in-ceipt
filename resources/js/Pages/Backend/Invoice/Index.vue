@@ -37,9 +37,9 @@
                                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                             Due Date
                                         </th>
-                                        <!--                                        <th scope="col" class="relative px-6 py-3">-->
-                                        <!--                                            <span class="sr-only">Edit</span>-->
-                                        <!--                                        </th>-->
+                                        <th scope="col" class="relative px-6 py-3">
+                                            <span class="sr-only">Edit</span>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -56,10 +56,14 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ invoice.due_date }}</div>
                                         </td>
-
-                                        <!--                                        <td class="px-6 py-4 text-sm font-medium whitespace-nowrap">-->
-                                        <!--                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>-->
-                                        <!--                                        </td>-->
+                                        <td class="px-6 py-4 text-sm font-medium whitespace-nowrap space-x-4">
+                                            <a href="#" class="">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="">
+                                                <i class="fa-solid fa-paper-plane"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

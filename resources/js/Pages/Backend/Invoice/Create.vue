@@ -99,7 +99,8 @@
 
                     <div>
                         <Label class="">Sub Total</Label>
-                        <Input type="number" v-model="form.sub_total" placeholder="0000.00" class="w-full" />
+                        <Input type="text" :value="get_sub_total" placeholder="0000.00"
+                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                         <InputError v-if="form.errors.sub_total" :message="form.errors.sub_total" />
                     </div>
 
@@ -111,7 +112,8 @@
 
                     <div>
                         <Label class="">Total</Label>
-                        <Input type="number" v-model="form.total" placeholder="0000.00" class="w-full" />
+                        <Input type="text" :value="get_total" placeholder="0000.00"
+                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                         <InputError v-if="form.errors.total" :message="form.errors.total" />
                     </div>
                 </fieldset>
@@ -133,6 +135,7 @@
     import ValidationErrors from "@/Jetstream/ValidationErrors";
     import Button from "@/Jetstream/Button";
     import InputError from "@/Jetstream/InputError";
+    import { round } from "lodash";
 
 
     export default defineComponent({
@@ -162,15 +165,34 @@
                 unit_price: null,
                 quantity: null,
                 sub_total: null,
-                discount: null,
+                discount: 0,
                 total: null,
             })
 
             return { form }
         },
+        computed: {
+            get_sub_total: function () {
+                let calculated_sub_total = round(this.form.unit_price * this.form.quantity, 2)
+                this.sub_total = calculated_sub_total
+
+                return calculated_sub_total
+            },
+            get_total: function () {
+                let calculated_total = round(this.get_sub_total * ((100 - this.form.discount) / 100), 2)
+                this.total = calculated_total
+
+                return calculated_total
+            }
+        },
         methods: {
             submit() {
-                this.form.post(route('invoice.store'))
+                this.form.transform((data) => ({
+                    ...data,
+                    sub_total: this.get_sub_total,
+                    total: this.get_total
+                }))
+                    .post(route('invoice.store'))
             }
         }
     })
