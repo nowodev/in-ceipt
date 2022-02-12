@@ -12,7 +12,11 @@ class InvoiceController extends Controller
 {
     public function index()
     {
-        return inertia('Backend/Invoice/Index');
+        $invoices = Invoice::get();
+
+        return inertia('Backend/Invoice/Index', [
+            'invoices' => $invoices,
+        ]);
     }
 
     public function create()
