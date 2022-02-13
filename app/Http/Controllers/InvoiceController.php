@@ -96,6 +96,10 @@ class InvoiceController extends Controller
 
     public function destroy(Invoice $invoice)
     {
-        //
+        $invoice->invoice_details()->delete();
+        $invoice->delete();
+
+        return Redirect::route('invoice.index')->banner('Invoice Deleted');
+
     }
 }

@@ -14,3 +14,4 @@ An opinionated invoice and receipt generator
 - [x] Validate & insert values from the multi-form section into the db
 - [ ] Show error message beneath each input field
 - [x] Use button to generate serial number
+- [x] Delete invoice

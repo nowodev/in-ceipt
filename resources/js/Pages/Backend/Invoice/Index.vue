@@ -63,6 +63,9 @@
                                             <a href="#" class="">
                                                 <i class="fa-solid fa-paper-plane"></i>
                                             </a>
+                                            <DangerButton @click="deleteInvoice(invoice)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </DangerButton>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -88,10 +91,12 @@
     import AppLayout from '@/Layouts/AppLayout.vue'
     import ButtonLink from "@/Jetstream/ButtonLink";
     import CardLayout from "@/Jetstream/CardLayout";
+    import DangerButton from "@/Jetstream/DangerButton";
 
     export default defineComponent({
         name: "Index",
         components: {
+            DangerButton,
             CardLayout,
             ButtonLink,
             AppLayout,
@@ -104,5 +109,13 @@
                 default: 1,
             }
         },
+        methods: {
+            deleteInvoice: function (id) {
+                this.$inertia.delete(route('invoice.destroy', id), {
+                    preserveScroll: true,
+                    preserveState: false
+                })
+            }
+        }
     })
 </script>
