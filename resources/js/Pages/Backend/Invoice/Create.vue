@@ -3,7 +3,7 @@
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 <Link :href="route('invoice.index')">
-                    <i class="fa-regular fa-circle-left text-xl text-black mr-4"></i>
+                    <i class="mr-4 text-xl text-black fa-regular fa-circle-left"></i>
                 </Link>
                 Create Invoice
             </h2>
@@ -26,7 +26,9 @@
 
                     <div>
                         <Label class="">Full Name</Label>
-                        <Input type="text" v-model="form.fullname" placeholder="John Doe" class="w-full" />
+                        <!-- add name to input in order to generate actual names when using fake form filler -->
+                        <Input type="text" v-model="form.fullname" name="fullname" placeholder="John Doe"
+                               class="w-full" />
                         <InputError v-if="form.errors.fullname" :message="form.errors.fullname" />
                     </div>
 
@@ -140,7 +142,7 @@
                         </div>
                     </fieldset>
 
-                    <div class="mt-3 flex w-fit flex-col gap-y-3 ml-auto">
+                    <div class="flex flex-col gap-y-3 mt-3 ml-auto w-fit">
                         <Button v-show="index === form.info.length - 1" @click="addDescription">
                             Add New Description
                         </Button>
