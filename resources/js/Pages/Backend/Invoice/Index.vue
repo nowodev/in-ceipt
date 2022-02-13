@@ -56,10 +56,10 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ invoice.due_date }}</div>
                                         </td>
-                                        <td class="px-6 py-4 text-sm font-medium whitespace-nowrap space-x-4">
-                                            <a href="#" class="">
+                                        <td class="px-6 py-4 space-x-4 text-sm font-medium whitespace-nowrap">
+                                            <Link :href="route('invoice.show', invoice)" class="">
                                                 <i class="fa-solid fa-eye"></i>
-                                            </a>
+                                            </Link>
                                             <a href="#" class="">
                                                 <i class="fa-solid fa-paper-plane"></i>
                                             </a>

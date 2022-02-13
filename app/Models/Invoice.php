@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @method static create(array $array)
+ * @method static get()
  */
 class Invoice extends Model
 {
@@ -18,5 +19,10 @@ class Invoice extends Model
     public function invoice_details(): HasMany
     {
         return $this->hasMany(InvoiceDetails::class, 'invoice_id');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

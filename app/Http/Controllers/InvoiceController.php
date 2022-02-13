@@ -79,9 +79,13 @@ class InvoiceController extends Controller
         return Redirect::route('invoice.index')->banner('Invoice Created');
     }
 
-    public function show(Invoice $invoice)
+    public function show($id)
     {
-        //
+        $invoice = Invoice::with('customer', 'invoice_details')->find($id);
+
+        return inertia('Backend/Invoice/Show', [
+            'invoice' => $invoice,
+        ]);
     }
 
     public function edit(Invoice $invoice)
