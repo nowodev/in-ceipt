@@ -83,48 +83,59 @@
                     </div>
                 </fieldset>
 
-                <fieldset
-                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
-                    <legend class="text-lg font-semibold">Description</legend>
+                <div v-for="(input, k) in description_form" :key="k">
+                    <fieldset
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                        <legend class="text-lg font-semibold">Description</legend>
 
-                    <div>
-                        <Label class="">Description</Label>
-                        <Input type="text" v-model="form.description" placeholder="XXXXXXXXXXXX" class="w-full" />
-                        <InputError v-if="form.errors.description" :message="form.errors.description" />
-                    </div>
+                        <div>
+                            <Label class="">Description</Label>
+                            <Input type="text" v-model="input.description" placeholder="XXXXXXXXXXXX" class="w-full" />
+                            <InputError v-if="form.errors.description" :message="form.errors.description" />
+                        </div>
 
-                    <div>
-                        <Label class="">Unit Price</Label>
-                        <Input type="number" v-model="form.unit_price" placeholder="0000.00" class="w-full" />
-                        <InputError v-if="form.errors.unit_price" :message="form.errors.unit_price" />
-                    </div>
+                        <div>
+                            <Label class="">Unit Price</Label>
+                            <Input type="number" v-model="input.unit_price" placeholder="0000.00" class="w-full" />
+                            <InputError v-if="form.errors.unit_price" :message="form.errors.unit_price" />
+                        </div>
 
-                    <div>
-                        <Label class="">Quantity</Label>
-                        <Input type="number" v-model="form.quantity" placeholder="10" class="w-full" />
-                        <InputError v-if="form.errors.quantity" :message="form.errors.quantity" />
-                    </div>
+                        <div>
+                            <Label class="">Quantity</Label>
+                            <Input type="number" v-model="input.quantity" placeholder="10" class="w-full" />
+                            <InputError v-if="form.errors.quantity" :message="form.errors.quantity" />
+                        </div>
 
-                    <div>
-                        <Label class="">Sub Total</Label>
-                        <Input type="text" :value="get_sub_total" placeholder="0000.00"
-                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
-                        <InputError v-if="form.errors.sub_total" :message="form.errors.sub_total" />
-                    </div>
+                        <div>
+                            <Label class="">Sub Total</Label>
+                            <Input type="text" :value="get_sub_total" placeholder="0000.00"
+                                   class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
+                            <InputError v-if="form.errors.sub_total" :message="form.errors.sub_total" />
+                        </div>
 
-                    <div>
-                        <Label class="">Discount (%)</Label>
-                        <Input type="number" v-model="form.discount" placeholder="2%" class="w-full" />
-                        <InputError v-if="form.errors.discount" :message="form.errors.discount" />
-                    </div>
+                        <div>
+                            <Label class="">Discount (%)</Label>
+                            <Input type="number" v-model="input.discount" placeholder="2%" class="w-full" />
+                            <InputError v-if="form.errors.discount" :message="form.errors.discount" />
+                        </div>
 
-                    <div>
-                        <Label class="">Total</Label>
-                        <Input type="text" :value="get_total" placeholder="0000.00"
-                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
-                        <InputError v-if="form.errors.total" :message="form.errors.total" />
+                        <div>
+                            <Label class="">Total</Label>
+                            <Input type="text" :value="get_total" placeholder="0000.00"
+                                   class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
+                            <InputError v-if="form.errors.total" :message="form.errors.total" />
+                        </div>
+                    </fieldset>
+
+                    <div class="mt-3 flex w-fit flex-col gap-y-3 ml-auto">
+                        <Button v-show="k === description_form.length - 1" @click="addDescription">
+                            Add New Description
+                        </Button>
+                        <DangerButton v-show="k || ( !k && description_form.length > 1)" @click="removeDescription(k)">
+                            Remove Description
+                        </DangerButton>
                     </div>
-                </fieldset>
+                </div>
 
                 <Button class="mt-4" @click.prevent="submit">Submit</Button>
             </div>
@@ -145,12 +156,14 @@
     import InputError from "@/Jetstream/InputError";
     import { round } from "lodash";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
+    import DangerButton from "@/Jetstream/DangerButton";
 
 
     export default defineComponent({
 
         name: "Create.vue",
         components: {
+            DangerButton,
             SecondaryButton,
             InputError,
             Button,
@@ -163,7 +176,17 @@
         },
         data() {
             return {
-                random_no: ''
+                random_no: '',
+                description_form: [
+                    {
+                        description: '',
+                        unit_price: '',
+                        quantity: '',
+                        sub_total: '',
+                        discount: '',
+                        total: '',
+                    }
+                ],
             }
         },
         setup() {
@@ -187,29 +210,54 @@
             return { form }
         },
         computed: {
+            // get sub_total from unit price and quantity when the values are inserted
             get_sub_total: function () {
                 let calculated_sub_total = round(this.form.unit_price * this.form.quantity, 2)
-                this.sub_total = calculated_sub_total
+                this.form.sub_total = calculated_sub_total
 
                 return calculated_sub_total
             },
+
+            // get total from sub_total and discount when the values are inserted
             get_total: function () {
                 let calculated_total = round(this.get_sub_total * ((100 - this.form.discount) / 100), 2)
-                this.total = calculated_total
+                this.form.total = calculated_total
 
                 return calculated_total
             },
         },
         methods: {
-            generateSN() {
+            // generate random number to use as serial number
+            generateSN: function () {
                 this.form.serial_no = this.random_no = Math.floor(Math.random() * (99999999 - 999999999998 + 1) + 999999999998)
             },
-            submit() {
-                this.form.transform((data) => ({
-                    ...data,
-                    sub_total: this.get_sub_total,
-                    total: this.get_total
-                }))
+
+            // add more description field
+            addDescription: function () {
+                this.description_form.push({
+                    description: '',
+                    unit_price: '',
+                    quantity: '',
+                    sub_total: '',
+                    discount: '',
+                    total: '',
+                })
+            },
+
+            // remove a description field
+            removeDescription: function (index) {
+                this.description_form.splice(index, 1)
+            },
+
+            // submit form
+            submit: function () {
+                this.form
+                    //     .transform((data) => ({
+                    //     ...data,
+                    // //     sub_total: this.get_sub_total,
+                    // //     total: this.get_total
+                    //         description: this.input.description
+                    // }))
                     .post(route('invoice.store'))
             }
         }
