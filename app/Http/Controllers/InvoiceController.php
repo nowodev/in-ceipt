@@ -34,7 +34,7 @@ class InvoiceController extends Controller
                 'email' => ['nullable', 'email', 'max:255'],
                 'address_1' => ['string', 'sometimes', 'nullable', 'max:255'],
                 'address_2' => ['string', 'sometimes', 'nullable', 'max:255'],
-                'serial_no' => ['required', 'integer', 'max:255'], //optional
+                'serial_no' => ['required', 'integer'], //optional
                 'issue_date' => ['required', 'date'],
                 'due_date' => ['required', 'date'],
                 'description' => ['required', 'string', 'max:255'],

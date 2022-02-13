@@ -58,7 +58,15 @@
                     <legend class="text-lg font-semibold">Invoice Details</legend>
                     <div>
                         <Label class="">Serial No</Label>
-                        <Input type="number" v-model="form.serial_no" placeholder="XXXXXXXXXXXX" class="w-full" />
+                        <div class="relative">
+                            <Input type="number" :value="random_no" placeholder="XXXXXXXXXXXX"
+                                   class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
+                            <div class="absolute inset-y-0 right-0">
+                                <SecondaryButton class="h-full" @click="generateSN">
+                                    <i class="fa-solid fa-rotate"></i>
+                                </SecondaryButton>
+                            </div>
+                        </div>
                         <InputError v-if="form.errors.serial_no" :message="form.errors.serial_no" />
                     </div>
 
@@ -136,13 +144,14 @@
     import Button from "@/Jetstream/Button";
     import InputError from "@/Jetstream/InputError";
     import { round } from "lodash";
-
+    import SecondaryButton from "@/Jetstream/SecondaryButton";
 
 
     export default defineComponent({
 
         name: "Create.vue",
         components: {
+            SecondaryButton,
             InputError,
             Button,
             ValidationErrors,
@@ -151,6 +160,11 @@
             AppLayout,
             Input,
             Link
+        },
+        data() {
+            return {
+                random_no: ''
+            }
         },
         setup() {
             const form = useForm({
@@ -184,9 +198,12 @@
                 this.total = calculated_total
 
                 return calculated_total
-            }
+            },
         },
         methods: {
+            generateSN() {
+                this.form.serial_no = this.random_no = Math.floor(Math.random() * (99999999 - 999999999998 + 1) + 999999999998)
+            },
             submit() {
                 this.form.transform((data) => ({
                     ...data,

@@ -10,3 +10,5 @@ An opinionated invoice and receipt generator
 - [x] Add back arrow on form pages to return to previous screen
 - [ ] Add settings for customizing one's store or company
 - [x] Calculate & display subtotal and total in form before sending it to the db
+- [ ] Make description section on invoice create form dynamic for when adding multiple items.
+- [x] Use button to generate serial number
