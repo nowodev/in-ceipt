@@ -34,15 +34,15 @@ class InvoiceController extends Controller
                 'email' => ['nullable', 'email', 'max:255'],
                 'address_1' => ['string', 'sometimes', 'nullable', 'max:255'],
                 'address_2' => ['string', 'sometimes', 'nullable', 'max:255'],
-                'serial_no' => ['required', 'integer'], //optional
+                'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
                 'issue_date' => ['required', 'date'],
                 'due_date' => ['required', 'date'],
-                'description' => ['required', 'string', 'max:255'],
-                'unit_price' => ['required', 'numeric'],
-                'quantity' => ['required', 'integer'],
-                'sub_total' => ['required', 'numeric'],
-                'discount' => ['required', 'integer'],
-                'total' => ['required', 'numeric'],
+                'info.*.description' => ['required', 'string', 'max:255'],
+                'info.*.unit_price' => ['required', 'numeric'],
+                'info.*.quantity' => ['required', 'integer'],
+                'info.*.sub_total' => ['required', 'numeric'],
+                'info.*.discount' => ['required', 'integer'],
+                'info.*.total' => ['required', 'numeric'],
             ]);
 
             $user = auth()->user();
@@ -63,14 +63,17 @@ class InvoiceController extends Controller
                 'due_date' => $request['due_date'],
             ]);
 
-            $invoice->invoice_details()->create([
-                'description' => $request['description'],
-                'unit_price' => $request['unit_price'],
-                'quantity' => $request['quantity'],
-                'sub_total' => $request['sub_total'],
-                'discount' => $request['discount'],
-                'total' => $request['total'],
-            ]);
+            // insert array of product information into the invoice_details table
+            foreach ($request['info'] as $info) {
+                $invoice->invoice_details()->create([
+                    'description' => $info['description'],
+                    'unit_price' => $info['unit_price'],
+                    'quantity' => $info['quantity'],
+                    'sub_total' => $info['sub_total'],
+                    'discount' => $info['discount'],
+                    'total' => $info['total'],
+                ]);
+            }
         });
 
         return Redirect::route('invoice.index')->banner('Invoice Created');

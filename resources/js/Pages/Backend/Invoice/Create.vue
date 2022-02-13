@@ -15,6 +15,10 @@
                     class="underline decoration-double decoration decoration-cyan-500">form</span></h1>
             </div>
 
+            <div class="text-center">
+                <ValidationErrors />
+            </div>
+
             <div class="p-6 w-full bg-white sm:px-20">
                 <fieldset
                     class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
@@ -83,55 +87,65 @@
                     </div>
                 </fieldset>
 
-                <div v-for="(input, k) in description_form" :key="k">
+                <div v-for="(desc, index) in form.info" :key="index">
                     <fieldset
                         class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
                         <legend class="text-lg font-semibold">Description</legend>
 
                         <div>
                             <Label class="">Description</Label>
-                            <Input type="text" v-model="input.description" placeholder="XXXXXXXXXXXX" class="w-full" />
-                            <InputError v-if="form.errors.description" :message="form.errors.description" />
+                            <Input type="text" v-model="desc.description" placeholder="XXXXXXXXXXXX" class="w-full" />
+                            <!--                            <InputError v-if="form.errors['desc.${index}.description']" :message="form.errors.description" />-->
+                            <InputError v-if="form.errors['info.${index}.description']"
+                                        :message="form.errors['info.${index}.description']" />
+                            <InputError :message="form.errors['info.0.description']" />
+
                         </div>
 
                         <div>
                             <Label class="">Unit Price</Label>
-                            <Input type="number" v-model="input.unit_price" placeholder="0000.00" class="w-full" />
+                            <Input type="number" v-model="desc.unit_price" placeholder="0000.00" class="w-full" />
                             <InputError v-if="form.errors.unit_price" :message="form.errors.unit_price" />
+                            <InputError :message="form.errors['info.${input}.unit_price']" />
                         </div>
 
                         <div>
                             <Label class="">Quantity</Label>
-                            <Input type="number" v-model="input.quantity" placeholder="10" class="w-full" />
+                            <Input type="number" v-model="desc.quantity" placeholder="10" class="w-full" />
                             <InputError v-if="form.errors.quantity" :message="form.errors.quantity" />
                         </div>
 
                         <div>
                             <Label class="">Sub Total</Label>
-                            <Input type="text" :value="get_sub_total" placeholder="0000.00"
+                            <Input type="text"
+                                   :value="(desc.unit_price * desc.quantity).toFixed(2)"
+                                   placeholder="0000.00"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <InputError v-if="form.errors.sub_total" :message="form.errors.sub_total" />
                         </div>
 
                         <div>
                             <Label class="">Discount (%)</Label>
-                            <Input type="number" v-model="input.discount" placeholder="2%" class="w-full" />
+                            <Input type="number" v-model="desc.discount" placeholder="2%" class="w-full" />
                             <InputError v-if="form.errors.discount" :message="form.errors.discount" />
                         </div>
 
                         <div>
                             <Label class="">Total</Label>
-                            <Input type="text" :value="get_total" placeholder="0000.00"
+                            <Input type="text"
+                                   :value="((desc.unit_price * desc.quantity) * ((100 - desc.discount) / 100)).toFixed(2)"
+                                   placeholder="0000.00"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <InputError v-if="form.errors.total" :message="form.errors.total" />
                         </div>
                     </fieldset>
 
                     <div class="mt-3 flex w-fit flex-col gap-y-3 ml-auto">
-                        <Button v-show="k === description_form.length - 1" @click="addDescription">
+                        <Button v-show="index === form.info.length - 1" @click="addDescription">
                             Add New Description
                         </Button>
-                        <DangerButton v-show="k || ( !k && description_form.length > 1)" @click="removeDescription(k)">
+                        <DangerButton v-show="index || ( !index && form.info.length > 1)"
+                                      @click="removeDescription(index)">
                             Remove Description
                         </DangerButton>
                     </div>
@@ -177,16 +191,6 @@
         data() {
             return {
                 random_no: '',
-                description_form: [
-                    {
-                        description: '',
-                        unit_price: '',
-                        quantity: '',
-                        sub_total: '',
-                        discount: '',
-                        total: '',
-                    }
-                ],
             }
         },
         setup() {
@@ -199,31 +203,45 @@
                 serial_no: null,
                 issue_date: null,
                 due_date: null,
-                description: null,
-                unit_price: null,
-                quantity: null,
-                sub_total: null,
-                discount: 0,
-                total: null,
+                info: [
+                    {
+                        description: null,
+                        unit_price: null,
+                        quantity: null,
+                        sub_total: null,
+                        discount: 0,
+                        total: null,
+                    }
+                ]
             })
 
             return { form }
         },
         computed: {
+            // SERIOUS BUG OR ISSUE HERE. WILL COME BACK LATER TO FIX IT.
+            // BUG HAS TO DO WITH GETTING SUB TOTAL AND TOTAL PRICE FROM THE COMPUTED PROPERTY
+            // AND INSERTING IT INTO THE V-MODEL
+
+
             // get sub_total from unit price and quantity when the values are inserted
             get_sub_total: function () {
-                let calculated_sub_total = round(this.form.unit_price * this.form.quantity, 2)
-                this.form.sub_total = calculated_sub_total
+                return this.form.info.map((a) => {
+                    a.sub_total = round(a.unit_price * a.quantity, 2)
 
-                return calculated_sub_total
+                    // convert object to string
+                    // console.log(JSON.stringify(a.sub_total))
+                    return JSON.stringify(a.sub_total)
+                })
             },
 
             // get total from sub_total and discount when the values are inserted
             get_total: function () {
-                let calculated_total = round(this.get_sub_total * ((100 - this.form.discount) / 100), 2)
-                this.form.total = calculated_total
+                return this.form.info.map((a) => {
+                    a.total = round(round(a.unit_price * a.quantity, 2) * ((100 - a.discount) / 100), 2)
 
-                return calculated_total
+                    // convert object to string
+                    return JSON.stringify(a.total)
+                })
             },
         },
         methods: {
@@ -234,30 +252,24 @@
 
             // add more description field
             addDescription: function () {
-                this.description_form.push({
-                    description: '',
-                    unit_price: '',
-                    quantity: '',
-                    sub_total: '',
-                    discount: '',
-                    total: '',
+                this.form.info.push({
+                    description: null,
+                    unit_price: null,
+                    quantity: null,
+                    sub_total: null,
+                    discount: 0,
+                    total: null,
                 })
             },
 
             // remove a description field
             removeDescription: function (index) {
-                this.description_form.splice(index, 1)
+                this.form.info.splice(index, 1)
             },
 
             // submit form
             submit: function () {
                 this.form
-                    //     .transform((data) => ({
-                    //     ...data,
-                    // //     sub_total: this.get_sub_total,
-                    // //     total: this.get_total
-                    //         description: this.input.description
-                    // }))
                     .post(route('invoice.store'))
             }
         }
