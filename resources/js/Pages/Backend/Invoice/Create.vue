@@ -1,9 +1,13 @@
 <template>
     <app-layout title="Create Invoice">
         <template #header>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            <h2 class="flex text-xl font-semibold leading-tight text-gray-800">
                 <Link :href="route('invoice.index')">
-                    <i class="mr-4 text-xl text-black fa-regular fa-circle-left"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 w-6 h-6" fill="none" viewBox="0 0 24 24"
+                         stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+                    </svg>
                 </Link>
                 Create Invoice
             </h2>
@@ -69,7 +73,12 @@
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <div class="absolute inset-y-0 right-0">
                                 <SecondaryButton class="h-full" @click="generateSN">
-                                    <i class="fa-solid fa-rotate"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                         fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                              d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
+                                              clip-rule="evenodd" />
+                                    </svg>
                                 </SecondaryButton>
                             </div>
                         </div>

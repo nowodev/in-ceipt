@@ -15,3 +15,4 @@ An opinionated invoice and receipt generator
 - [ ] Show error message beneath each input field
 - [x] Use button to generate serial number
 - [x] Delete invoice
+- [x] Switch from fontawesome to SVG icons
