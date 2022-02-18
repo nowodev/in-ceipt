@@ -19,10 +19,6 @@
                     class="underline decoration-double decoration decoration-cyan-500">form</span></h1>
             </div>
 
-            <div class="text-center">
-                <ValidationErrors />
-            </div>
-
             <div class="p-6 w-full bg-white sm:px-20">
                 <fieldset
                     class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
@@ -73,7 +69,7 @@
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <div class="absolute inset-y-0 right-0">
                                 <SecondaryButton class="h-full" @click="generateSN">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20"
                                          fill="currentColor">
                                         <path fill-rule="evenodd"
                                               d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
@@ -106,24 +102,22 @@
                         <div>
                             <Label class="">Description</Label>
                             <Input type="text" v-model="desc.description" placeholder="XXXXXXXXXXXX" class="w-full" />
-                            <!--                            <InputError v-if="form.errors['desc.${index}.description']" :message="form.errors.description" />-->
-                            <InputError v-if="form.errors['info.${index}.description']"
-                                        :message="form.errors['info.${index}.description']" />
-                            <InputError :message="form.errors['info.0.description']" />
-
+                            <InputError v-if="form.errors[`info.${index}.description`]"
+                                        :message="form.errors[`info.${index}.description`]" />
                         </div>
 
                         <div>
                             <Label class="">Unit Price</Label>
                             <Input type="number" v-model="desc.unit_price" placeholder="0000.00" class="w-full" />
-                            <InputError v-if="form.errors.unit_price" :message="form.errors.unit_price" />
-                            <InputError :message="form.errors['info.${input}.unit_price']" />
+                            <InputError v-if="form.errors[`info.${index}.unit_price`]"
+                                        :message="form.errors[`info.${index}.unit_price`]" />
                         </div>
 
                         <div>
                             <Label class="">Quantity</Label>
                             <Input type="number" v-model="desc.quantity" placeholder="10" class="w-full" />
-                            <InputError v-if="form.errors.quantity" :message="form.errors.quantity" />
+                            <InputError v-if="form.errors[`info.${index}.quantity`]"
+                                        :message="form.errors[`info.${index}.quantity`]" />
                         </div>
 
                         <div>
@@ -132,13 +126,15 @@
                                    :value="(desc.unit_price * desc.quantity).toFixed(2)"
                                    placeholder="0000.00"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
-                            <InputError v-if="form.errors.sub_total" :message="form.errors.sub_total" />
+                            <InputError v-if="form.errors[`info.${index}.sub_total`]"
+                                        :message="form.errors[`info.${index}.sub_total`]" />
                         </div>
 
                         <div>
                             <Label class="">Discount (%)</Label>
                             <Input type="number" v-model="desc.discount" placeholder="2%" class="w-full" />
-                            <InputError v-if="form.errors.discount" :message="form.errors.discount" />
+                            <InputError v-if="form.errors[`info.${index}.discount`]"
+                                        :message="form.errors[`info.${index}.discount`]" />
                         </div>
 
                         <div>
@@ -147,7 +143,8 @@
                                    :value="((desc.unit_price * desc.quantity) * ((100 - desc.discount) / 100)).toFixed(2)"
                                    placeholder="0000.00"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
-                            <InputError v-if="form.errors.total" :message="form.errors.total" />
+                            <InputError v-if="form.errors[`info.${index}.total`]"
+                                        :message="form.errors[`info.${index}.total`]" />
                         </div>
                     </fieldset>
 
