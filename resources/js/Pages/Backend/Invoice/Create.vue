@@ -122,9 +122,8 @@
 
                         <div>
                             <Label class="">Sub Total</Label>
-                            <Input type="text"
+                            <Input type="text" v-model="get_sub_total" placeholder="0000.00"
                                    :value="(desc.unit_price * desc.quantity).toFixed(2)"
-                                   placeholder="0000.00"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <InputError v-if="form.errors[`info.${index}.sub_total`]"
                                         :message="form.errors[`info.${index}.sub_total`]" />
@@ -139,9 +138,8 @@
 
                         <div>
                             <Label class="">Total</Label>
-                            <Input type="text"
+                            <Input type="text" v-model="get_total" placeholder="0000.00"
                                    :value="((desc.unit_price * desc.quantity) * ((100 - desc.discount) / 100)).toFixed(2)"
-                                   placeholder="0000.00"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <InputError v-if="form.errors[`info.${index}.total`]"
                                         :message="form.errors[`info.${index}.total`]" />
@@ -277,8 +275,7 @@
 
             // submit form
             submit: function () {
-                this.form
-                    .post(route('invoice.store'))
+                this.form.post(route('invoice.store'))
             }
         }
     })
