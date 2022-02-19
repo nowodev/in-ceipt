@@ -167,7 +167,9 @@
                     </div>
                 </fieldset>
 
-                <Button class="mt-4" @click.prevent="submit">Submit</Button>
+                <Button class="mt-4" @click.prevent="submit" :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing">Submit
+                </Button>
             </div>
         </CardLayout>
     </app-layout>
