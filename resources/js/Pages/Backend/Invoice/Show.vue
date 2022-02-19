@@ -76,9 +76,9 @@
                                             </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                            <tr v-for="inv in invoice.invoice_details" :key="inv.id">
+                                            <tr v-for="(inv, index) in invoice.invoice_details" :key="inv.id">
                                                 <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="text-sm text-gray-900">{{ count }}</div>
+                                                    <div class="text-sm text-gray-900">{{ index + 1 }}</div>
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="text-sm text-gray-900">{{ inv.description }}</div>
@@ -165,11 +165,6 @@
             ButtonLink,
             AppLayout,
             Link
-        },
-        data() {
-            return {
-                count: 1,
-            }
         },
         props: {
             invoice: Object,

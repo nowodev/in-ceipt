@@ -47,9 +47,9 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr v-for="invoice in invoices" :key="invoice.id">
+                                    <tr v-for="(invoice, index) in invoices" :key="invoice.id">
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ count }}</div>
+                                            <div class="text-sm text-gray-900">{{ index + 1 }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ invoice.serial_no }}</div>
@@ -93,6 +93,13 @@
                     </div>
                 </div>
             </div>
+
+            <div>
+                <table class="table">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </CardLayout>
     </app-layout>
 </template>
@@ -105,6 +112,7 @@
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
 
+    let red = 1
     export default defineComponent({
         name: "Index",
         components: {
@@ -116,10 +124,6 @@
         },
         props: {
             invoices: Object,
-            count: {
-                type: Number,
-                default: 1,
-            }
         },
         methods: {
             deleteInvoice: function (id) {
