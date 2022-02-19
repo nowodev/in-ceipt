@@ -62,6 +62,7 @@
                 <fieldset
                     class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
                     <legend class="text-lg font-semibold">Invoice Details</legend>
+
                     <div>
                         <Label class="">Serial No</Label>
                         <div class="relative">
@@ -96,8 +97,8 @@
 
                 <div v-for="(desc, index) in form.info" :key="index">
                     <fieldset
-                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
-                        <legend class="text-lg font-semibold">Description</legend>
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
+                        <legend class="text-lg font-semibold">Description {{ index + 1 }}</legend>
 
                         <div>
                             <Label class="">Description</Label>
@@ -123,26 +124,9 @@
                         <div>
                             <Label class="">Sub Total</Label>
                             <Input type="text" v-model="get_sub_total" placeholder="0000.00"
-                                   :value="(desc.unit_price * desc.quantity).toFixed(2)"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <InputError v-if="form.errors[`info.${index}.sub_total`]"
                                         :message="form.errors[`info.${index}.sub_total`]" />
-                        </div>
-
-                        <div>
-                            <Label class="">Discount (%)</Label>
-                            <Input type="number" v-model="desc.discount" placeholder="2%" class="w-full" />
-                            <InputError v-if="form.errors[`info.${index}.discount`]"
-                                        :message="form.errors[`info.${index}.discount`]" />
-                        </div>
-
-                        <div>
-                            <Label class="">Total</Label>
-                            <Input type="text" v-model="get_total" placeholder="0000.00"
-                                   :value="((desc.unit_price * desc.quantity) * ((100 - desc.discount) / 100)).toFixed(2)"
-                                   class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
-                            <InputError v-if="form.errors[`info.${index}.total`]"
-                                        :message="form.errors[`info.${index}.total`]" />
                         </div>
                     </fieldset>
 
@@ -156,6 +140,31 @@
                         </DangerButton>
                     </div>
                 </div>
+
+                <fieldset
+                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                    <legend class="text-lg font-semibold">Summary</legend>
+
+                    <div>
+                        <Label class="">Overall Sub Total</Label>
+                        <Input type="text" v-model="get_overall_sub_total" placeholder="0000.00"
+                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
+                        <InputError v-if="form.errors.overall_sub_total" :message="form.errors.overall_sub_total" />
+                    </div>
+
+                    <div>
+                        <Label class="">Discount (%)</Label>
+                        <Input type="number" v-model="form.discount" placeholder="2%" class="w-full" />
+                        <InputError v-if="form.errors.discount" :message="form.errors.discount" />
+                    </div>
+
+                    <div>
+                        <Label class="">Total</Label>
+                        <Input type="text" v-model="get_total" placeholder="0000.00"
+                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
+                        <InputError v-if="form.errors.total" :message="form.errors.total" />
+                    </div>
+                </fieldset>
 
                 <Button class="mt-4" @click.prevent="submit">Submit</Button>
             </div>
@@ -177,7 +186,6 @@
     import { round } from "lodash";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
     import DangerButton from "@/Jetstream/DangerButton";
-
 
     export default defineComponent({
 
@@ -215,21 +223,17 @@
                         unit_price: null,
                         quantity: null,
                         sub_total: null,
-                        discount: 0,
-                        total: null,
                     }
-                ]
+                ],
+                overall_sub_total: null,
+                discount: 0,
+                total: null,
             })
 
             return { form }
         },
         computed: {
-            // SERIOUS BUG OR ISSUE HERE. WILL COME BACK LATER TO FIX IT.
-            // BUG HAS TO DO WITH GETTING SUB TOTAL AND TOTAL PRICE FROM THE COMPUTED PROPERTY
-            // AND INSERTING IT INTO THE V-MODEL
-
-
-            // get sub_total from unit price and quantity when the values are inserted
+            // dynamically get sub_total from unit price and quantity
             get_sub_total: function () {
                 return this.form.info.map((a) => {
                     a.sub_total = round(a.unit_price * a.quantity, 2)
@@ -240,14 +244,19 @@
                 })
             },
 
-            // get total from sub_total and discount when the values are inserted
-            get_total: function () {
-                return this.form.info.map((a) => {
-                    a.total = round(round(a.unit_price * a.quantity, 2) * ((100 - a.discount) / 100), 2)
+            // dynamically get sum of all subtotals
+            get_overall_sub_total: function () {
+                let sum_of_sub_total = (this.form.info).reduce((x, y) => x + (y['sub_total'] || 0), 0)
+                this.form.overall_sub_total = sum_of_sub_total
 
-                    // convert object to string
-                    return JSON.stringify(a.total)
-                })
+                return sum_of_sub_total
+            },
+
+            // dynamically get total from overall_sub_total and discount
+            get_total: function () {
+                let calculated_total = round(this.get_overall_sub_total * ((100 - this.form.discount) / 100), 2)
+                this.form.total = calculated_total
+                return calculated_total
             },
         },
         methods: {
@@ -263,8 +272,6 @@
                     unit_price: null,
                     quantity: null,
                     sub_total: null,
-                    discount: 0,
-                    total: null,
                 })
             },
 

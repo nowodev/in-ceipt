@@ -41,8 +41,9 @@ class InvoiceController extends Controller
                 'info.*.unit_price' => ['required', 'numeric'],
                 'info.*.quantity' => ['required', 'integer'],
                 'info.*.sub_total' => ['required', 'numeric'],
-                'info.*.discount' => ['required', 'integer'],
-                'info.*.total' => ['required', 'numeric'],
+                'overall_sub_total' => ['required', 'numeric'],
+                'discount' => ['required', 'integer'],
+                'total' => ['required', 'numeric'],
             ]);
 
             $user = auth()->user();
@@ -61,6 +62,9 @@ class InvoiceController extends Controller
                 'serial_no' => $request['serial_no'],
                 'issue_date' => $request['issue_date'],
                 'due_date' => $request['due_date'],
+                'overall_sub_total' => $request['overall_sub_total'],
+                'discount' => $request['discount'],
+                'total' => $request['total'],
             ]);
 
             // insert array of product information into the invoice_details table
@@ -70,8 +74,6 @@ class InvoiceController extends Controller
                     'unit_price' => $info['unit_price'],
                     'quantity' => $info['quantity'],
                     'sub_total' => $info['sub_total'],
-                    'discount' => $info['discount'],
-                    'total' => $info['total'],
                 ]);
             }
         });
