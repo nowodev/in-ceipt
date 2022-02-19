@@ -15,6 +15,9 @@ class CreateInvoicesTable extends Migration
             $table->integer('serial_no');
             $table->date('issue_date');
             $table->date('due_date');
+            $table->string('overall_sub_total');
+            $table->string('discount');
+            $table->string('total');
             $table->timestamps();
         });
 

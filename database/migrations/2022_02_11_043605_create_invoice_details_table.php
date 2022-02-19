@@ -16,8 +16,6 @@ class CreateInvoiceDetailsTable extends Migration
             $table->string('unit_price');
             $table->integer('quantity');
             $table->string('sub_total');
-            $table->string('discount');
-            $table->string('total');
             $table->timestamps();
         });
 
