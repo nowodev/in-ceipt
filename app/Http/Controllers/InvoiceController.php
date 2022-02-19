@@ -44,6 +44,11 @@ class InvoiceController extends Controller
                 'overall_sub_total' => ['required', 'numeric'],
                 'discount' => ['required', 'integer'],
                 'total' => ['required', 'numeric'],
+            ], [
+                'info.*.description.required' => 'The description is required',
+                'info.*.unit_price.required' => 'The unit price is required',
+                'info.*.quantity.required' => 'The quantity is required',
+                'info.*.sub_total.required' => 'The sub total is required',
             ]);
 
             $user = auth()->user();
