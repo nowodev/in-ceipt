@@ -124,6 +124,7 @@
                         <div>
                             <Label class="">Sub Total</Label>
                             <Input type="text" v-model="get_sub_total" placeholder="0000.00"
+                                   :value="roundToTwo(desc.unit_price * desc.quantity)"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <InputError v-if="form.errors[`info.${index}.sub_total`]"
                                         :message="form.errors[`info.${index}.sub_total`]" />
@@ -173,7 +174,6 @@
 </template>
 
 <script>
-
     import { defineComponent } from 'vue'
     import { Link, useForm } from "@inertiajs/inertia-vue3";
     import AppLayout from '@/Layouts/AppLayout.vue'
@@ -188,7 +188,6 @@
     import DangerButton from "@/Jetstream/DangerButton";
 
     export default defineComponent({
-
         name: "Create.vue",
         components: {
             DangerButton,
@@ -278,6 +277,11 @@
             // remove a description field
             removeDescription: function (index) {
                 this.form.info.splice(index, 1)
+            },
+
+            // round to two decimal places
+            roundToTwo: function (num) {
+                return round(num, 2)
             },
 
             // submit form
