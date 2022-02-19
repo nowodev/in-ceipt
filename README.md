@@ -16,3 +16,4 @@ An opinionated invoice and receipt generator
 - [x] Use button to generate serial number
 - [x] Delete invoice
 - [x] Switch from fontawesome to SVG icons
+- [ ] Add row => "No Records Found" on invoice index table when there's no invoice 

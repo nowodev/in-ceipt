@@ -114,6 +114,10 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Discount (%)
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Total Due
                                     </th>
                                 </tr>
@@ -129,7 +133,10 @@
                                         <p class="text-sm text-left text-gray-900">{{ invoice.due_date }}</p>
                                     </td>
                                     <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                        <div class="text-sm text-left text-gray-900">50000</div>
+                                        <div class="text-sm text-left text-gray-900">{{ invoice.discount }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 w-1/2 whitespace-nowrap">
+                                        <div class="text-sm text-left text-gray-900">{{ invoice.total }}</div>
                                     </td>
                                 </tr>
                             </tbody>
