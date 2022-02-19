@@ -18,3 +18,5 @@ An opinionated invoice and receipt generator
 - [x] Switch from fontawesome to SVG icons
 - [ ] Add row => "No Records Found" on invoice index table when there's no invoice
 - [ ] Confirm dialog before invoice deletion
+- [x] Create multiple invoice templates
+- [ ] Feature:  Create basic form and advanced form
