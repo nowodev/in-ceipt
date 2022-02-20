@@ -3,7 +3,7 @@
         <div class="w-3/5 bg-white shadow-lg">
             <div class="flex justify-between p-4">
                 <div>
-                    <h1 class="text-3xl italic font-extrabold tracking-widest text-indigo-500">Larainfo</h1>
+                    <h1 class="text-3xl italic font-extrabold tracking-widest text-indigo-500">In-ceipt</h1>
                     <p class="text-base">If account is not paid within 7 days the credits details supplied as
                         confirmation.</p>
                 </div>
@@ -40,25 +40,25 @@
             <div class="w-full h-0.5 bg-indigo-500"></div>
             <div class="flex justify-between p-4">
                 <div>
-                    <h6 class="font-bold">Order Date : <span class="text-sm font-medium"> 12/12/2022</span></h6>
-                    <h6 class="font-bold">Order ID : <span class="text-sm font-medium"> 12/12/2022</span></h6>
+                    <h6 class="font-bold">Order Date : <span class="text-sm font-medium">{{ invoice.issue_date }}</span>
+                    </h6>
+                    <h6 class="font-bold">Order ID : <span class="text-sm font-medium">{{ invoice.serial_no }}</span>
+                    </h6>
                 </div>
                 <div class="w-40">
                     <address class="text-sm">
                         <span class="font-bold"> Billed To : </span>
-                        Joe Smith
-                        795 Folsom Ave
-                        San Francisco, CA 94107
-                        P: (123) 456-7890
+                        {{ invoice.customer.fullname }} <br>
+                        {{ invoice.customer.address_1 }} <br>
+                        P: {{ invoice.customer.number }}
                     </address>
                 </div>
                 <div class="w-40">
                     <address class="text-sm">
                         <span class="font-bold">Ship To :</span>
-                        Joe doe
-                        800 Folsom Ave
-                        San Francisco, CA 94107
-                        P: + 111-456-7890
+                        {{ invoice.customer.fullname }} <br>
+                        {{ invoice.customer.address_1 }} <br>
+                        P: {{ invoice.customer.number }}
                     </address>
                 </div>
                 <div></div>
@@ -81,84 +81,44 @@
                                     Rate
                                 </th>
                                 <th class="px-4 py-2 text-xs text-gray-500">
-                                    Subtotal
+                                    Total
                                 </th>
                             </tr>
                         </thead>
                         <tbody class="bg-white">
-                            <tr class="whitespace-nowrap">
+                            <tr v-for="(inv, index) in invoice.invoice_details" :key="index" class="whitespace-nowrap">
                                 <td class="px-6 py-4 text-sm text-gray-500">
                                     1
                                 </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Amazon Brand - Symactive Men's Regular Fit T-Shirt
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">4</div>
+                                <td class="px-6 py-4 text-sm text-gray-900">
+                                    {{ inv.description }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">
-                                    $20
-                                </td>
-                                <td class="px-6 py-4">
-                                    $30
-                                </td>
-                            </tr>
-                            <tr class="whitespace-nowrap">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    2
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Amazon Brand - Symactive Men's Regular Fit T-Shirt
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">2</div>
+                                    {{ inv.quantity }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">
-                                    $60
+                                    ${{ inv.unit_price }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    $12
-                                </td>
-                            </tr>
-                            <tr class="whitespace-nowrap border-b-2">
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    3
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-900">
-                                        Amazon Brand - Symactive Men's Regular Fit T-Shirt
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <div class="text-sm text-gray-500">1</div>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">
-                                    $10
-                                </td>
-                                <td class="px-6 py-4">
-                                    $13
+                                    ${{ inv.total }}
                                 </td>
                             </tr>
                             <tr class="">
                                 <td colspan="3"></td>
-                                <td class="text-sm font-bold">Sub Total</td>
-                                <td class="text-sm font-bold tracking-wider"><b>$950</b></td>
+                                <td class="text-sm font-bold">Sum Total</td>
+                                <td class="text-sm font-bold tracking-wider"><b>${{ invoice.sum_total }}</b></td>
                             </tr>
                             <!--end tr-->
                             <tr>
                                 <th colspan="3"></th>
-                                <td class="text-sm font-bold"><b>Tax Rate</b></td>
-                                <td class="text-sm font-bold"><b>$1.50%</b></td>
+                                <td class="text-sm font-bold"><b>Discount</b></td>
+                                <td class="text-sm font-bold"><b>{{ invoice.discount }}%</b></td>
                             </tr>
                             <!--end tr-->
                             <tr class="text-white bg-gray-800">
                                 <th colspan="3"></th>
-                                <td class="text-sm font-bold"><b>Total</b></td>
-                                <td class="text-sm font-bold"><b>$999.0</b></td>
+                                <td class="text-sm font-bold"><b>Sub Total</b></td>
+                                <td class="text-sm font-bold"><b>${{ invoice.sub_total }}</b></td>
                             </tr>
                             <!--end tr-->
 
