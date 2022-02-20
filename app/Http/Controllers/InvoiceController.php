@@ -40,15 +40,15 @@ class InvoiceController extends Controller
                 'info.*.description' => ['required', 'string', 'max:255'],
                 'info.*.unit_price' => ['required', 'numeric'],
                 'info.*.quantity' => ['required', 'integer'],
-                'info.*.sub_total' => ['required', 'numeric'],
-                'overall_sub_total' => ['required', 'numeric'],
+                'info.*.total' => ['required', 'numeric'],
+                'sum_total' => ['required', 'numeric'],
                 'discount' => ['required', 'integer'],
-                'total' => ['required', 'numeric'],
+                'sub_total' => ['required', 'numeric'],
             ], [
                 'info.*.description.required' => 'The description is required',
                 'info.*.unit_price.required' => 'The unit price is required',
                 'info.*.quantity.required' => 'The quantity is required',
-                'info.*.sub_total.required' => 'The sub total is required',
+                'info.*.total.required' => 'The total is required',
             ]);
 
             $user = auth()->user();
@@ -67,9 +67,9 @@ class InvoiceController extends Controller
                 'serial_no' => $request['serial_no'],
                 'issue_date' => $request['issue_date'],
                 'due_date' => $request['due_date'],
-                'overall_sub_total' => $request['overall_sub_total'],
+                'sum_total' => $request['sum_total'],
                 'discount' => $request['discount'],
-                'total' => $request['total'],
+                'sub_total' => $request['sub_total'],
             ]);
 
             // insert array of product information into the invoice_details table
@@ -78,7 +78,7 @@ class InvoiceController extends Controller
                     'description' => $info['description'],
                     'unit_price' => $info['unit_price'],
                     'quantity' => $info['quantity'],
-                    'sub_total' => $info['sub_total'],
+                    'total' => $info['total'],
                 ]);
             }
         });

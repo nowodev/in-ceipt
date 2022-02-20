@@ -53,7 +53,7 @@
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                            Sub Total
+                                            Total
                                         </th>
                                     </tr>
                                 </thead>
@@ -72,7 +72,7 @@
                                             <div class="text-sm text-gray-900">{{ inv.quantity }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ inv.sub_total }}</div>
+                                            <div class="text-sm text-gray-900">{{ inv.total }}</div>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -96,6 +96,10 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                Sum Total
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 Discount (%)
                             </th>
                             <th scope="col"
@@ -115,10 +119,13 @@
                                 <p class="text-sm text-left text-gray-900">{{ invoice.due_date }}</p>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
+                                <div class="text-sm text-left text-gray-900">{{ invoice.sum_total }}</div>
+                            </td>
+                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
                                 <div class="text-sm text-left text-gray-900">{{ invoice.discount }}</div>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <div class="text-sm text-left text-gray-900">{{ invoice.total }}</div>
+                                <div class="text-sm text-left text-gray-900">{{ invoice.sub_total }}</div>
                             </td>
                         </tr>
                     </tbody>

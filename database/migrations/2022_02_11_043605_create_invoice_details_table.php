@@ -15,7 +15,7 @@ class CreateInvoiceDetailsTable extends Migration
             $table->longText('description');
             $table->string('unit_price');
             $table->integer('quantity');
-            $table->string('sub_total');
+            $table->string('total');
             $table->timestamps();
         });
 

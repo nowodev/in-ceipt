@@ -122,8 +122,8 @@
                         </div>
 
                         <div>
-                            <Label class="">Sub Total</Label>
-                            <Input type="text" v-model="get_sub_total" placeholder="0000.00"
+                            <Label class="">Total</Label>
+                            <Input type="text" v-model="get_total" placeholder="0000.00"
                                    :value="roundToTwo(desc.unit_price * desc.quantity)"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
                             <InputError v-if="form.errors[`info.${index}.sub_total`]"
@@ -147,10 +147,10 @@
                     <legend class="text-lg font-semibold">Summary</legend>
 
                     <div>
-                        <Label class="">Overall Sub Total</Label>
-                        <Input type="text" v-model="get_overall_sub_total" placeholder="0000.00"
+                        <Label class="">Sum Total</Label>
+                        <Input type="text" v-model="get_sum_total" placeholder="0000.00"
                                class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
-                        <InputError v-if="form.errors.overall_sub_total" :message="form.errors.overall_sub_total" />
+                        <InputError v-if="form.errors.sum_total" :message="form.errors.sum_total" />
                     </div>
 
                     <div>
@@ -160,10 +160,10 @@
                     </div>
 
                     <div>
-                        <Label class="">Total</Label>
-                        <Input type="text" v-model="get_total" placeholder="0000.00"
+                        <Label class="">Sub Total</Label>
+                        <Input type="text" v-model="get_sub_total" placeholder="0000.00"
                                class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled />
-                        <InputError v-if="form.errors.total" :message="form.errors.total" />
+                        <InputError v-if="form.errors.sub_total" :message="form.errors.sub_total" />
                     </div>
                 </fieldset>
 
@@ -223,41 +223,41 @@
                         description: null,
                         unit_price: null,
                         quantity: null,
-                        sub_total: null,
+                        total: null,
                     }
                 ],
-                overall_sub_total: null,
+                sum_total: null,
                 discount: 0,
-                total: null,
+                sub_total: null,
             })
 
             return { form }
         },
         computed: {
-            // dynamically get sub_total from unit price and quantity
-            get_sub_total: function () {
+            // dynamically get total from unit price and quantity
+            get_total: function () {
                 return this.form.info.map((a) => {
-                    a.sub_total = round(a.unit_price * a.quantity, 2)
+                    a.total = round(a.unit_price * a.quantity, 2)
 
                     // convert object to string
                     // console.log(JSON.stringify(a.sub_total))
-                    return JSON.stringify(a.sub_total)
+                    return JSON.stringify(a.total)
                 })
             },
 
-            // dynamically get sum of all subtotals
-            get_overall_sub_total: function () {
-                let sum_of_sub_total = (this.form.info).reduce((x, y) => x + (y['sub_total'] || 0), 0)
-                this.form.overall_sub_total = sum_of_sub_total
+            // dynamically get sum of all totals
+            get_sum_total: function () {
+                let calculated_sum_total = (this.form.info).reduce((x, y) => x + (y['total'] || 0), 0)
+                this.form.sum_total = calculated_sum_total
 
-                return sum_of_sub_total
+                return calculated_sum_total
             },
 
             // dynamically get total from overall_sub_total and discount
-            get_total: function () {
-                let calculated_total = round(this.get_overall_sub_total * ((100 - this.form.discount) / 100), 2)
-                this.form.total = calculated_total
-                return calculated_total
+            get_sub_total: function () {
+                let calculated_sub_total = round(this.get_sum_total * ((100 - this.form.discount) / 100), 2)
+                this.form.sub_total = calculated_sub_total
+                return calculated_sub_total
             },
         },
         methods: {
@@ -272,7 +272,7 @@
                     description: null,
                     unit_price: null,
                     quantity: null,
-                    sub_total: null,
+                    total: null,
                 })
             },
 
