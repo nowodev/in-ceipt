@@ -40,7 +40,7 @@
                         Close
                     </SecondaryButton>
 
-                    <Download class="ml-3" :dom="print_id" name="invoice.pdf" />
+                    <Download class="ml-3" :dom="print_id" :name="name" />
                 </template>
             </DialogModal>
         </CardLayout>
@@ -82,13 +82,16 @@
                 selected: false,
                 showingModal: null,
                 print_id: null,
+                name: null,
             }
         },
         methods: {
             showModal(value, id) {
                 this.showingModal = true
                 this.selected = value
-                this.print_id = '#' + id;
+                this.print_id = '#' + id
+                this.name = this.invoice.serial_no + '.pdf'
+                console.log(this.name)
             },
 
             closeModal() {
