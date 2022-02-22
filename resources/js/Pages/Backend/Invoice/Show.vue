@@ -1,5 +1,4 @@
 <template>
-
     <app-layout title="Invoice">
         <template #header>
             <h2 class="flex text-xl font-semibold leading-tight text-gray-800">
@@ -17,13 +16,13 @@
         <CardLayout>
             <div class="overflow-hidden shadow sm:rounded-lg">
                 <div class="px-4 py-5 space-x-4 sm:px-6">
-                    <Button @click="showModal(1)">
+                    <Button @click="showModal(1, 'one')">
                         One
                     </Button>
-                    <Button @click="showModal(2)">
+                    <Button @click="showModal(2, 'two')">
                         Two
                     </Button>
-                    <Button @click="showModal(3)">
+                    <Button @click="showModal(3, 'three')">
                         Three
                     </Button>
                 </div>
@@ -31,9 +30,9 @@
 
             <DialogModal max-width="4xl" :show="showingModal" @close="closeModal">
                 <template #content>
-                    <One v-if="selected === 1" v-bind:invoice="invoice" />
-                    <Two v-if="selected === 2" v-bind:invoice="invoice" />
-                    <Three v-if="selected === 3" v-bind:invoice="invoice" />
+                    <One v-if="selected === 1" v-bind:invoice="invoice" id="one" />
+                    <Two v-if="selected === 2" v-bind:invoice="invoice" id="two" />
+                    <Three v-if="selected === 3" v-bind:invoice="invoice" id="three" />
                 </template>
 
                 <template #footer>
@@ -41,9 +40,7 @@
                         Close
                     </SecondaryButton>
 
-                    <Button class="ml-3">
-                        Print
-                    </Button>
+                    <Download class="ml-3" :dom="print_id" name="invoice.pdf" />
                 </template>
             </DialogModal>
         </CardLayout>
@@ -51,20 +48,22 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import { Link } from "@inertiajs/inertia-vue3";
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import CardLayout from "@/Jetstream/CardLayout";
-    import One from "@/Pages/Backend/Invoice/Template/One";
     import Button from "@/Jetstream/Button";
+    import CardLayout from "@/Jetstream/CardLayout";
     import DialogModal from "@/Jetstream/DialogModal";
+    import Download from "@/Jetstream/Download";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
-    import Two from "@/Pages/Backend/Invoice/Template/Two";
+    import AppLayout from '@/Layouts/AppLayout.vue';
+    import One from "@/Pages/Backend/Invoice/Template/One";
     import Three from "@/Pages/Backend/Invoice/Template/Three";
+    import Two from "@/Pages/Backend/Invoice/Template/Two";
+    import { Link } from "@inertiajs/inertia-vue3";
+    import { defineComponent } from 'vue';
 
     export default defineComponent({
         name: "Show",
         components: {
+            Download,
             Two,
             Three,
             SecondaryButton,
@@ -73,7 +72,7 @@
             One,
             CardLayout,
             AppLayout,
-            Link
+            Link,
         },
         props: {
             invoice: Object,
@@ -82,18 +81,21 @@
             return {
                 selected: false,
                 showingModal: null,
+                print_id: null,
             }
         },
         methods: {
-            showModal(value) {
+            showModal(value, id) {
                 this.showingModal = true
                 this.selected = value
+                this.print_id = '#' + id;
             },
 
             closeModal() {
                 this.selected = !this.selected
                 this.showingModal = null
-            },
+                this.print_id = null;
+            }
         },
     })
 </script>
