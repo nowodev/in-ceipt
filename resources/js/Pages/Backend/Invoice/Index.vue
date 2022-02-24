@@ -105,7 +105,6 @@
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
 
-    let red = 1
     export default defineComponent({
         name: "Index",
         components: {

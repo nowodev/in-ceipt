@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
 use App\Models\Invoice;
 use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
