@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\CustomersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,9 +31,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::resource('invoice', InvoiceController::class);
 //    Route::controller(InvoiceController::class)->group(function () {
 //        Route::get('/invoice', 'index')->name('invoice.index');
 //        Route::get('/invoice/create', 'create')->name('invoice.create');
 //    });
+    Route::resource('invoice', InvoiceController::class);
+    Route::resource('customers', CustomersController::class);
 });
