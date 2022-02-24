@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Invoice;
+use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
@@ -21,7 +23,17 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        return inertia('Backend/Invoice/Create');
+        $fullname = Request::get('fullname');
+        $customers = Customer::get();
+        $selected_customer = '';
+        if (!empty($fullname)) {
+            $selected_customer = Customer::whereFullname($fullname)->first();
+        }
+
+        return inertia('Backend/Invoice/Create', [
+            'customers' => fn() => $customers,
+            'selected_customer' => fn() => $selected_customer
+        ]);
     }
 
     public function store(): RedirectResponse
@@ -53,13 +65,16 @@ class InvoiceController extends Controller
 
             $user = auth()->user();
 
-            $customer = $user?->customers()->create([
-                'fullname' => $request['fullname'],
-                'number' => $request['number'],
-                'email' => $request['email'],
-                'address_1' => $request['address_1'],
-                'address_2' => $request['address_2'],
-            ]);
+            $customer = $user?->customers()->updateOrCreate(
+                ['fullname' => $request['fullname']],
+                [
+                    'fullname' => $request['fullname'],
+                    'number' => $request['number'],
+                    'email' => $request['email'],
+                    'address_1' => $request['address_1'],
+                    'address_2' => $request['address_2'],
+                ]
+            );
 
             $invoice = Invoice::create([
                 'user_id' => auth()->id(),
