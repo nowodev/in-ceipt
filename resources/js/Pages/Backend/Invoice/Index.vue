@@ -93,13 +93,6 @@
                     </div>
                 </div>
             </div>
-
-            <div>
-                <table class="table">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
         </CardLayout>
     </app-layout>
 </template>
