@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 
@@ -25,7 +24,7 @@ class CustomersController extends Controller
         return inertia('Backend/Customers/Create');
     }
 
-    public function store(StoreCustomerRequest $request)
+    public function store(StoreCustomerRequest $request): RedirectResponse
     {
         DB::transaction(function () use ($request) {
 
@@ -40,8 +39,6 @@ class CustomersController extends Controller
                 'address_1' => $request['address_1'],
                 'address_2' => $request['address_2'],
             ]);
-
-//            return Redirect::route('customers.index')->banner('Customer Added');
         });
 
         return redirect()->route('customers.index')->banner('Customer Added');
@@ -56,27 +53,18 @@ class CustomersController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Customer $customer
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Customer $customer)
     {
-        //
+        return inertia('Backend/Customers/Edit', [
+            'customer' => $customer
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \App\Http\Requests\UpdateCustomerRequest $request
-     * @param \App\Models\Customer $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateCustomerRequest $request, Customer $customer)
+    public function update(UpdateCustomerRequest $request, Customer $customer): RedirectResponse
     {
-        //
+        $customer->update($request->validated());
+
+        return redirect()->route('customers.index')->banner('Customer Updated');
     }
 
     public function destroy(Customer $customer): RedirectResponse
@@ -84,6 +72,6 @@ class CustomersController extends Controller
         $customer->invoices()->delete();
         $customer->delete();
 
-        return Redirect::route('customers.index')->banner('Invoice Deleted');
+        return redirect()->route('customers.index')->banner('Customer Deleted');
     }
 }

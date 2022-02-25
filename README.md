@@ -20,3 +20,5 @@ An opinionated invoice and receipt generator
 - [ ] Confirm dialog before invoice deletion
 - [x] Create multiple invoice templates
 - [ ] Feature:  Create basic form and advanced form
+- [ ] Perform CRUD operations on Customers
+- [ ] Make forms editable
