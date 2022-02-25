@@ -125,7 +125,7 @@
                         </div>
                     </fieldset>
 
-                    <div class="flex flex-col gap-y-3 mt-3 ml-auto w-fit">
+                    <div class="flex flex-col gap-y-3 mt-3 mlauto w-fit">
                         <Button v-show="index === form.info.length - 1" @click="addDescription">
                             Add New Description
                         </Button>
@@ -162,7 +162,8 @@
                 </fieldset>
 
                 <div class="flex gap-2 justify-end mt-4">
-                    <SecondaryButton @click="resetForm">Reset</SecondaryButton>
+                    <!-- fix: Reset functionality removes the description section -->
+                    <!-- <SecondaryButton @click="resetForm">Reset</SecondaryButton>-->
                     <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                             @click.prevent="submit">Update
                     </Button>

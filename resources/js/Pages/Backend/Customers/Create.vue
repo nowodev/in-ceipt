@@ -63,9 +63,12 @@
                     </div>
                 </fieldset>
 
-                <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="mt-4"
-                        @click.prevent="submit">Submit
-                </Button>
+                <div class="flex gap-2 justify-end mt-4">
+                     <SecondaryButton @click="resetForm">Reset</SecondaryButton>
+                    <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+                            @click.prevent="submit">Create
+                    </Button>
+                </div>
             </div>
         </CardLayout>
     </app-layout>
@@ -77,6 +80,7 @@
     import Input from "@/Jetstream/Input";
     import InputError from "@/Jetstream/InputError";
     import Label from "@/Jetstream/Label";
+    import SecondaryButton from "@/Jetstream/SecondaryButton";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link, useForm } from "@inertiajs/inertia-vue3";
     import { defineComponent } from 'vue'
@@ -85,6 +89,7 @@
         name: "Create.vue",
 
         components: {
+            SecondaryButton,
             InputError,
             Button,
             Label,
@@ -110,7 +115,12 @@
             // submit form
             submit: function () {
                 this.form.post(route('customers.store'))
-            }
+            },
+
+            resetForm() {
+                this.form.clearErrors();
+                this.form.reset();
+            },
         }
     })
 </script>
