@@ -210,7 +210,6 @@
     import InputError from "@/Jetstream/InputError";
     import Label from "@/Jetstream/Label";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
-    import ValidationErrors from "@/Jetstream/ValidationErrors";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link, useForm } from "@inertiajs/inertia-vue3";
     import { round } from "lodash";
@@ -224,7 +223,6 @@
             SecondaryButton,
             InputError,
             Button,
-            ValidationErrors,
             Label,
             CardLayout,
             AppLayout,

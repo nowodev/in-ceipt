@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreCustomerRequest;
@@ -21,18 +22,29 @@ class CustomersController extends Controller
 
     public function create()
     {
-        //
+        return inertia('Backend/Customers/Create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\StoreCustomerRequest $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreCustomerRequest $request)
     {
-        //
+        DB::transaction(function () use ($request) {
+
+            $request->validated();
+
+            $user = auth()->user();
+
+            $user?->customers()->create([
+                'fullname' => $request['fullname'],
+                'number' => $request['number'],
+                'email' => $request['email'],
+                'address_1' => $request['address_1'],
+                'address_2' => $request['address_2'],
+            ]);
+
+//            return Redirect::route('customers.index')->banner('Customer Added');
+        });
+
+        return redirect()->route('customers.index')->banner('Customer Added');
     }
 
     public function show($id)
