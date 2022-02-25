@@ -125,6 +125,5 @@ class InvoiceController extends Controller
         $invoice->delete();
 
         return Redirect::route('invoice.index')->banner('Invoice Deleted');
-
     }
 }

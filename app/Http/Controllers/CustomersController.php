@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 
@@ -67,14 +69,11 @@ class CustomersController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Customer $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Customer $customer)
+    public function destroy(Customer $customer): RedirectResponse
     {
-        //
+        $customer->invoices()->delete();
+        $customer->delete();
+
+        return Redirect::route('customers.index')->banner('Invoice Deleted');
     }
 }
