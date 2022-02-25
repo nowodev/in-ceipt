@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\StoreInvoiceRequest;
 
 class InvoiceController extends Controller
 {
@@ -35,32 +36,11 @@ class InvoiceController extends Controller
         ]);
     }
 
-    public function store(): RedirectResponse
+    public function store(StoreInvoiceRequest $request): RedirectResponse
     {
-        DB::transaction(function () {
+        DB::transaction(function () use ($request) {
 
-            $request = Request::validate([
-                'fullname' => ['required', 'string'],
-                'number' => ['sometimes', 'nullable', 'min:11'],
-                'email' => ['nullable', 'email', 'max:255'],
-                'address_1' => ['string', 'sometimes', 'nullable', 'max:255'],
-                'address_2' => ['string', 'sometimes', 'nullable', 'max:255'],
-                'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
-                'issue_date' => ['required', 'date'],
-                'due_date' => ['required', 'date'],
-                'info.*.description' => ['required', 'string', 'max:255'],
-                'info.*.unit_price' => ['required', 'numeric'],
-                'info.*.quantity' => ['required', 'integer'],
-                'info.*.total' => ['required', 'numeric'],
-                'sum_total' => ['required', 'numeric'],
-                'discount' => ['required', 'integer'],
-                'sub_total' => ['required', 'numeric'],
-            ], [
-                'info.*.description.required' => 'The description is required',
-                'info.*.unit_price.required' => 'The unit price is required',
-                'info.*.quantity.required' => 'The quantity is required',
-                'info.*.total.required' => 'The total is required',
-            ]);
+            $request->validated();
 
             $user = auth()->user();
 
