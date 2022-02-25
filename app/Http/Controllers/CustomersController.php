@@ -35,15 +35,13 @@ class CustomersController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Customer $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Customer $customer)
+    public function show($id)
     {
-        //
+        $customer = Customer::with('invoices')->find($id);
+
+        return inertia('Backend/Customers/Show', [
+            'customer' => $customer
+        ]);
     }
 
     /**

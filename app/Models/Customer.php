@@ -16,9 +16,12 @@ class Customer extends Model
 
     protected $guarded = [];
 
-
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class, 'customer_id');
     }
+
+    protected $casts = [
+      'created_at' => 'date:M d, Y'
+    ];
 }
