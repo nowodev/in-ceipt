@@ -207,6 +207,8 @@
         },
 
         mounted() {
+            // since the item description is dynamic and could be 1 or more, we need to fetch the value from the db
+            // and push it into the info array declared in the form helper below 👇
             this.invoice.invoice_details.forEach((value, index) => {
                 this.form.info.push({
                     description: this.invoice.invoice_details[index].description,

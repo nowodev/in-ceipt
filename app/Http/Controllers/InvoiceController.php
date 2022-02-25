@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\Customer;
+use App\Models\InvoiceDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreInvoiceRequest;
+use App\Http\Requests\UpdateInvoiceRequest;
 
 class InvoiceController extends Controller
 {
     public function index()
     {
-        $invoices = Invoice::get();
+        $invoices = Invoice::paginate(10);
 
         return inertia('Backend/Invoice/Index', [
             'invoices' => $invoices,
@@ -77,7 +78,7 @@ class InvoiceController extends Controller
             }
         });
 
-        return Redirect::route('invoice.index')->banner('Invoice Created');
+        return redirect()->route('invoice.index')->banner('Invoice Created');
     }
 
     public function show($id)
@@ -89,22 +90,51 @@ class InvoiceController extends Controller
         ]);
     }
 
-    public function edit(Invoice $invoice)
+    public function edit($id)
     {
-        //
+        $invoice = Invoice::with('customer', 'invoice_details')->find($id);
+
+        return inertia('Backend/Invoice/Edit', [
+            'invoice' => $invoice
+        ]);
     }
 
-    public function update(Request $request, Invoice $invoice)
+    public function update(UpdateInvoiceRequest $request, Invoice $invoice): RedirectResponse
     {
-        //
+        $cred = $request->validated();
+
+        $invoice->update([
+            'issue_date' => $cred['issue_date'],
+            'due_date' => $cred['due_date'],
+            'sum_total' => $cred['sum_total'],
+            'discount' => $cred['discount'],
+            'sub_total' => $cred['sub_total'],
+        ]);
+
+        // insert array of product information into the invoice_details table
+        foreach ($cred['info'] as $info) {
+            // BUG FIX: when updating using 'update', it replaces all fields to have the same value
+            //          but when using 'createOrUpdate', it adds new values
+            $invoice->invoice_details()->updateOrCreate(
+                ['description' => $info['description']],
+                [
+                    'description' => $info['description'],
+                    'unit_price' => $info['unit_price'],
+                    'quantity' => $info['quantity'],
+                    'total' => $info['total'],
+                ]
+            );
+        }
+
+        return redirect()->route('invoice.index')->banner('Invoice Updated');
     }
 
-    public function destroy(Invoice $invoice)
+    public function destroy(Invoice $invoice): RedirectResponse
     {
         $invoice->invoice_details()->delete();
         $invoice->delete();
 
-        return Redirect::route('invoice.index')->banner('Invoice Deleted');
+        return redirect()->route('invoice.index')->banner('Invoice Deleted');
     }
 
     // removing a description field (fieldset) from the db

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * @method static create(array $array)
  * @method static get()
+ * @method static paginate(int $int)
  */
 class Invoice extends Model
 {
