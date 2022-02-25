@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Create Invoice">
+    <app-layout title="Edit Customer">
         <template #header>
             <h2 class="flex text-xl font-semibold leading-tight text-gray-800">
                 <Link :href="route('customers.index')">
