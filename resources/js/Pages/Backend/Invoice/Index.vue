@@ -3,10 +3,10 @@
         <template #header>
             <h2 class="flex text-xl font-semibold leading-tight text-gray-800">
                 <Link :href="route('dashboard')">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 w-6 h-6" fill="none" viewBox="0 0 24 24"
-                         stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+                    <svg class="mr-2 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="2" />
                     </svg>
                 </Link>
                 Invoice
@@ -25,29 +25,29 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             SN
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Serial No
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Issue Date
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Due Date
                                         </th>
-                                        <th scope="col" class="relative px-6 py-3">
+                                        <th class="relative px-6 py-3" scope="col">
                                             <span class="sr-only">Edit</span>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr v-for="(invoice, index) in invoices" :key="invoice.id">
+                                    <tr v-for="(invoice, index) in invoices.data" :key="invoice.id">
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ index + 1 }}</div>
                                         </td>
@@ -62,33 +62,47 @@
                                         </td>
                                         <td class="flex items-center px-6 py-4 space-x-4 text-sm font-medium whitespace-nowrap">
                                             <Link :href="route('invoice.show', invoice)" class="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
-                                                     viewBox="0 0 20 20" fill="currentColor">
+                                                <svg class="w-5 h-5" fill="currentColor"
+                                                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                                                    <path fill-rule="evenodd"
+                                                    <path clip-rule="evenodd"
                                                           d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                                                          clip-rule="evenodd" />
+                                                          fill-rule="evenodd" />
                                                 </svg>
                                             </Link>
-                                            <a href="#" class="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
-                                                     viewBox="0 0 50 50" style=" fill:#000000;">
+                                            <a class="" href="#">
+                                                <svg class="w-5 h-5" style=" fill:#000000;"
+                                                     viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M 44.4375 4.15625 L 4.59375 21.28125 C 4.238281 21.433594 4.011719 21.796875 4 22.1875 C 3.988281 22.578125 4.214844 22.917969 4.5625 23.09375 L 18.5 30.0625 Z M 45.84375 5.5625 L 19.9375 31.5 L 26.90625 45.4375 C 27.078125 45.777344 27.433594 46 27.8125 46 L 27.84375 46 C 28.234375 45.988281 28.5625 45.761719 28.71875 45.40625 Z"></path>
                                                 </svg>
                                             </a>
+
+                                            <Link :href="route('invoice.edit', invoice)" class="">
+                                                <svg class="w-5 h-5" fill="currentColor"
+                                                     stroke="currentColor" viewBox="0 0 24 24"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                                                        stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2" />
+                                                </svg>
+                                            </Link>
                                             <a class="cursor-pointer" @click="deleteInvoice(invoice)">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5"
-                                                     viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
+                                                <svg class="w-5 h-5" fill="currentColor"
+                                                     viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path clip-rule="evenodd"
                                                           d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                          clip-rule="evenodd" />
+                                                          fill-rule="evenodd" />
                                                 </svg>
                                             </a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <Pagination :links="invoices.links" />
                         </div>
                     </div>
                 </div>
@@ -98,16 +112,18 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import { Link } from "@inertiajs/inertia-vue3";
-    import AppLayout from '@/Layouts/AppLayout.vue'
     import ButtonLink from "@/Jetstream/ButtonLink";
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
+    import Pagination from "@/Jetstream/Pagination";
+    import AppLayout from '@/Layouts/AppLayout.vue'
+    import { Link } from "@inertiajs/inertia-vue3";
+    import { defineComponent } from 'vue'
 
     export default defineComponent({
         name: "Index",
         components: {
+            Pagination,
             DangerButton,
             CardLayout,
             ButtonLink,
