@@ -24,7 +24,7 @@ class StoreInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => ['required', 'string'],
+            'fullname' => ['required', 'string', 'max:255'],
             'number' => ['sometimes', 'nullable', 'min:11'],
             'email' => ['nullable', 'email', 'unique:customers,email', 'max:255'],
             'address_1' => ['string', 'sometimes', 'nullable', 'max:255'],
