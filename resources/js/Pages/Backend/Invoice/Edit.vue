@@ -88,7 +88,7 @@
                 <div v-for="(desc, index) in form.info" :key="index">
                     <fieldset
                         class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
-                        <legend class="text-lg font-semibold">Description {{ index + 1 }}</legend>
+                        <legend class="text-lg font-semibold">Item Description {{ index + 1 }}</legend>
 
                         <div>
                             <Label for="description">Description</Label>
