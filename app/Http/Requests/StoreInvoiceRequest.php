@@ -32,7 +32,7 @@ class StoreInvoiceRequest extends FormRequest
             'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
             'issue_date' => ['required', 'date'],
             'due_date' => ['required', 'date'],
-            'info.*.description' => ['required', 'string', 'max:255'],
+            'info.*.description' => ['required', 'string', 'max:255', 'unique:invoice_details'],
             'info.*.unit_price' => ['required', 'numeric'],
             'info.*.quantity' => ['required', 'integer'],
             'info.*.total' => ['required', 'numeric'],
@@ -49,6 +49,7 @@ class StoreInvoiceRequest extends FormRequest
             'info.*.unit_price.required' => 'The unit price is required',
             'info.*.quantity.required' => 'The quantity is required',
             'info.*.total.required' => 'The total is required',
+            'info.*.description.unique' => 'This description has already been used',
         ];
     }
 }
