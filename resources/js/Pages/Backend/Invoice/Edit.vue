@@ -279,11 +279,12 @@
             removeDescription: function (index) {
                 this.form.info.splice(index, 1)
 
-                    // console.log(this.invoice.invoice_details[index].description)
-                    this.$inertia.delete(route('invoice.delete_info', this.invoice.invoice_details[index].description), {
-                        preserveState: false,
-                        preserveScroll: true
-                    })
+                // when removing a description field (fieldset), the corresponding data is also removed from the db
+                // and the page is reloaded
+                this.$inertia.delete(route('invoice.delete_info', this.invoice.invoice_details[index].description), {
+                    preserveState: false,
+                    preserveScroll: true
+                })
             },
 
             // round to two decimal places

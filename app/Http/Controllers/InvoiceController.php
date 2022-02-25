@@ -106,4 +106,13 @@ class InvoiceController extends Controller
 
         return Redirect::route('invoice.index')->banner('Invoice Deleted');
     }
+
+    // removing a description field (fieldset) from the db
+    public function delete_info($desc): RedirectResponse
+    {
+        $invoice_details = InvoiceDetails::where('description', $desc)->first();
+        $invoice_details->delete();
+
+        return redirect()->back()->banner('Description Removed');
+    }
 }

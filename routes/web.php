@@ -31,10 +31,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware('auth:sanctum')->group(function () {
-//    Route::controller(InvoiceController::class)->group(function () {
+    Route::controller(InvoiceController::class)->group(function () {
 //        Route::get('/invoice', 'index')->name('invoice.index');
-//        Route::get('/invoice/create', 'create')->name('invoice.create');
-//    });
+        Route::delete('delete-info/{description}', 'delete_info')->name('invoice.delete_info');
+    });
     Route::resource('invoice', InvoiceController::class);
     Route::resource('customers', CustomersController::class);
 });
