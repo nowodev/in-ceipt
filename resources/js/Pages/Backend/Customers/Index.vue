@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Invoice">
+    <app-layout title="Customers">
         <template #header>
             <h2 class="flex text-xl font-semibold leading-tight text-gray-800">
                 <Link :href="route('dashboard')">
