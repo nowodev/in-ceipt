@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\Customer;
+use App\Mail\InvoiceCreated;
 use App\Models\InvoiceDetails;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\StoreInvoiceRequest;
@@ -141,8 +143,20 @@ class InvoiceController extends Controller
     public function delete_info($desc): RedirectResponse
     {
         $invoice_details = InvoiceDetails::where('description', $desc)->first();
-        $invoice_details->delete();
+        $invoice_details?->delete();
 
         return redirect()->back()->banner('Description Removed');
+    }
+
+    public function send_mail(Invoice $invoice): InvoiceCreated
+    {
+        $invoice->with('customer')->firstOrFail();
+
+        $user = $invoice->customer->email;
+
+//            Mail::to($user)->send(new InvoiceCreated($invoice));
+
+//        return new InvoiceCreated($invoice);
+        return back()->banner("Invoice Sent to Customer's Mail");
     }
 }
