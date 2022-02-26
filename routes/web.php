@@ -1,8 +1,6 @@
 <?php
 
 use Inertia\Inertia;
-use App\Models\Invoice;
-use App\Mail\InvoiceCreated;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\InvoiceController;

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\Customer;
-use App\Mail\InvoiceCreated;
+use App\Mail\InvoiceCreatedMail;
 use App\Models\InvoiceDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -148,7 +148,7 @@ class InvoiceController extends Controller
         return redirect()->back()->banner('Description Removed');
     }
 
-    public function send_mail(Invoice $invoice): InvoiceCreated
+    public function send_mail(Invoice $invoice): InvoiceCreatedMail
     {
         $invoice->with('customer')->firstOrFail();
 
