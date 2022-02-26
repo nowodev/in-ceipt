@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\Customer;
-use App\Mail\InvoiceCreated;
 use App\Models\InvoiceDetails;
+use App\Jobs\SendInvoiceMailJob;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
 use App\Http\Requests\StoreInvoiceRequest;
@@ -148,15 +147,15 @@ class InvoiceController extends Controller
         return redirect()->back()->banner('Description Removed');
     }
 
-    public function send_mail(Invoice $invoice): InvoiceCreated
+    public function send_mail(Invoice $invoice): RedirectResponse
     {
         $invoice->with('customer')->firstOrFail();
 
         $user = $invoice->customer->email;
 
-//            Mail::to($user)->send(new InvoiceCreated($invoice));
+        SendInvoiceMailJob::dispatchAfterResponse($user, $invoice);
 
-//        return new InvoiceCreated($invoice);
+//        return new InvoiceCreatedMail($invoice);
         return back()->banner("Invoice Sent to Customer's Mail");
     }
 }
