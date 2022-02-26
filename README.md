@@ -20,5 +20,9 @@ An opinionated invoice and receipt generator
 - [ ] Confirm dialog before invoice deletion
 - [x] Create multiple invoice templates
 - [ ] Feature:  Create basic form and advanced form
-- [ ] Perform CRUD operations on Customers
-- [ ] Make forms editable
+- [x] Perform CRUD operations on Customers
+- [x] Make forms editable
+- [ ] Fix bugs:
+  - [ ] when updating invoice details, values are either not inserted correctly or are duplicated
+  - [ ] unique validation when updating invoice
+  - [ ] resetForm() removes all dynamic fields on invoice edit page

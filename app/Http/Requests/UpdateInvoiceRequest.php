@@ -34,7 +34,7 @@ class UpdateInvoiceRequest extends FormRequest
 //            'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
             'issue_date' => ['required', 'date'],
             'due_date' => ['required', 'date'],
-            'info.*.description' => ['required', 'string', 'max:255', Rule::unique('invoices_details', 'description')->ignoreModel(InvoiceDetails::get())],
+            'info.*.description' => ['required', 'string', 'max:255', Rule::unique('invoice_details', 'description')->ignore($this->id)],
             'info.*.unit_price' => ['required', 'numeric'],
             'info.*.quantity' => ['required', 'integer'],
             'info.*.total' => ['required', 'numeric'],

@@ -297,7 +297,9 @@
 
             // submit form
             submit: function () {
-                this.form.put(route('invoice.update', this.invoice.id))
+                this.form.put(route('invoice.update', this.invoice.id), {
+                    preserveScroll: true
+                })
             },
 
             resetForm() {
