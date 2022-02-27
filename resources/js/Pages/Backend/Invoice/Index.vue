@@ -5,7 +5,8 @@
                 <Link :href="route('dashboard')">
                     <svg class="mr-2 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                          xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" stroke-linecap="round" stroke-linejoin="round"
+                        <path d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" stroke-linecap="round"
+                              stroke-linejoin="round"
                               stroke-width="2" />
                     </svg>
                 </Link>
@@ -70,7 +71,7 @@
                                                           fill-rule="evenodd" />
                                                 </svg>
                                             </Link>
-                                            <a  @click="sendMail(invoice)" href="#">
+                                            <a href="#" @click="sendMail(invoice)">
                                                 <svg class="w-5 h-5" style=" fill:#000000;"
                                                      viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -96,6 +97,13 @@
                                                           fill-rule="evenodd" />
                                                 </svg>
                                             </a>
+                                        </td>
+                                    </tr>
+
+                                    <!-- show no record when table is empty -->
+                                    <tr v-if="invoices.data == ''">
+                                        <td class="px-6 py-4 whitespace-nowrap" colspan="5">
+                                            <div class="text-sm text-center text-gray-900">No Records Found</div>
                                         </td>
                                     </tr>
                                 </tbody>
