@@ -22,9 +22,9 @@
                         <!-- Profile Card -->
                         <div class="p-3 bg-white border-t-4 border-green-400">
                             <div class="overflow-hidden image">
-                                <img alt=""
+                                <img :alt="customer.fullname"
                                      class="mx-auto w-full h-auto"
-                                     src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg">
+                                     src="../../../../../public/assets/images/profile.jpg">
                             </div>
                             <h1 class="my-1 text-xl font-bold leading-8 text-gray-900">{{ customer.fullname }}</h1>
                             <h3 class="leading-6 text-gray-600 font-lg text-semibold">Owner at Company Inc.</h3>
