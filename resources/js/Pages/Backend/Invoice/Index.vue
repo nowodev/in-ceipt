@@ -89,7 +89,7 @@
                                                         stroke-width="2" />
                                                 </svg>
                                             </Link>
-                                            <a class="cursor-pointer" @click="deleteInvoice(invoice)">
+                                            <a class="cursor-pointer" @click="confirmDelete(invoice)">
                                                 <svg class="w-5 h-5" fill="currentColor"
                                                      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path clip-rule="evenodd"
@@ -114,22 +114,50 @@
                     </div>
                 </div>
             </div>
+
+            <DialogModal :show="confirmingDelete" @close="closeModal">
+                <template #title>
+                    Delete Invoice
+                </template>
+
+                <template #content>
+                    Are you sure you want to delete this invoice?
+                </template>
+
+                <template #footer>
+                    <SecondaryButton @click="closeModal">
+                        Cancel
+                    </SecondaryButton>
+
+                    <!--                                                <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"-->
+                    <Button class="ml-3" @click="deleteInvoice(delete_data)">
+                        Delete Invoice
+                    </Button>
+                </template>
+            </DialogModal>
         </CardLayout>
     </app-layout>
 </template>
 
 <script>
+    import Button from "@/Jetstream/Button";
     import ButtonLink from "@/Jetstream/ButtonLink";
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
+    import DialogModal from "@/Jetstream/DialogModal";
     import Pagination from "@/Jetstream/Pagination";
+    import SecondaryButton from "@/Jetstream/SecondaryButton";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link } from "@inertiajs/inertia-vue3";
     import { defineComponent } from 'vue'
 
     export default defineComponent({
         name: "Index",
+
         components: {
+            Button,
+            SecondaryButton,
+            DialogModal,
             Pagination,
             DangerButton,
             CardLayout,
@@ -137,10 +165,28 @@
             AppLayout,
             Link
         },
+
         props: {
             invoices: Object,
         },
+
+        data() {
+            return {
+                confirmingDelete: false,
+                delete_data: null,
+            }
+        },
+
         methods: {
+            confirmDelete(invoice) {
+                this.delete_data = invoice
+                this.confirmingDelete = true
+            },
+
+            closeModal() {
+                this.confirmingDelete = false
+            },
+
             sendMail: function (id) {
                 this.$inertia.get(route('invoice.send_mail', id), {
                     preserveScroll: true,
@@ -148,8 +194,8 @@
                 })
             },
 
-            deleteInvoice: function (id) {
-                this.$inertia.delete(route('invoice.destroy', id), {
+            deleteInvoice: function (invoice) {
+                this.$inertia.delete(route('invoice.destroy', invoice), {
                     preserveScroll: true,
                     preserveState: false
                 })

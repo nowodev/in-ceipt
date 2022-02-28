@@ -82,7 +82,7 @@
                                                         stroke-width="2" />
                                                 </svg>
                                             </Link>
-                                            <a class="cursor-pointer" @click="deleteCustomer(customer)">
+                                            <a class="cursor-pointer" @click="confirmDelete(customer)">
                                                 <svg class="w-5 h-5" fill="currentColor"
                                                      viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path clip-rule="evenodd"
@@ -94,7 +94,7 @@
                                     </tr>
 
                                     <!-- show no record when table is empty -->
-                                    <tr v-if="invoices.data == ''">
+                                    <tr v-if="customers.data == ''">
                                         <td class="px-6 py-4 whitespace-nowrap" colspan="5">
                                             <div class="text-sm text-center text-gray-900">No Records Found</div>
                                         </td>
@@ -107,22 +107,49 @@
                     </div>
                 </div>
             </div>
+
+            <DialogModal :show="confirmingDelete" @close="closeModal">
+                <template #title>
+                    Delete Customer
+                </template>
+
+                <template #content>
+                    Are you sure you want to delete this customer?
+                </template>
+
+                <template #footer>
+                    <SecondaryButton @click="closeModal">
+                        Cancel
+                    </SecondaryButton>
+
+                    <Button class="ml-3" @click="deleteCustomer(delete_data)">
+                        Delete Customer
+                    </Button>
+                </template>
+            </DialogModal>
         </CardLayout>
     </app-layout>
 </template>
 
 <script>
+    import Button from "@/Jetstream/Button";
     import ButtonLink from "@/Jetstream/ButtonLink";
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
+    import DialogModal from "@/Jetstream/DialogModal";
     import Pagination from "@/Jetstream/Pagination";
+    import SecondaryButton from "@/Jetstream/SecondaryButton";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link } from "@inertiajs/inertia-vue3";
     import { defineComponent } from 'vue'
 
     export default defineComponent({
         name: "Index",
+
         components: {
+            Button,
+            SecondaryButton,
+            DialogModal,
             Pagination,
             DangerButton,
             CardLayout,
@@ -130,12 +157,30 @@
             AppLayout,
             Link
         },
+
         props: {
             customers: Object,
         },
+
+        data() {
+            return {
+                confirmingDelete: false,
+                delete_data: null,
+            }
+        },
+
         methods: {
-            deleteCustomer: function (id) {
-                this.$inertia.delete(route('customers.destroy', id), {
+            confirmDelete(customer) {
+                this.delete_data = customer
+                this.confirmingDelete = true
+            },
+
+            closeModal() {
+                this.confirmingDelete = false
+            },
+
+            deleteCustomer: function (customer) {
+                this.$inertia.delete(route('customers.destroy', customer), {
                     preserveScroll: true,
                     preserveState: false
                 })
