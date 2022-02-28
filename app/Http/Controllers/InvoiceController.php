@@ -149,8 +149,7 @@ class InvoiceController extends Controller
 
     public function sendMail($id): RedirectResponse
     {
-        $invoice->with('customer')->firstOrFail();
-
+        $invoice = Invoice::with('user', 'customer')->findOrFail($id);
         $user = $invoice->customer->email;
 
         SendInvoiceMailJob::dispatch($user, $invoice);
