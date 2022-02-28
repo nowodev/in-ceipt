@@ -23420,8 +23420,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     invoice: Object,
-    customers: Object,
-    selected_customer: Object
+    customers: Object
   },
   mounted: function mounted() {
     var _this = this;
@@ -30635,7 +30634,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
               }, 8
               /* PROPS */
-              , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                                <Button :class=\"{ 'opacity-25': form.processing }\" :disabled=\"form.processing\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
+              , ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
                 "class": "ml-3",
                 onClick: _cache[0] || (_cache[0] = function ($event) {
                   return _ctx.deleteInvoice(_ctx.delete_data);

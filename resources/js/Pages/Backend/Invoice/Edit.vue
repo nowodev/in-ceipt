@@ -204,7 +204,6 @@
         props: {
             invoice: Object,
             customers: Object,
-            selected_customer: Object,
         },
 
         mounted() {

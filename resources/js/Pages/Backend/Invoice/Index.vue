@@ -129,7 +129,6 @@
                         Cancel
                     </SecondaryButton>
 
-                    <!--                                                <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"-->
                     <Button class="ml-3" @click="deleteInvoice(delete_data)">
                         Delete Invoice
                     </Button>
