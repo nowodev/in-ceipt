@@ -50,7 +50,7 @@ class UpdateInvoiceRequest extends FormRequest
             'info.*.unit_price.required' => 'The unit price is required',
             'info.*.quantity.required' => 'The quantity is required',
             'info.*.total.required' => 'The total is required',
-            'info.*.description.unique' => 'This description has already been used',
+            'info.*.description.distinct' => 'This description has already been used',
         ];
     }
 }
