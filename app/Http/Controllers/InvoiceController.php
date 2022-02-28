@@ -139,7 +139,7 @@ class InvoiceController extends Controller
     }
 
     // removing a description field (fieldset) from the db
-    public function delete_info($desc): RedirectResponse
+    public function deleteInfo($desc): RedirectResponse
     {
         $invoice_details = InvoiceDetails::where('description', $desc)->first();
         $invoice_details?->delete();
@@ -147,13 +147,13 @@ class InvoiceController extends Controller
         return redirect()->back()->banner('Description Removed');
     }
 
-    public function send_mail(Invoice $invoice): RedirectResponse
+    public function sendMail($id): RedirectResponse
     {
         $invoice->with('customer')->firstOrFail();
 
         $user = $invoice->customer->email;
 
-        SendInvoiceMailJob::dispatchAfterResponse($user, $invoice);
+        SendInvoiceMailJob::dispatch($user, $invoice);
 
 //        return new InvoiceCreatedMail($invoice);
         return back()->banner("Invoice Sent to Customer's Mail");

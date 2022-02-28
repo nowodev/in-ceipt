@@ -32,8 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::controller(InvoiceController::class)->group(function () {
-        Route::get('invoice/send-mail/{invoice}', 'send_mail')->name('invoice.send_mail');
-        Route::delete('invoice/delete-info/{description}', 'delete_info')->name('invoice.delete_info');
+        Route::get('invoice/send-mail/{id}', 'sendMail')->name('invoice.send_mail');
+        Route::delete('invoice/delete-info/{description}', 'deleteInfo')->name('invoice.delete_info');
     });
     Route::resource('invoice', InvoiceController::class);
     Route::resource('customers', CustomersController::class);

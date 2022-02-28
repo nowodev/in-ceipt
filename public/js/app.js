@@ -23537,8 +23537,8 @@ __webpack_require__.r(__webpack_exports__);
     invoices: Object
   },
   methods: {
-    sendMail: function sendMail(invoice) {
-      this.$inertia.get(route('invoice.send_mail', invoice), {
+    sendMail: function sendMail(id) {
+      this.$inertia.get(route('invoice.send_mail', id), {
         preserveScroll: true,
         preserveState: false
       });
@@ -30467,7 +30467,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
               href: "#",
               onClick: function onClick($event) {
-                return _ctx.sendMail(invoice);
+                return _ctx.sendMail(invoice.id);
               }
             }, _hoisted_25, 8
             /* PROPS */

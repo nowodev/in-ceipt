@@ -71,7 +71,7 @@
                                                           fill-rule="evenodd" />
                                                 </svg>
                                             </Link>
-                                            <a href="#" @click="sendMail(invoice)">
+                                            <a href="#" @click="sendMail(invoice.id)">
                                                 <svg class="w-5 h-5" style=" fill:#000000;"
                                                      viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                                                     <path
@@ -141,8 +141,8 @@
             invoices: Object,
         },
         methods: {
-            sendMail: function (invoice) {
-                this.$inertia.get(route('invoice.send_mail', invoice), {
+            sendMail: function (id) {
+                this.$inertia.get(route('invoice.send_mail', id), {
                     preserveScroll: true,
                     preserveState: false
                 })
