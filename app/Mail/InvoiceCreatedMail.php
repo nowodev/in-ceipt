@@ -31,6 +31,6 @@ class InvoiceCreatedMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('emails.invoice');
+        return $this->view('emails.email');
     }
 }
