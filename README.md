@@ -24,6 +24,7 @@ An opinionated invoice and receipt generator
 - [x] Make forms editable
 - [ ] Fix bugs:
   - [ ] when updating invoice details, values are either not inserted correctly or are duplicated
-  - [ ] unique validation when updating invoice
+  - [x] unique validation when updating invoice
   - [ ] resetForm() removes all dynamic fields on invoice edit page
 - [x] Send mails to the customers
+- [ ] Option to update user's data in settings

@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\InvoiceDetails;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -34,7 +33,7 @@ class UpdateInvoiceRequest extends FormRequest
 //            'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
             'issue_date' => ['required', 'date'],
             'due_date' => ['required', 'date'],
-            'info.*.description' => ['required', 'string', 'max:255', Rule::unique('invoice_details', 'description')->ignore($this->id)],
+            'info.*.description' => ['required', 'string', 'max:255', 'distinct'],
             'info.*.unit_price' => ['required', 'numeric'],
             'info.*.quantity' => ['required', 'integer'],
             'info.*.total' => ['required', 'numeric'],
