@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Setting;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\SettingsRequest;
 
 class SettingsController extends Controller
@@ -18,12 +19,11 @@ class SettingsController extends Controller
 
     }
 
-    public function store(SettingsRequest $request)
+    public function updateCompany(SettingsRequest $request): RedirectResponse
     {
         $cred = $request->validated();
 
         $user = auth()->user();
-
 
         if (isset($input['logo'])) {
             $user?->updateProfilePhoto($input['logo']);
@@ -35,6 +35,11 @@ class SettingsController extends Controller
         ]);
 
         return back();
+    }
+
+    public function bank()
+    {
+
     }
 
     protected function updateProfilePicture($logo)

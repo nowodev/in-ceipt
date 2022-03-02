@@ -37,9 +37,9 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::delete('invoice/delete-info/{description}', 'deleteInfo')->name('invoice.delete_info');
     });
     Route::controller(SettingsController::class)->group(function () {
-        Route::prefix('user')->group(function () {
-            Route::get('settings', 'index')->name('settings.index');
-            Route::post('settings', 'update');
+        Route::name('settings.')->prefix('user')->group(function () {
+            Route::get('settings', 'index')->name('index');
+            Route::post('settings', 'updateCompany')->name('update');
             Route::post('bank', 'bank');
         });
     });

@@ -118,7 +118,7 @@
                     this.form.logo = this.$refs.logo.files[0]
                 }
 
-                this.form.post(route('settings.store'), {
+                this.form.post(route('settings.update'), {
                     preserveScroll: true,
                     onSuccess: () => (this.clearLogoFileInput()),
                 });
