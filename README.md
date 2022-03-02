@@ -29,3 +29,5 @@ An opinionated invoice and receipt generator
   - [ ] resetForm() removes all dynamic fields on invoice edit page
 - [x] Send mails to the customers
 - [x] Option to update user's data in settings
+- [ ] User can add bank details
+- [ ] User can insert logo

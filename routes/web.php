@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CustomersController;
 
 /*
@@ -34,6 +35,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(InvoiceController::class)->group(function () {
         Route::get('invoice/send-mail/{id}', 'sendMail')->name('invoice.send_mail');
         Route::delete('invoice/delete-info/{description}', 'deleteInfo')->name('invoice.delete_info');
+    });
+    Route::controller(SettingsController::class)->group(function () {
+        Route::prefix('user')->group(function () {
+            Route::get('settings', 'index');
+            Route::post('settings', 'update');
+            Route::post('bank', 'bank');
+        });
     });
     Route::resource('invoice', InvoiceController::class);
     Route::resource('customers', CustomersController::class);
