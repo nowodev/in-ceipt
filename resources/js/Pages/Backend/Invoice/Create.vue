@@ -158,7 +158,7 @@
                         </div>
                     </fieldset>
 
-                    <div class="flex flex-col gap-y-3 mt-3 mlauto w-fit">
+                    <div class="flex flex-col gap-y-3 mt-3 w-fit">
                         <Button v-show="index === form.info.length - 1" @click="addDescription">
                             Add New Description
                         </Button>

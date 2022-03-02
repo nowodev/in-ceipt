@@ -26,7 +26,7 @@ class StoreInvoiceRequest extends FormRequest
         return [
             'fullname' => ['required', 'string', 'max:255'],
             'number' => ['sometimes', 'nullable', 'min:11'],
-            'email' => ['nullable', 'email', 'unique:customers,email', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255'],
             'address_1' => ['string', 'sometimes', 'nullable', 'max:255'],
             'address_2' => ['string', 'sometimes', 'nullable', 'max:255'],
             'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
