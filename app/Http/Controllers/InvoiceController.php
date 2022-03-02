@@ -49,7 +49,6 @@ class InvoiceController extends Controller
             $customer = $user?->customers()->updateOrCreate(
                 ['fullname' => $request['fullname']],
                 [
-                    'fullname' => $request['fullname'],
                     'number' => $request['number'],
                     'email' => $request['email'],
                     'address_1' => $request['address_1'],
