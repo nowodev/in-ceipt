@@ -39,11 +39,11 @@
 
                     <div>
                         <Label for="fullname">Full Name</Label>
-                        <Input v-show="!existing" id="fullname" v-model="form.fullname" class="w-full"
+                        <Input v-show="existing === false" id="fullname" v-model="form.fullname" class="w-full"
                                placeholder="John Doe" type="text" />
 
                         <select
-                            v-show="existing" v-model="form.fullname"
+                            v-show="existing === true" v-model="form.fullname"
                             class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
                             <option v-for="customer in customers" @click="updateFields">{{ customer.fullname }}</option>
                         </select>
