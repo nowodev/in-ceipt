@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateInvoiceRequest extends FormRequest
@@ -33,6 +32,7 @@ class UpdateInvoiceRequest extends FormRequest
 //            'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
             'issue_date' => ['required', 'date'],
             'due_date' => ['required', 'date'],
+            'info.*.invoice_details_id' => ['sometimes'],
             'info.*.description' => ['required', 'string', 'max:255', 'distinct'],
             'info.*.unit_price' => ['required', 'numeric'],
             'info.*.quantity' => ['required', 'integer'],

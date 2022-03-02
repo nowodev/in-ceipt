@@ -112,19 +112,23 @@ class InvoiceController extends Controller
         ]);
 
         // insert array of product information into the invoice_details table
-        foreach ($cred['info'] as $info) {
-            // BUG FIX: when updating using 'update', it replaces all fields to have the same value
-            //          but when using 'createOrUpdate', it adds new values
-            $invoice->invoice_details()->updateOrCreate(
-                ['description' => $info['description']],
-                [
-                    'description' => $info['description'],
-                    'unit_price' => $info['unit_price'],
-                    'quantity' => $info['quantity'],
-                    'total' => $info['total'],
-                ]
-            );
-        }
+
+        // BUG TO FIX (FUTURE FEATURE)
+        // Currently disable adding new description. Data can only be updated, no insertion for now.
+        collect($cred['info'])->each(function (array $row) use ($invoice) {
+            $invoice->invoice_details()
+//                ->where('id', $row['invoice_details_id'])
+//                ->orWhere('unit_price', $row['unit_price'])
+                ->updateOrCreate(
+                    ['id' => $row['invoice_details_id'],],
+                    [
+                        'description' => $row['description'],
+                        'unit_price' => $row['unit_price'],
+                        'quantity' => $row['quantity'],
+                        'total' => $row['total'],
+                    ]
+                );
+        });
 
         return redirect()->route('invoice.index')->banner('Invoice Updated');
     }

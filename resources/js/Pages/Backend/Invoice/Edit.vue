@@ -94,6 +94,10 @@
                             <Label for="description">Description</Label>
                             <Input id="description" v-model="desc.description" class="w-full" placeholder="XXXXXXXXXXXX"
                                    type="text" />
+
+                            <!-- pass the invoice details id when submitting, in order to use this to update the db -->
+                            <Input v-model="desc.invoice_details_id" class="w-full" type="hidden" />
+
                             <InputError v-if="form.errors[`info.${index}.description`]"
                                         :message="form.errors[`info.${index}.description`]" />
                         </div>
@@ -125,15 +129,19 @@
                         </div>
                     </fieldset>
 
-                    <div class="flex flex-col gap-y-3 mt-3 mlauto w-fit">
-                        <Button v-show="index === form.info.length - 1" @click="addDescription">
-                            Add New Description
-                        </Button>
-                        <DangerButton v-show="index || ( !index && form.info.length > 1)"
-                                      @click="removeDescription(index)">
-                            Remove Description
-                        </DangerButton>
-                    </div>
+
+                    <!-- BUG TO FIX (FUTURE FEATURE)-->
+                    <!-- Currently disable adding new description. Data can only be updated, no insertion for now.-->
+
+                    <!-- <div class="flex flex-col gap-y-3 mt-3 w-fit">-->
+                    <!--     <Button v-show="index === form.info.length - 1" @click="addDescription">-->
+                    <!--         Add New Description-->
+                    <!--     </Button>-->
+                    <!--     <DangerButton v-show="index || ( !index && form.info.length > 1)"-->
+                    <!--                   @click="removeDescription(index)">-->
+                    <!--         Remove Description-->
+                    <!--     </DangerButton>-->
+                    <!-- </div>-->
                 </div>
 
                 <fieldset
@@ -211,6 +219,7 @@
             // and push it into the info array declared in the form helper below 👇
             this.invoice.invoice_details.forEach((value, index) => {
                 this.form.info.push({
+                    invoice_details_id: this.invoice.invoice_details[index].id,
                     description: this.invoice.invoice_details[index].description,
                     unit_price: this.invoice.invoice_details[index].unit_price,
                     quantity: this.invoice.invoice_details[index].quantity,

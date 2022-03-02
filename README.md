@@ -23,7 +23,8 @@ An opinionated invoice and receipt generator
 - [x] Perform CRUD operations on Customers
 - [x] Make forms editable
 - [ ] Fix bugs:
-  - [ ] when updating invoice details, values are either not inserted correctly or are duplicated
+  - [x] when updating invoice details, values are either not inserted correctly or are duplicated
+  - [ ] when updating invoice details, new values can't be added
   - [x] unique validation when updating invoice
   - [ ] resetForm() removes all dynamic fields on invoice edit page
 - [x] Send mails to the customers
