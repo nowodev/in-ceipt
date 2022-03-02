@@ -38,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::controller(SettingsController::class)->group(function () {
         Route::prefix('user')->group(function () {
-            Route::get('settings', 'index');
+            Route::get('settings', 'index')->name('settings.index');
             Route::post('settings', 'update');
             Route::post('bank', 'bank');
         });

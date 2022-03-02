@@ -139,6 +139,10 @@
                                             Profile
                                         </jet-dropdown-link>
 
+                                        <jet-dropdown-link :href="route('settings.index')">
+                                            Settings
+                                        </jet-dropdown-link>
+
                                         <jet-dropdown-link v-if="$page.props.jetstream.hasApiFeatures"
                                                            :href="route('api-tokens.index')">
                                             API Tokens
@@ -211,6 +215,11 @@
                             <jet-responsive-nav-link :active="route().current('profile.show')"
                                                      :href="route('profile.show')">
                                 Profile
+                            </jet-responsive-nav-link>
+
+                            <jet-responsive-nav-link :active="route().current('settings.index')"
+                                                     :href="route('settings.index')">
+                                Settings
                             </jet-responsive-nav-link>
 
                             <jet-responsive-nav-link v-if="$page.props.jetstream.hasApiFeatures"
