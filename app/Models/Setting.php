@@ -10,6 +10,8 @@ class Setting extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function banks(): BelongsToMany
     {
         return $this->belongsToMany(Bank::class);

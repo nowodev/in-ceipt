@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('company_name');
-            $table->string('logo');
-            $table->longText('address');
+            $table->string('company_name')->nullable();
+            $table->string('logo')->nullable();
+            $table->longText('address')->nullable();
             $table->timestamps();
         });
 
