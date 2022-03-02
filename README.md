@@ -28,4 +28,4 @@ An opinionated invoice and receipt generator
   - [x] unique validation when updating invoice
   - [ ] resetForm() removes all dynamic fields on invoice edit page
 - [x] Send mails to the customers
-- [ ] Option to update user's data in settings
+- [x] Option to update user's data in settings
