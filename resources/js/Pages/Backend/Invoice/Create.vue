@@ -352,9 +352,10 @@
             },
 
             resetForm() {
-                this.form.clearErrors();
-                this.form.reset();
-                this.random_no = '';
+                this.form.clearErrors()
+                this.form.reset()
+                this.random_no = ''
+                this.existing = false
             },
         }
     })
