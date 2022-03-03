@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Inertia\Inertia;
+use App\Models\Bank;
+use Inertia\Response;
 use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\SettingsRequest;
+use App\Http\Requests\BankSettingsRequest;
+use App\Http\Requests\CompanySettingsRequest;
 
 class SettingsController extends Controller
 {
-    public function index()
+    public function index(): Response
     {
-        $setting = Setting::where('user_id', auth()->id())->firstOrNew();
+        $setting = Setting::where('user_id', auth()->id())->firstOrFail();
 
-        return Inertia::render('Settings/Show', [
-            'setting' => $setting
+        $bank_details = Bank::where('user_id', auth()->id())->first();
+
+        return inertia('Settings/Show', [
+            'setting' => $setting,
+            'bank_details' => $bank_details
         ]);
 
     }
 
-    public function updateCompany(SettingsRequest $request): RedirectResponse
+    public function updateCompany(CompanySettingsRequest $request): RedirectResponse
     {
         $cred = $request->validated();
 
@@ -37,9 +42,21 @@ class SettingsController extends Controller
         return back();
     }
 
-    public function bank()
+    public function updateBank(BankSettingsRequest $request): RedirectResponse
     {
+        $cred = $request->validated();
 
+        $user = auth()->user();
+
+        $bank_details = Bank::where('user_id', $user?->id)->first();
+
+        if (is_null($bank_details)) {
+            $user?->bank()->create($cred);
+        } else {
+            $user?->bank()->update($cred);
+        }
+
+        return back();
     }
 
     protected function updateProfilePicture($logo)
