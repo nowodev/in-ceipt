@@ -70,11 +70,16 @@ class User extends Authenticatable
 
     public function customers(): HasMany
     {
-        return $this->hasMany(Customer::class, 'user_id');
+        return $this->hasMany(Customer::class);
     }
 
     public function settings(): HasOne
     {
         return $this->hasOne(Setting::class);
+    }
+
+    public function bank(): HasMany
+    {
+        return $this->hasMany(Bank::class);
     }
 }
