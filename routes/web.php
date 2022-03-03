@@ -36,13 +36,15 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('invoice/send-mail/{id}', 'sendMail')->name('invoice.send_mail');
         Route::delete('invoice/delete-info/{description}', 'deleteInfo')->name('invoice.delete_info');
     });
+
     Route::controller(SettingsController::class)->group(function () {
         Route::name('settings.')->prefix('user')->group(function () {
             Route::get('settings', 'index')->name('index');
-            Route::post('settings', 'updateCompany')->name('update');
-            Route::post('bank', 'bank');
+            Route::post('settings', 'updateCompany')->name('update-company');
+            Route::post('bank', 'updateBank')->name('update-bank');
         });
     });
+
     Route::resource('invoice', InvoiceController::class);
     Route::resource('customers', CustomersController::class);
 });
