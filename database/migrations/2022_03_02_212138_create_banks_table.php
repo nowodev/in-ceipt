@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('account_name');
-            $table->string('account_no');
+            $table->string('account_number');
             $table->timestamps();
         });
 

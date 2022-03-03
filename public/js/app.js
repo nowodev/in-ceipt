@@ -24314,9 +24314,73 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Settings/Partials/UpdateBankDetails.vue?vue&type=script&lang=js ***!
   \************************************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/resources/js/Pages/Settings/Partials/UpdateBankDetails.vue: Unexpected token, expected \",\" (15:8)\n\n\u001b[0m \u001b[90m 13 |\u001b[39m         name\u001b[33m:\u001b[39m \u001b[32m\"UpdateBankDetails\"\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 15 |\u001b[39m         components\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 16 |\u001b[39m             \u001b[33mJetActionMessage\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 17 |\u001b[39m             \u001b[33mJetButton\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 18 |\u001b[39m             \u001b[33mJetFormSection\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n    at Parser._raise (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:476:17)\n    at Parser.raiseWithData (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:469:17)\n    at Parser.raise (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:430:17)\n    at Parser.unexpected (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:3789:16)\n    at Parser.expect (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:3773:28)\n    at Parser.parseObjectLike (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:13086:14)\n    at Parser.parseExprAtom (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:12498:23)\n    at Parser.parseExprSubscripts (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:12149:23)\n    at Parser.parseUpdate (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:12129:21)\n    at Parser.parseMaybeUnary (/mnt/01D53CC3C9E86E80/Projects/Laravel/in-ceipt/node_modules/@babel/parser/lib/index.js:12104:23)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_ActionMessage_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/ActionMessage.vue */ "./resources/js/Jetstream/ActionMessage.vue");
+/* harmony import */ var _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Button.vue */ "./resources/js/Jetstream/Button.vue");
+/* harmony import */ var _Jetstream_FormSection_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/FormSection.vue */ "./resources/js/Jetstream/FormSection.vue");
+/* harmony import */ var _Jetstream_Input_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/Input.vue */ "./resources/js/Jetstream/Input.vue");
+/* harmony import */ var _Jetstream_InputError_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/InputError.vue */ "./resources/js/Jetstream/InputError.vue");
+/* harmony import */ var _Jetstream_Label_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Label.vue */ "./resources/js/Jetstream/Label.vue");
+/* harmony import */ var _Jetstream_SecondaryButton_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/SecondaryButton.vue */ "./resources/js/Jetstream/SecondaryButton.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_8__.defineComponent)({
+  name: "UpdateBankDetails",
+  components: {
+    JetActionMessage: _Jetstream_ActionMessage_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    JetButton: _Jetstream_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    JetFormSection: _Jetstream_FormSection_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    JetInput: _Jetstream_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    JetInputError: _Jetstream_InputError_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+    JetLabel: _Jetstream_Label_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+    JetSecondaryButton: _Jetstream_SecondaryButton_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+  },
+  props: ['bank_details'],
+  setup: function setup(props) {
+    if (props.bank_details == null) {
+      var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
+        name: null,
+        account_name: null,
+        account_number: null
+      });
+      return {
+        form: form
+      };
+    } else {
+      var _form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
+        name: props.bank_details.name,
+        account_name: props.bank_details.account_name,
+        account_number: props.bank_details.account_number
+      });
+
+      return {
+        form: _form
+      };
+    }
+  },
+  methods: {
+    updateBankInformation: function updateBankInformation() {
+      this.form.post(route('settings.update-bank'), {
+        preserveScroll: true
+      });
+    }
+  }
+}));
 
 /***/ }),
 
@@ -24384,7 +24448,7 @@ __webpack_require__.r(__webpack_exports__);
         this.form.logo = this.$refs.logo.files[0];
       }
 
-      this.form.post(route('settings.updateCompany'), {
+      this.form.post(route('settings.update-company'), {
         preserveScroll: true,
         onSuccess: function onSuccess() {
           return _this.clearLogoFileInput();
@@ -24441,17 +24505,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Jetstream_SectionBorder_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/SectionBorder.vue */ "./resources/js/Jetstream/SectionBorder.vue");
 /* harmony import */ var _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout.vue */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _Pages_Settings_Partials_UpdateCompanySettings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/Settings/Partials/UpdateCompanySettings */ "./resources/js/Pages/Settings/Partials/UpdateCompanySettings.vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _Pages_Settings_Partials_UpdateBankDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/Settings/Partials/UpdateBankDetails */ "./resources/js/Pages/Settings/Partials/UpdateBankDetails.vue");
+/* harmony import */ var _Pages_Settings_Partials_UpdateCompanySettings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/Settings/Partials/UpdateCompanySettings */ "./resources/js/Pages/Settings/Partials/UpdateCompanySettings.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_3__.defineComponent)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_4__.defineComponent)({
   name: "Show.vue",
-  props: ['setting'],
+  props: ['setting', 'bank_details'],
   components: {
-    UpdateCompanySettings: _Pages_Settings_Partials_UpdateCompanySettings__WEBPACK_IMPORTED_MODULE_2__["default"],
+    UpdateBankDetails: _Pages_Settings_Partials_UpdateBankDetails__WEBPACK_IMPORTED_MODULE_2__["default"],
+    UpdateCompanySettings: _Pages_Settings_Partials_UpdateCompanySettings__WEBPACK_IMPORTED_MODULE_3__["default"],
     AppLayout: _Layouts_AppLayout_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     JetSectionBorder: _Jetstream_SectionBorder_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -32856,9 +32923,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Company Information ");
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Bank Information ");
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update your company's profile. ");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Update your bank profile. ");
 
 var _hoisted_3 = {
   "class": "col-span-6 sm:col-span-4"
@@ -32866,12 +32933,15 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "col-span-6 sm:col-span-4"
 };
+var _hoisted_5 = {
+  "class": "col-span-6 sm:col-span-4"
+};
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Saved. ");
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Saved. ");
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save ");
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save ");
 
-function render(_ctx, _cache) {
+function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_label = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-label");
 
   var _component_jet_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-input");
@@ -32885,7 +32955,7 @@ function render(_ctx, _cache) {
   var _component_jet_form_section = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-form-section");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jet_form_section, {
-    onSubmitted: _ctx.updateCompanyInformation
+    onSubmitted: _ctx.updateBankInformation
   }, {
     title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_1];
@@ -32896,12 +32966,12 @@ function render(_ctx, _cache) {
     form: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
         "for": "name",
-        value: "Company Name"
+        value: "Bank"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
         id: "name",
-        modelValue: _ctx.form.company_name,
+        modelValue: _ctx.form.name,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return _ctx.form.company_name = $event;
+          return _ctx.form.name = $event;
         }),
         autocomplete: "name",
         "class": "mt-1 block w-full",
@@ -32909,25 +32979,43 @@ function render(_ctx, _cache) {
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: _ctx.form.errors.company_name,
+        message: _ctx.form.errors.name,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
-      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Address "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
-        "for": "address_1",
-        value: "Address"
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Account Number "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "account_name",
+        value: "Account Name"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
-        id: "address_1",
-        modelValue: _ctx.form.address,
+        id: "account_name",
+        modelValue: _ctx.form.account_name,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return _ctx.form.address = $event;
+          return _ctx.form.account_name = $event;
         }),
         "class": "mt-1 block w-full",
         type: "text"
       }, null, 8
       /* PROPS */
       , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
-        message: _ctx.form.errors.address,
+        message: _ctx.form.errors.account_name,
+        "class": "mt-2"
+      }, null, 8
+      /* PROPS */
+      , ["message"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Account Number "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_label, {
+        "for": "account_number",
+        value: "Account Number"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input, {
+        id: "account_number",
+        modelValue: _ctx.form.account_number,
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return _ctx.form.account_number = $event;
+        }),
+        "class": "mt-1 block w-full",
+        type: "text"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_input_error, {
+        message: _ctx.form.errors.account_number,
         "class": "mt-2"
       }, null, 8
       /* PROPS */
@@ -32939,7 +33027,7 @@ function render(_ctx, _cache) {
         "class": "mr-3"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_5];
+          return [_hoisted_6];
         }),
         _: 1
         /* STABLE */
@@ -32953,7 +33041,7 @@ function render(_ctx, _cache) {
         disabled: _ctx.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_6];
+          return [_hoisted_7];
         }),
         _: 1
         /* STABLE */
@@ -33190,6 +33278,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_jet_section_border = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-section-border");
 
+  var _component_update_bank_details = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("update-bank-details");
+
   var _component_app_layout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("app-layout");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, {
@@ -33199,11 +33289,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_1];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_company_settings, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_company_settings, {
         setting: _ctx.setting
       }, null, 8
       /* PROPS */
-      , ["setting"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])])];
+      , ["setting"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_update_bank_details, {
+        bank_details: _ctx.bank_details,
+        "class": "mt-10 sm:mt-0"
+      }, null, 8
+      /* PROPS */
+      , ["bank_details"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_section_border)])])])];
     }),
     _: 1
     /* STABLE */
