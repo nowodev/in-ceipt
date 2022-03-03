@@ -73,13 +73,13 @@ class User extends Authenticatable
         return $this->hasMany(Customer::class);
     }
 
-    public function settings(): HasOne
+    public function setting(): HasOne
     {
         return $this->hasOne(Setting::class);
     }
 
-    public function bank(): HasMany
+    public function bank(): HasOne
     {
-        return $this->hasMany(Bank::class);
+        return $this->hasOne(Bank::class);
     }
 }

@@ -34,7 +34,7 @@ class SettingsController extends Controller
             $user?->updateProfilePhoto($input['logo']);
         }
 
-        $user?->settings()->update([
+        $user?->setting()->update([
             'company_name' => $cred['company_name'],
             'address' => $cred['address']
         ]);
