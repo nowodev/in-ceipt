@@ -26,7 +26,7 @@ class BankSettingsRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'account_name' => ['required', 'string', 'max:255'],
-            'account_number' => ['required', 'string', 'max:255'],
+            'account_number' => ['required', 'string', 'min:10', 'max:255'],
         ];
     }
 }
