@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,6 +40,7 @@ class User extends Authenticatable
         'address_2',
         'mobile_no',
         'office_no',
+        'company_logo_path'
     ];
 
     /**
@@ -76,5 +77,12 @@ class User extends Authenticatable
     public function customers(): HasMany
     {
         return $this->hasMany(Customer::class);
+    }
+
+    public function getCompanyLogoUrlAttribute(): string
+    {
+        return $this->company_logo_path
+            ? Storage::disk('public')->url($this->company_logo_path)
+            : Storage::disk('public')->url('logo/default.jpg');
     }
 }

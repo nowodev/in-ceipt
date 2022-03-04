@@ -30,6 +30,7 @@ An opinionated invoice and receipt generator
 - [x] Send mails to the customers
 - [x] Option to update user/company's data in profile/settings
 - [x] User can add bank details
-- [ ] User can insert logo
+- [x] User can insert logo
+- [ ] User can remove logo
 - [ ] Add setup wizard after a new user registers.
 - 
