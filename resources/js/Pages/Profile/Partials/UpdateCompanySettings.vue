@@ -16,7 +16,7 @@
                        type="file"
                        @change="updateLogoPreview">
 
-                <jet-label for="photo" value="Logo" />
+                <jet-label for="logo" value="Logo" />
 
                 <!-- Current Logo -->
                 <div v-show="! logoPreview" class="mt-2">
@@ -44,17 +44,65 @@
 
             <!-- Name -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="name" value="Company Name" />
-                <jet-input id="name" v-model="form.company_name" autocomplete="name" class="mt-1 block w-full"
+                <jet-label for="company_name" value="Company Name" />
+                <jet-input id="company_name" v-model="form.company_name" class="mt-1 block w-full"
                            type="text" />
                 <jet-input-error :message="form.errors.company_name" class="mt-2" />
             </div>
 
-            <!-- Address -->
+            <!-- Address 1 -->
             <div class="col-span-6 sm:col-span-4">
-                <jet-label for="address_1" value="Address" />
-                <jet-input id="address_1" v-model="form.address" class="mt-1 block w-full" type="text" />
-                <jet-input-error :message="form.errors.address" class="mt-2" />
+                <jet-label for="address_1" value="Address 1" />
+                <jet-input id="address_1" v-model="form.address_1" autocomplete="address" class="mt-1 block w-full"
+                           type="text" />
+                <jet-input-error :message="form.errors.address_1" class="mt-2" />
+            </div>
+
+            <!-- Address 2 -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="address_2" value="Address 2" />
+                <jet-input id="address_2" v-model="form.address_2" autocomplete="address" class="mt-1 block w-full"
+                           type="text" />
+                <jet-input-error :message="form.errors.address_2" class="mt-2" />
+            </div>
+
+            <!-- Mobile No -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="mobile_no" value="Mobile No." />
+                <jet-input id="mobile_no" v-model="form.mobile_no" autocomplete="Number" class="mt-1 block w-full"
+                           type="tel" />
+                <jet-input-error :message="form.errors.mobile_no" class="mt-2" />
+            </div>
+
+            <!-- Office No -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="office_no" value="Office No." />
+                <jet-input id="office_no" v-model="form.office_no" autocomplete="Number" class="mt-1 block w-full"
+                           type="text" />
+                <jet-input-error :message="form.errors.office_no" class="mt-2" />
+            </div>
+
+            <!-- Bank Name -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="bank_name" value="Bank" />
+                <jet-input id="bank_name" v-model="form.bank_name" class="mt-1 block w-full"
+                           type="text" />
+                <jet-input-error :message="form.errors.bank_name" class="mt-2" />
+            </div>
+
+            <!-- Account Number -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="account_name" value="Account Name" />
+                <jet-input id="account_name" v-model="form.account_name" class="mt-1 block w-full"
+                           type="text" />
+                <jet-input-error :message="form.errors.account_name" class="mt-2" />
+            </div>
+
+            <!-- Account Number -->
+            <div class="col-span-6 sm:col-span-4">
+                <jet-label for="account_number" value="Account Number" />
+                <jet-input id="account_number" v-model="form.account_number" class="mt-1 block w-full" type="text" />
+                <jet-input-error :message="form.errors.account_number" class="mt-2" />
             </div>
         </template>
 
@@ -94,7 +142,7 @@
             JetSecondaryButton,
         },
 
-        props: ['setting'],
+        props: ['user'],
 
         data() {
             return {
@@ -104,8 +152,15 @@
 
         setup(props) {
             const form = useForm({
-                company_name: props.setting.company_name,
-                address: props.setting.address,
+                company_name: props.user.company_name,
+                address_1: props.user.address_1,
+                address_2: props.user.address_2,
+                mobile_no: props.user.mobile_no,
+                office_no: props.user.office_no,
+                bank_name: props.user.bank_name,
+                account_name: props.user.account_name,
+                account_number: props.user.account_number,
+                address: props.user.address,
                 logo: null,
             })
 

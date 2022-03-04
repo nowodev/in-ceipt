@@ -30,37 +30,29 @@ class SettingsController extends Controller
 
         $user = auth()->user();
 
-        if (isset($input['logo'])) {
-            $user?->updateProfilePhoto($input['logo']);
+        if ($request->hasFile('logo')) {
+            $this->updateLogo($cred['logo'], $user);
         }
 
-        $user?->setting()->update([
+        $user?->update([
             'company_name' => $cred['company_name'],
-            'address' => $cred['address']
+            'address_1' => $cred['address_1'],
+            'address_2' => $cred['address_2'],
+            'mobile_no' => $cred['mobile_no'],
+            'office_no' => $cred['office_no'],
+            'bank_name' => $cred['bank_name'],
+            'account_name' => $cred['account_name'],
+            'account_number' => $cred['account_number'],
         ]);
 
         return back();
     }
 
-    public function updateBank(BankSettingsRequest $request): RedirectResponse
-    {
-        $cred = $request->validated();
-
-        $user = auth()->user();
-
-        $bank_details = Bank::where('user_id', $user?->id)->first();
-
-        if (is_null($bank_details)) {
-            $user?->bank()->create($cred);
-        } else {
-            $user?->bank()->update($cred);
-        }
-
-        return back();
-    }
-
-    protected function updateProfilePicture($logo)
+    protected function updateLogo($logo, $user): void
     {
         // insert logo into db and storage...
+        $user->update([
+            'company_logo_path' => $logo->storePublicly('logo', ['disk' => 'public']),
+        ]);
     }
 }

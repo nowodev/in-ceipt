@@ -28,6 +28,8 @@ An opinionated invoice and receipt generator
   - [x] unique validation when updating invoice
   - [ ] resetForm() removes all dynamic fields on invoice edit page
 - [x] Send mails to the customers
-- [x] Option to update user's data in settings
-- [ ] User can add bank details
+- [x] Option to update user/company's data in profile/settings
+- [x] User can add bank details
 - [ ] User can insert logo
+- [ ] Add setup wizard after a new user registers.
+- 
