@@ -14,6 +14,12 @@
                     <jet-section-border />
                 </div>
 
+                <div>
+                    <update-company-settings :user="$page.props.user" class="mt-10 sm:mt-0" />
+
+                    <jet-section-border />
+                </div>
+
                 <div v-if="$page.props.jetstream.canUpdatePassword">
                     <update-password-form class="mt-10 sm:mt-0" />
 
@@ -39,19 +45,21 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+    import JetSectionBorder from '@/Jetstream/SectionBorder.vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
     import DeleteUserForm from '@/Pages/Profile/Partials/DeleteUserForm.vue'
-    import JetSectionBorder from '@/Jetstream/SectionBorder.vue'
     import LogoutOtherBrowserSessionsForm from '@/Pages/Profile/Partials/LogoutOtherBrowserSessionsForm.vue'
     import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue'
     import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue'
     import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue'
+    import UpdateCompanySettings from "@/Pages/Profile/Partials/UpdateCompanySettings.vue";
+    import { defineComponent } from 'vue'
 
     export default defineComponent({
         props: ['sessions'],
 
         components: {
+            UpdateCompanySettings,
             AppLayout,
             DeleteUserForm,
             JetSectionBorder,
