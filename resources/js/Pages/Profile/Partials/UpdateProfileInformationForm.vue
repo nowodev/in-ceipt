@@ -54,34 +54,6 @@
                 <jet-input id="email" type="email" class="mt-1 block w-full" v-model="form.email" />
                 <jet-input-error :message="form.errors.email" class="mt-2" />
             </div>
-
-            <!-- Address 1 -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="address_1" value="Address 1" />
-                <jet-input id="address_1" type="text" class="mt-1 block w-full" v-model="form.address_1" autocomplete="address" />
-                <jet-input-error :message="form.errors.address_1" class="mt-2" />
-            </div>
-
-            <!-- Address 2 -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="address_2" value="Address 2" />
-                <jet-input id="address_2" type="text" class="mt-1 block w-full" v-model="form.address_2" autocomplete="address" />
-                <jet-input-error :message="form.errors.address_2" class="mt-2" />
-            </div>
-
-            <!-- Mobile No -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="mobile_no" value="Mobile No." />
-                <jet-input id="mobile_no" type="tel" class="mt-1 block w-full" v-model="form.mobile_no" autocomplete="Number" />
-                <jet-input-error :message="form.errors.mobile_no" class="mt-2" />
-            </div>
-
-            <!-- Office No -->
-            <div class="col-span-6 sm:col-span-4">
-                <jet-label for="office_no" value="Office No." />
-                <jet-input id="office_no" type="text" class="mt-1 block w-full" v-model="form.office_no" autocomplete="Number" />
-                <jet-input-error :message="form.errors.office_no" class="mt-2" />
-            </div>
         </template>
 
         <template #actions>
@@ -125,10 +97,6 @@
                     _method: 'PUT',
                     name: this.user.name,
                     email: this.user.email,
-                    address_1: this.user.address_1,
-                    address_2: this.user.address_2,
-                    mobile_no: this.user.mobile_no,
-                    office_no: this.user.office_no,
                     photo: null,
                 }),
 
