@@ -27,7 +27,7 @@ An opinionated invoice and receipt generator
     - [ ] when updating invoice details, new values can't be added
     - [x] unique validation when updating invoice
     - [ ] resetForm() removes all dynamic fields on invoice edit page
-    - [ ] when selecting a new logo, delete the previous one from the logo folder
+    - [x] when selecting a new logo, delete the previous one from the logo folder
 - [x] Send mails to the customers
 - [x] Option to update user/company's data in profile/settings
 - [x] User can add bank details

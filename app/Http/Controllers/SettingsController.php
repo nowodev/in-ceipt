@@ -34,10 +34,19 @@ class SettingsController extends Controller
 
     protected function updateLogo($logo, $user): void
     {
-        // insert logo into db and storage...
-        $user->update([
-            'company_logo_path' => $logo->storePublicly('logo', ['disk' => 'public']),
-        ]);
+        // Check if image already exists in the folder. If it does,
+        // delete the previous and insert the new logo into the
+        // storage folder then store the path into the db.
+
+        tap($user->company_logo_path, function ($previous) use ($user, $logo) {
+            $user->update([
+                'company_logo_path' => $logo->storePublicly('logo', ['disk' => 'public']),
+            ]);
+
+            if ($previous) {
+                Storage::disk('public')->delete($previous);
+            }
+        });
     }
 
     public function deleteLogo(): RedirectResponse
