@@ -35,24 +35,24 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             SN
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Item Description
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Price
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Qty.
                                         </th>
-                                        <th scope="col"
-                                            class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Total
                                         </th>
                                     </tr>
@@ -86,24 +86,24 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr class="flex justify-between w-full">
-                            <th scope="col"
-                                class="px-6 py-3 w-4/5 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th class="px-6 py-3 w-4/5 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
                                 Payment Info
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
                                 Due By
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
                                 Sum Total
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
                                 Discount (%)
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
                                 Total Due
                             </th>
                         </tr>
@@ -111,9 +111,15 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         <tr class="flex justify-between w-full">
                             <td class="px-6 py-4 space-y-3 w-4/5 whitespace-nowrap">
-                                <p class="text-sm text-gray-900">Account No:</p>
-                                <p class="text-sm text-gray-900">Bank Name:</p>
-                                <p class="text-sm text-gray-900">Account Name:</p>
+                                <p class="text-sm text-gray-900 flex justify-between">
+                                    Bank Name: <strong>{{ $page.props.user.bank_name }}</strong>
+                                </p>
+                                <p class="text-sm text-gray-900 flex justify-between">
+                                    Acc. Name: <strong>{{ $page.props.user.account_name }}</strong>
+                                </p>
+                                <p class="text-sm text-gray-900 flex justify-between">
+                                    Acc. No.: <strong>{{ $page.props.user.account_number }}</strong>
+                                </p>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
                                 <p class="text-sm text-left text-gray-900">{{ invoice.due_date }}</p>
