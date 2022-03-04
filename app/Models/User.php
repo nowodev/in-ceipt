@@ -32,6 +32,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'company_name',
+        'bank_name',
+        'account_name',
+        'account_number',
         'address_1',
         'address_2',
         'mobile_no',
@@ -66,20 +70,11 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'company_logo_url'
     ];
 
     public function customers(): HasMany
     {
         return $this->hasMany(Customer::class);
-    }
-
-    public function setting(): HasOne
-    {
-        return $this->hasOne(Setting::class);
-    }
-
-    public function bank(): HasOne
-    {
-        return $this->hasOne(Bank::class);
     }
 }
