@@ -20,7 +20,7 @@
 
                 <!-- Current Logo -->
                 <div v-show="! logoPreview" class="mt-2">
-                    <img :alt="setting.name" :src="setting.logo" class="rounded-full h-20 w-20 object-cover">
+                    <img :src="user.company_logo_url" alt="Logo" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Logo Preview -->
@@ -34,10 +34,10 @@
                     Select A New Logo
                 </jet-secondary-button>
 
-<!--                <jet-secondary-button v-if="setting.profile_photo_path" class="mt-2" type="button"-->
-<!--                                      @click.prevent="deleteLogo">-->
-<!--                    Remove Logo-->
-<!--                </jet-secondary-button>-->
+                <jet-secondary-button v-if="user.company_logo_path" class="mt-2" type="button"
+                                      @click.prevent="deleteLogo">
+                    Remove Logo
+                </jet-secondary-button>
 
                 <jet-input-error :message="form.errors.logo" class="mt-2" />
             </div>
@@ -197,15 +197,15 @@
                 reader.readAsDataURL(logo);
             },
 
-            // deleteLogo() {
-            //     this.$inertia.delete(route('current-user-photo.destroy'), {
-            //         preserveScroll: true,
-            //         onSuccess: () => {
-            //             this.logoPreview = null;
-            //             this.clearLogoFileInput();
-            //         },
-            //     });
-            // },
+            deleteLogo() {
+                this.$inertia.delete(route('settings.delete-logo'), {
+                    preserveScroll: true,
+                    onSuccess: () => {
+                        this.logoPreview = null;
+                        this.clearLogoFileInput();
+                    },
+                });
+            },
 
             clearLogoFileInput() {
                 if (this.$refs.logo?.value) {

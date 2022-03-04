@@ -23,14 +23,15 @@ An opinionated invoice and receipt generator
 - [x] Perform CRUD operations on Customers
 - [x] Make forms editable
 - [ ] Fix bugs:
-  - [x] when updating invoice details, values are either not inserted correctly or are duplicated
-  - [ ] when updating invoice details, new values can't be added
-  - [x] unique validation when updating invoice
-  - [ ] resetForm() removes all dynamic fields on invoice edit page
+    - [x] when updating invoice details, values are either not inserted correctly or are duplicated
+    - [ ] when updating invoice details, new values can't be added
+    - [x] unique validation when updating invoice
+    - [ ] resetForm() removes all dynamic fields on invoice edit page
+    - [ ] when selecting a new logo, delete the previous one from the logo folder
 - [x] Send mails to the customers
 - [x] Option to update user/company's data in profile/settings
 - [x] User can add bank details
 - [x] User can insert logo
-- [ ] User can remove logo
+- [x] User can remove/delete logo
 - [ ] Add setup wizard after a new user registers.
 - 

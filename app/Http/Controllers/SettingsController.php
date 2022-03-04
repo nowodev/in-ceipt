@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CompanySettingsRequest;
 
 class SettingsController extends Controller
@@ -37,5 +38,20 @@ class SettingsController extends Controller
         $user->update([
             'company_logo_path' => $logo->storePublicly('logo', ['disk' => 'public']),
         ]);
+    }
+
+    public function deleteLogo(): RedirectResponse
+    {
+        $user = auth()->user();
+
+        // delete logo from storage
+        Storage::disk('public')->delete($user?->company_logo_path);
+
+        // delete logo from db
+        $user?->update([
+            'company_logo_path' => null,
+        ]);
+
+        return back(303);
     }
 }

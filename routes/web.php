@@ -40,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(SettingsController::class)->group(function () {
         Route::name('settings.')->prefix('user')->group(function () {
             Route::post('settings', 'updateCompany')->name('update-company');
+            Route::delete('settings', 'deleteLogo')->name('delete-logo');
         });
     });
 

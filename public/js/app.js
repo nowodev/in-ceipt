@@ -24180,15 +24180,18 @@ __webpack_require__.r(__webpack_exports__);
 
       reader.readAsDataURL(logo);
     },
-    // deleteLogo() {
-    //     this.$inertia.delete(route('current-user-photo.destroy'), {
-    //         preserveScroll: true,
-    //         onSuccess: () => {
-    //             this.logoPreview = null;
-    //             this.clearLogoFileInput();
-    //         },
-    //     });
-    // },
+    deleteLogo: function deleteLogo() {
+      var _this3 = this;
+
+      this.$inertia["delete"](route('settings.delete-logo'), {
+        preserveScroll: true,
+        onSuccess: function onSuccess() {
+          _this3.logoPreview = null;
+
+          _this3.clearLogoFileInput();
+        }
+      });
+    },
     clearLogoFileInput: function clearLogoFileInput() {
       var _this$$refs$logo;
 
