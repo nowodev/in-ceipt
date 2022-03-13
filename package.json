@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "html2pdf.js": "^0.10.1",
-        "vue-html2pdf": "^1.8.0"
+        "vue-html2pdf": "^1.8.0",
+        "vue-select": "^4.0.0-beta.3"
     }
 }
