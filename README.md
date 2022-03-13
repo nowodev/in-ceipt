@@ -28,7 +28,7 @@ An opinionated invoice and receipt generator
     - [x] unique validation when updating invoice
     - [ ] resetForm() removes all dynamic fields on invoice edit page
     - [x] when selecting a new logo, delete the previous one from the logo folder
-    - [ ] Select component not functional
+    - [x] Select component not functional
 - [x] Send mails to the customers
 - [x] Option to update user/company's data in profile/settings
 - [x] User can add bank details

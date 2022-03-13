@@ -42,11 +42,17 @@
                         <Input v-show="existing === false" id="fullname" v-model="form.fullname" class="w-full"
                                placeholder="John Doe" type="text" />
 
-                        <select
-                            v-show="existing === true" v-model="form.fullname"
-                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                            <option v-for="customer in customers" @click="updateFields">{{ customer.fullname }}</option>
-                        </select>
+                        <div v-show="existing === true" class="flex space-x-3">
+                            <v-select v-model="get_customer" class="w-full" :options="customers" />
+
+                            <Button @click="updateFields(get_customer)">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                                </svg>
+                            </Button>
+                        </div>
                         <InputError v-if="form.errors.fullname" :message="form.errors.fullname" />
                     </div>
 
@@ -195,7 +201,7 @@
                 </fieldset>
 
                 <div class="flex gap-2 justify-end mt-4">
-                     <SecondaryButton @click="resetForm">Reset</SecondaryButton>
+                    <!-- <SecondaryButton @click="resetForm">Reset</SecondaryButton>-->
                     <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                             @click.prevent="submit">Create
                     </Button>
@@ -217,11 +223,14 @@
     import { Link, useForm } from "@inertiajs/inertia-vue3";
     import { round } from "lodash";
     import { defineComponent } from 'vue'
+    import vSelect from 'vue-select';
+    import 'vue-select/dist/vue-select.css';
 
     export default defineComponent({
         name: "Create.vue",
 
         components: {
+            vSelect,
             DangerButton,
             SecondaryButton,
             InputError,
@@ -248,6 +257,7 @@
             return {
                 existing: false, // set existing to false on start
                 random_no: null,
+                get_customer: null,
             }
         },
 
@@ -312,12 +322,11 @@
             },
 
             // populate fields with customer data
-            updateFields: function () {
+            updateFields: function (get_customer) {
                 this.$inertia.get(route('invoice.create'), {
-                    fullname: this.form.fullname,
-                    page: this.customers.current_page,
+                    customer_id: get_customer.id,
                     preserveScroll: true,
-                    preserveState: true
+                    preserveState: true,
                 })
             },
 
