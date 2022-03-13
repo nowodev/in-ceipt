@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Response;
 use App\Models\Invoice;
 use App\Models\Customer;
+use Inertia\ResponseFactory;
 use App\Models\InvoiceDetails;
 use App\Jobs\SendInvoiceMailJob;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +16,7 @@ use App\Http\Requests\UpdateInvoiceRequest;
 
 class InvoiceController extends Controller
 {
-    public function index()
+    public function index(): Response|ResponseFactory
     {
         $invoices = Invoice::paginate(10);
 
@@ -23,17 +25,25 @@ class InvoiceController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(): Response|ResponseFactory
     {
-        $fullname = Request::get('fullname');
-        $customers = Customer::get();
+        $customer_id = Request::get('customer_id');
         $selected_customer = '';
-        if (!empty($fullname)) {
-            $selected_customer = Customer::whereFullname($fullname)->first();
+
+        if (!empty($customer_id)) {
+            $selected_customer = Customer::findOrFail($customer_id);
         }
 
         return inertia('Backend/Invoice/Create', [
-            'customers' => fn() => $customers,
+            'customer_id' => Request::get('customer_id'),
+            'customers' => Customer::orderBy('id', 'DESC')
+                ->get()
+                ->transform(function ($customers) {
+                    return [
+                        'id' => $customers->id,
+                        'label' => $customers->fullname,
+                    ];
+                }),
             'selected_customer' => fn() => $selected_customer
         ]);
     }
@@ -81,7 +91,7 @@ class InvoiceController extends Controller
         return redirect()->route('invoice.index')->banner('Invoice Created');
     }
 
-    public function show($id)
+    public function show($id): Response|ResponseFactory
     {
         $invoice = Invoice::with('customer', 'invoice_details')->find($id);
 
