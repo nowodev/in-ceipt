@@ -34,4 +34,4 @@ An opinionated invoice and receipt generator
 - [x] User can add bank details
 - [x] User can insert logo
 - [x] User can remove/delete logo
-- [ ] Add setup wizard after a new user registers.
+- [ ] Add setup wizard after a new user registers using [Laravel Arcanist](https://github.com/laravel-arcanist/arcanist).
