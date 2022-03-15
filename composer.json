@@ -20,7 +20,8 @@
         "symfony/http-client": "^6.0.3",
         "symfony/mailgun-mailer": "^6.0.3",
         "tightenco/ziggy": "^1.4.3",
-        "laravel-arcanist/arcanist": "dev-main"
+        "laravel-arcanist/arcanist": "dev-main",
+        "laravel-arcanist/inertia-response-renderer": "dev-main"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6.7",
@@ -35,6 +36,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/marcreichel/arcanist.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nowodev/inertia-response-renderer.git"
         }
     ],
     "autoload": {

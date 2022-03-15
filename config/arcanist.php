@@ -73,7 +73,8 @@ return [
     |
     */
     'renderers' => [
-        'renderer' => BladeResponseRenderer::class,
+//        'renderer' => BladeResponseRenderer::class,
+        'renderer' => Arcanist\InertiaResponseRenderer::class,
 
         'blade' => [
             'view_base_path' => 'wizards',
