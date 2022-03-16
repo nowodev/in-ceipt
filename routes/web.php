@@ -27,6 +27,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('setup', function () {
+   return inertia('Wizard/AccountSetup');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
