@@ -35,30 +35,35 @@
                                 <Label class="text-sm" for="company_name">Company Name</Label>
                                 <Input id="company_name" v-model="form.company_name" class="w-full text-sm"
                                        placeholder="Sanders" type="text" />
+                                <InputError v-if="form.errors.company_name" :message="form.errors.company_name" />
                             </div>
 
                             <div class="mb-4">
                                 <Label class="text-sm" for="address_1">Address 1</Label>
                                 <Input id="address_1" v-model="form.address_1" class="w-full text-sm"
                                        placeholder="Sanders" type="text" />
+                                <InputError v-if="form.errors.address_1" :message="form.errors.address_1" />
                             </div>
 
                             <div class="mb-4">
                                 <Label class="text-sm" for="address_2">Address 2</Label>
                                 <Input id="address_2" v-model="form.address_2" class="w-full text-sm"
                                        placeholder="Sanders" type="text" />
+                                <InputError v-if="form.errors.address_2" :message="form.errors.address_2" />
                             </div>
 
                             <div class="mb-4">
                                 <Label class="text-sm" for="mobile_no">Mobile No</Label>
                                 <Input id="mobile_no" v-model="form.mobile_no" class="w-full text-sm"
-                                       placeholder="Sanders" type="text" />
+                                       placeholder="Sanders" type="tel" />
+                                <InputError v-if="form.errors.mobile_no" :message="form.errors.mobile_no" />
                             </div>
 
                             <div class="mb-4">
                                 <Label class="text-sm" for="office_no">Office No</Label>
                                 <Input id="office_no" v-model="form.office_no" class="w-full text-sm"
-                                       placeholder="Sanders" type="text" />
+                                       placeholder="Sanders" type="tel" />
+                                <InputError v-if="form.errors.office_no" :message="form.errors.office_no" />
                             </div>
                         </div>
 
@@ -68,18 +73,21 @@
                                 <Label class="text-sm" for="bank_name">Bank Name</Label>
                                 <Input id="bank_name" v-model="form.bank_name" class="w-full text-sm"
                                        placeholder="Sanders" type="text" />
+                                <InputError v-if="form.errors.bank_name" :message="form.errors.bank_name" />
                             </div>
 
                             <div class="mb-4">
                                 <Label class="text-sm" for="account_name">Account Name</Label>
                                 <Input id="account_name" v-model="form.account_name" class="w-full text-sm"
                                        placeholder="Sanders" type="text" />
+                                <InputError v-if="form.errors.account_name" :message="form.errors.account_name" />
                             </div>
 
                             <div class="mb-4">
                                 <Label class="text-sm" for="account_number">Account Number</Label>
                                 <Input id="account_number" v-model="form.account_number" class="w-full text-sm"
-                                       placeholder="Sanders" type="text" />
+                                       placeholder="Sanders" type="number" />
+                                <InputError v-if="form.errors.account_number" :message="form.errors.account_number" />
                             </div>
                         </div>
 
@@ -89,7 +97,7 @@
 
                             <div v-show="page === 2" class="space-x-3">
                                 <Button @click="page = 1">Previous</Button>
-                                <Button>Submit</Button>
+                                <Button @click.prevent="updateCompanyInformation">Submit</Button>
                             </div>
                         </div>
                     </div>
@@ -103,14 +111,23 @@
     import Button from "@/Jetstream/Button";
     import DangerButton from "@/Jetstream/DangerButton";
     import Input from "@/Jetstream/Input";
+    import InputError from "@/Jetstream/InputError";
     import Label from "@/Jetstream/Label";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
+    import ValidationErrors from "@/Jetstream/ValidationErrors";
     import { useForm } from "@inertiajs/inertia-vue3";
 
     export default {
         name: "AccountSetup",
 
-        components: { DangerButton, SecondaryButton, Button, Label, Input },
+        components: {
+            InputError,
+            DangerButton,
+            SecondaryButton,
+            Button,
+            Label,
+            Input
+        },
 
         data() {
             return {
@@ -131,6 +148,14 @@
             });
 
             return { form }
+        },
+
+        methods: {
+            updateCompanyInformation() {
+                this.form.post(route('settings.update-company'), {
+                    preserveScroll: true,
+                });
+            },
         }
 
     }
