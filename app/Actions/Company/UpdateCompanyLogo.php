@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions;
+namespace App\Actions\Company;
 
 use Illuminate\Support\Facades\Storage;
 
