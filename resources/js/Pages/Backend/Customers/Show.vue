@@ -24,7 +24,7 @@
                             <div class="overflow-hidden image">
                                 <img :alt="customer.fullname"
                                      class="mx-auto w-full h-auto"
-                                     src="../../../../../public/assets/images/profile.jpg">
+                                     src="../../../../../public/images/profile.jpg">
                             </div>
                             <h1 class="my-1 text-xl font-bold leading-8 text-gray-900">{{ customer.fullname }}</h1>
                             <h3 class="leading-6 text-gray-600 font-lg text-semibold">Owner at Company Inc.</h3>

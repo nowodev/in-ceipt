@@ -27,6 +27,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('setup', function () {
+   return inertia('Wizard/AccountSetup');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
@@ -39,6 +43,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::controller(SettingsController::class)->group(function () {
         Route::name('settings.')->prefix('user')->group(function () {
+            Route::get('setup', 'setup');
+            Route::patch('settings', 'setupWizard')->name('setup-wizard');
             Route::post('settings', 'updateCompany')->name('update-company');
             Route::delete('settings', 'deleteLogo')->name('delete-logo');
         });

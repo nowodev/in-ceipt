@@ -2,30 +2,33 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^8.0",
         "barryvdh/laravel-dompdf": "^1.0",
         "fruitcake/laravel-cors": "^2.0.5",
-        "guzzlehttp/guzzle": "^7.2",
-        "inertiajs/inertia-laravel": "^0.5.2",
-        "laravel/framework": "^9.0",
-        "laravel/jetstream": "^2.6",
+        "guzzlehttp/guzzle": "^7.4.1",
+        "inertiajs/inertia-laravel": "^0.5.4",
+        "laravel/framework": "^9.0.1",
+        "laravel/jetstream": "^2.6.5",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
-        "symfony/http-client": "^6.0",
-        "symfony/mailgun-mailer": "^6.0",
-        "tightenco/ziggy": "^1.0"
+        "symfony/http-client": "^6.0.3",
+        "symfony/mailgun-mailer": "^6.0.3",
+        "tightenco/ziggy": "^1.4.3"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.4",
+        "barryvdh/laravel-debugbar": "^3.6.7",
+        "fakerphp/faker": "^1.19.0",
+        "laravel/sail": "^1.13.2",
+        "mockery/mockery": "^1.5.0",
         "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "phpunit/phpunit": "^9.5.13",
+        "spatie/laravel-ignition": "^1.0.3"
     },
     "autoload": {
         "psr-4": {
