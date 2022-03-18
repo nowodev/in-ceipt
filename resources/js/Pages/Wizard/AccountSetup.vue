@@ -152,9 +152,7 @@
 
         methods: {
             updateCompanyInformation() {
-                this.form.post(route('settings.update-company'), {
-                    preserveScroll: true,
-                });
+                this.form.patch(route('settings.setup-wizard'));
             },
         }
 
