@@ -21,18 +21,6 @@ class SettingsController extends Controller
 
         return redirect(RouteServiceProvider::HOME)->banner('Account Setup Successfully');
 
-        $user?->update([
-            'company_name' => $cred['company_name'],
-            'address_1' => $cred['address_1'],
-            'address_2' => $cred['address_2'],
-            'mobile_no' => $cred['mobile_no'],
-            'office_no' => $cred['office_no'],
-            'bank_name' => $cred['bank_name'],
-            'account_name' => $cred['account_name'],
-            'account_number' => $cred['account_number'],
-        ]);
-
-        return back();
     }
 
     public function updateCompany(CompanySettingsRequest $request, UpdateCompanySettings $updateCompanySettings): RedirectResponse
@@ -42,17 +30,9 @@ class SettingsController extends Controller
         return back();
     }
 
-    public function deleteLogo(): RedirectResponse
+    public function deleteLogo(DeleteCompanyLogo $deleteCompanyLogo): RedirectResponse
     {
-        $user = auth()->user();
-
-        // delete logo from storage
-        Storage::disk('public')->delete($user?->company_logo_path);
-
-        // delete logo from db
-        $user?->update([
-            'company_logo_path' => null,
-        ]);
+        $deleteCompanyLogo->delete();
 
         return back(303);
     }
