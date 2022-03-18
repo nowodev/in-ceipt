@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
+use App\Providers\RouteServiceProvider;
+use App\Actions\Company\DeleteCompanyLogo;
 use App\Http\Requests\CompanySettingsRequest;
+use App\Actions\Company\UpdateCompanySettings;
 
 class SettingsController extends Controller
 {
-    public function updateCompany(CompanySettingsRequest $request): RedirectResponse
+    public function setup()
     {
-        $cred = $request->validated();
+        return inertia('Wizard/AccountSetup');
+    }
 
-        $user = auth()->user();
+    public function setupWizard(CompanySettingsRequest $request, UpdateCompanySettings $updateCompanySettings): RedirectResponse
+    {
+        $updateCompanySettings->update($request);
 
-        if ($request->hasFile('logo')) {
-            $this->updateLogo($cred['logo'], $user);
-        }
+        return redirect(RouteServiceProvider::HOME)->banner('Account Setup Successfully');
 
         $user?->update([
             'company_name' => $cred['company_name'],
