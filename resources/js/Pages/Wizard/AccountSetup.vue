@@ -97,7 +97,10 @@
 
                             <div v-show="page === 2" class="space-x-3">
                                 <Button @click="page = 1">Previous</Button>
-                                <Button @click.prevent="updateCompanyInformation">Submit</Button>
+                                <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
+                                        @click.prevent="updateCompanyInformation">
+                                    Setup
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -114,7 +117,6 @@
     import InputError from "@/Jetstream/InputError";
     import Label from "@/Jetstream/Label";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
-    import ValidationErrors from "@/Jetstream/ValidationErrors";
     import { useForm } from "@inertiajs/inertia-vue3";
 
     export default {
