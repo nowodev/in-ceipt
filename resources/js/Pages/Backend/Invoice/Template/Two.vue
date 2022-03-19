@@ -146,11 +146,6 @@
                 <div class="flex justify-center items-center">
                     Thank you very much for doing business with us.
                 </div>
-                <div class="flex justify-end items-end space-x-3">
-                    <button class="px-4 py-2 text-sm text-green-600 bg-green-100">Print</button>
-                    <button class="px-4 py-2 text-sm text-blue-600 bg-blue-100">Save</button>
-                    <button class="px-4 py-2 text-sm text-red-600 bg-red-100">Cancel</button>
-                </div>
             </div>
         </div>
     </div>
