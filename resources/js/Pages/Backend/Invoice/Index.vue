@@ -32,6 +32,10 @@
                                         </th>
                                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                                             scope="col">
+                                            Customer Name
+                                        </th>
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
                                             Serial No
                                         </th>
                                         <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
@@ -51,6 +55,9 @@
                                     <tr v-for="(invoice, index) in invoices.data" :key="invoice.id">
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ index + 1 }}</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">{{ invoice.customer.fullname }}</div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ invoice.serial_no }}</div>

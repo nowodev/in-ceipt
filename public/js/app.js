@@ -30559,6 +30559,9 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 }, " SN "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase",
   scope: "col"
+}, " Customer Name "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase",
+  scope: "col"
 }, " Serial No "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase",
   scope: "col"
@@ -30602,10 +30605,16 @@ var _hoisted_20 = {
   "class": "text-sm text-gray-900"
 };
 var _hoisted_21 = {
+  "class": "px-6 py-4 whitespace-nowrap"
+};
+var _hoisted_22 = {
+  "class": "text-sm text-gray-900"
+};
+var _hoisted_23 = {
   "class": "flex items-center px-6 py-4 space-x-4 text-sm font-medium whitespace-nowrap"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   "class": "w-5 h-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
@@ -30620,9 +30629,9 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_23 = ["onClick"];
+var _hoisted_25 = ["onClick"];
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   "class": "w-5 h-5",
   style: {
     "fill": "#000000"
@@ -30635,9 +30644,9 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_25 = [_hoisted_24];
+var _hoisted_27 = [_hoisted_26];
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   "class": "w-5 h-5",
   fill: "currentColor",
   stroke: "currentColor",
@@ -30652,9 +30661,9 @@ var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_27 = ["onClick"];
+var _hoisted_29 = ["onClick"];
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   "class": "w-5 h-5",
   fill: "currentColor",
   viewBox: "0 0 20 20",
@@ -30667,12 +30676,12 @@ var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_29 = [_hoisted_28];
-var _hoisted_30 = {
+var _hoisted_31 = [_hoisted_30];
+var _hoisted_32 = {
   key: 0
 };
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "px-6 py-4 whitespace-nowrap",
   colspan: "5"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -30681,15 +30690,15 @@ var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_32 = [_hoisted_31];
+var _hoisted_34 = [_hoisted_33];
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Invoice ");
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Invoice ");
 
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete this invoice? ");
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete this invoice? ");
 
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cancel ");
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Cancel ");
 
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Invoice ");
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Invoice ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
@@ -30744,18 +30753,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               key: invoice.id
             }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(index + 1), 1
             /* TEXT */
-            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(invoice.serial_no), 1
+            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(invoice.customer.fullname), 1
             /* TEXT */
-            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(invoice.issue_date), 1
+            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(invoice.serial_no), 1
             /* TEXT */
-            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(invoice.due_date), 1
+            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(invoice.issue_date), 1
             /* TEXT */
-            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(invoice.due_date), 1
+            /* TEXT */
+            )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
               href: _ctx.route('invoice.show', invoice),
               "class": ""
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                return [_hoisted_22];
+                return [_hoisted_24];
               }),
               _: 2
               /* DYNAMIC */
@@ -30767,14 +30778,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               onClick: function onClick($event) {
                 return _ctx.sendMail(invoice.id);
               }
-            }, _hoisted_25, 8
+            }, _hoisted_27, 8
             /* PROPS */
-            , _hoisted_23), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+            , _hoisted_25), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
               href: _ctx.route('invoice.edit', invoice),
               "class": ""
             }, {
               "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                return [_hoisted_26];
+                return [_hoisted_28];
               }),
               _: 2
               /* DYNAMIC */
@@ -30786,12 +30797,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
               onClick: function onClick($event) {
                 return _ctx.confirmDelete(invoice);
               }
-            }, _hoisted_29, 8
+            }, _hoisted_31, 8
             /* PROPS */
-            , _hoisted_27)])]);
+            , _hoisted_29)])]);
           }), 128
           /* KEYED_FRAGMENT */
-          )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" show no record when table is empty "), _ctx.invoices.data == '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_30, _hoisted_32)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
+          )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" show no record when table is empty "), _ctx.invoices.data == '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_32, _hoisted_34)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
             links: _ctx.invoices.links
           }, null, 8
           /* PROPS */
@@ -30800,17 +30811,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             onClose: _ctx.closeModal
           }, {
             title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_33];
+              return [_hoisted_35];
             }),
             content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_34];
+              return [_hoisted_36];
             }),
             footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SecondaryButton, {
                 onClick: _ctx.closeModal
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_hoisted_35];
+                  return [_hoisted_37];
                 }),
                 _: 1
                 /* STABLE */
@@ -30824,7 +30835,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 })
               }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                  return [_hoisted_36];
+                  return [_hoisted_38];
                 }),
                 _: 1
                 /* STABLE */
@@ -31544,7 +31555,7 @@ var _hoisted_43 = {
   "class": "text-sm font-bold"
 };
 
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex justify-between p-4\"><div><h3 class=\"text-xl\">Terms And Condition :</h3><ul class=\"text-xs list-disc list-inside\"><li>All accounts are to be paid within 7 days from receipt of invoice.</li><li>To be paid by cheque or credit card or direct payment online.</li><li>If account is not paid within 7 days the credits details supplied.</li></ul></div><div class=\"p-4\"><h3>Signature</h3><div class=\"text-4xl italic text-indigo-500\">AAA</div></div></div><div class=\"w-full h-0.5 bg-indigo-500\"></div><div class=\"p-4\"><div class=\"flex justify-center items-center\"> Thank you very much for doing business with us. </div><div class=\"flex justify-end items-end space-x-3\"><button class=\"px-4 py-2 text-sm text-green-600 bg-green-100\">Print</button><button class=\"px-4 py-2 text-sm text-blue-600 bg-blue-100\">Save</button><button class=\"px-4 py-2 text-sm text-red-600 bg-red-100\">Cancel</button></div></div>", 3);
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex justify-between p-4\"><div><h3 class=\"text-xl\">Terms And Condition :</h3><ul class=\"text-xs list-disc list-inside\"><li>All accounts are to be paid within 7 days from receipt of invoice.</li><li>To be paid by cheque or credit card or direct payment online.</li><li>If account is not paid within 7 days the credits details supplied.</li></ul></div><div class=\"p-4\"><h3>Signature</h3><div class=\"text-4xl italic text-indigo-500\">AAA</div></div></div><div class=\"w-full h-0.5 bg-indigo-500\"></div><div class=\"p-4\"><div class=\"flex justify-center items-center\"> Thank you very much for doing business with us. </div></div>", 3);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.invoice.issue_date), 1

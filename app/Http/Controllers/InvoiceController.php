@@ -18,7 +18,7 @@ class InvoiceController extends Controller
 {
     public function index(): Response|ResponseFactory
     {
-        $invoices = Invoice::paginate(10);
+        $invoices = Invoice::with('customer')->paginate(10);
 
         return inertia('Backend/Invoice/Index', [
             'invoices' => $invoices,
