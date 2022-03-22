@@ -31,4 +31,10 @@ class Invoice extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    // scope to check if authenticated user has access to the invoice
+    public function scopeAuthUser($query)
+    {
+        return $query->where('user_id', auth()->id());
+    }
 }
