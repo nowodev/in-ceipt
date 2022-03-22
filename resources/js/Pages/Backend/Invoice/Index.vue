@@ -109,7 +109,7 @@
 
                                     <!-- show no record when table is empty -->
                                     <tr v-if="invoices.data == ''">
-                                        <td class="px-6 py-4 whitespace-nowrap" colspan="5">
+                                        <td class="px-6 py-4 whitespace-nowrap" colspan="6">
                                             <div class="text-sm text-center text-gray-900">No Records Found</div>
                                         </td>
                                     </tr>
