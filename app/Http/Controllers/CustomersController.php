@@ -12,7 +12,7 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $customers = Customer::paginate(10);
+        $customers = Customer::authUser()->paginate(10);
 
         return inertia('Backend/Customers/Index', [
             'customers' => $customers
