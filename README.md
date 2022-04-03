@@ -4,6 +4,7 @@ An opinionated invoice and receipt generator
 
 ## TODO
 
+### Invoice
 - [x] Add ability to prefetch customer from dropdown, which automatically populates other fields
 - [x] Validate unit price, subtotal and total as numerals
 - [ ] Preview form before creating invoice
@@ -36,3 +37,8 @@ An opinionated invoice and receipt generator
 - [x] User can insert logo
 - [x] User can remove/delete logo
 - [x] Add setup wizard after a new user registers.
+
+### Receipt
+- [ ] Add receipt form
+- [ ] Perform CRUD on Receipt form
+- 
