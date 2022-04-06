@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\CustomersController;
 
@@ -51,5 +52,6 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     Route::resource('invoice', InvoiceController::class);
+    Route::resource('receipt', ReceiptController::class);
     Route::resource('customers', CustomersController::class);
 });
