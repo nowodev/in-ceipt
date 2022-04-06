@@ -27,6 +27,10 @@
                                     Invoice
                                 </jet-nav-link>
 
+                                <jet-nav-link :active="route().current('receipt.index')" :href="route('receipt.index')">
+                                    Receipt
+                                </jet-nav-link>
+
                                 <jet-nav-link :active="route().current('customers.index')"
                                               :href="route('customers.index')">
                                     Customers
@@ -186,6 +190,10 @@
 
                         <jet-responsive-nav-link :active="route().current('invoice.index')" :href="route('invoice.index')">
                             Invoice
+                        </jet-responsive-nav-link>
+
+                        <jet-responsive-nav-link :active="route().current('receipt.index')" :href="route('receipt.index')">
+                            Receipt
                         </jet-responsive-nav-link>
 
                         <jet-responsive-nav-link :active="route().current('customers.index')" :href="route('customers.index')">
