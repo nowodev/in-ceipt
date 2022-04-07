@@ -17,8 +17,10 @@ class ReceiptController extends Controller
      */
     public function index()
     {
-        return inertia('Receipts/Index', [
-            'receipts' => Receipt::query()->get(),
+        $receipts = Receipt::authUser()->with('customer')->paginate(10);
+
+        return inertia('Backend/Receipt/Index', [
+            'receipts' => $receipts,
         ]);
     }
 
