@@ -20,7 +20,7 @@
 
     const cards = [
         { name: 'Invoice', href: route('invoice.index') },
-        { name: 'Receipt', href: 'something' },
+        { name: 'Receipt', href: route('receipt.index') },
         { name: 'History', href: 'something' },
     ]
 
