@@ -54,9 +54,7 @@ class InvoiceController extends Controller
 
             $request->validated();
 
-            $user = auth()->user();
-
-            $customer = $user?->customers()->updateOrCreate(
+            $customer = auth()->user()?->customers()->updateOrCreate(
                 ['fullname' => $request['fullname']],
                 [
                     'number' => $request['number'],
