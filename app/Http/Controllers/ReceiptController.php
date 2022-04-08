@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Inertia\Response;
 use App\Models\Receipt;
+use App\Models\Customer;
 use Inertia\ResponseFactory;
+use Illuminate\Support\Facades\Request;
 use App\Http\Requests\StoreReceiptRequest;
 use App\Http\Requests\UpdateReceiptRequest;
 
@@ -27,11 +29,29 @@ class ReceiptController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response|ResponseFactory
      */
     public function create()
     {
-        //
+        $customer_id = Request::get('customer_id');
+        $selected_customer = '';
+
+        if (!empty($customer_id)) {
+            $selected_customer = Customer::findOrFail($customer_id);
+        }
+
+        return inertia('Backend/Receipt/Create', [
+            'customer_id' => Request::get('customer_id'),
+            'customers' => Customer::orderBy('id', 'DESC')
+                ->get()
+                ->transform(function ($customers) {
+                    return [
+                        'id' => $customers->id,
+                        'label' => $customers->fullname,
+                    ];
+                }),
+            'selected_customer' => fn() => $selected_customer
+        ]);
     }
 
     /**
