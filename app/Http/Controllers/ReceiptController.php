@@ -106,7 +106,7 @@ class ReceiptController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Receipt $receipt
+     * @param Receipt $receipt
      * @return \Illuminate\Http\Response
      */
     public function show(Receipt $receipt)
@@ -117,19 +117,23 @@ class ReceiptController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Receipt $receipt
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return Response|ResponseFactory
      */
-    public function edit(Receipt $receipt)
+    public function edit($id)
     {
-        //
+        $receipt = Receipt::with('customer', 'receipt_details')->find($id);
+
+        return inertia('Backend/Receipt/Edit', [
+            'receipt' => $receipt
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \App\Http\Requests\UpdateReceiptRequest $request
-     * @param \App\Models\Receipt $receipt
+     * @param Receipt $receipt
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateReceiptRequest $request, Receipt $receipt)
@@ -140,7 +144,7 @@ class ReceiptController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Receipt $receipt
+     * @param Receipt $receipt
      * @return \Illuminate\Http\Response
      */
     public function destroy(Receipt $receipt)

@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Create Invoice">
+    <app-layout title="Edit Receipt">
         <template #header>
             <h2 class="flex text-xl font-semibold leading-tight text-gray-800">
                 <Link :href="route('receipt.index')">
@@ -10,82 +10,51 @@
                               stroke-width="2" />
                     </svg>
                 </Link>
-                Create Receipt
+                Edit Receipt
             </h2>
         </template>
 
         <CardLayout>
             <div class="flex justify-between p-6 bg-white border-b border-gray-200 sm:px-20">
-                <h1 class="text-4xl font-bold text-black">Fill the <span
-                    class="underline decoration-double decoration decoration-cyan-500">form</span></h1>
+                <h1 class="text-4xl font-bold text-black">#{{ form.serial_no }}</h1>
             </div>
 
             <div class="p-6 w-full bg-white sm:px-20">
-                <div class="mb-4">
-                    <div
-                        class="inline-block relative mr-2 w-10 align-middle transition duration-200 ease-in select-none">
-                        <input id="toggle"
-                               class="block absolute w-6 h-6 bg-white rounded-full border-4 appearance-none cursor-pointer toggle-checkbox"
-                               name="toggle" type="checkbox" @click="toggleExisting" />
-                        <label class="block overflow-hidden h-6 bg-gray-300 rounded-full cursor-pointer toggle-label"
-                               for="toggle"></label>
-                    </div>
-                    <label class="text-xs text-gray-700" for="toggle">Existing customer</label>
-                </div>
-
                 <fieldset
                     class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
                     <legend class="text-lg font-semibold">Customer Details</legend>
 
                     <div>
                         <Label for="fullname">Full Name</Label>
-                        <Input v-show="existing === false" id="fullname" v-model="form.fullname" class="w-full"
-                               placeholder="John Doe" type="text" />
-
-                        <div v-show="existing === true" class="flex space-x-3">
-                            <v-select v-model="get_customer" :options="customers" class="w-full" />
-
-                            <Button @click="updateFields(get_customer)">
-                                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"
-                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </Button>
-                        </div>
-                        <InputError v-if="form.errors.fullname" :message="form.errors.fullname" />
+                        <Input id="fullname" v-model="form.fullname"
+                               class="w-full bg-gray-200 shadow-md cursor-crosshair"
+                               disabled type="text" />
                     </div>
 
                     <div>
                         <Label for="phone">Mobile Number</Label>
-                        <Input id="phone" v-model="form.number" class="w-full" min="11" placeholder="08000000000"
-                               type="tel" />
-                        <InputError v-if="form.errors.number" :message="form.errors.number" />
+                        <Input id="phone" v-model="form.number" class="w-full bg-gray-200 shadow-md cursor-crosshair"
+                               disabled type="tel" />
                     </div>
 
                     <div>
                         <Label for="email">Email</Label>
-                        <Input id="email" v-model="form.email" class="w-full" placeholder="johndoe@email.com"
-                               type="email" />
-                        <InputError v-if="form.errors.email" :message="form.errors.email" />
+                        <Input id="email" v-model="form.email" class="w-full bg-gray-200 shadow-md cursor-crosshair"
+                               disabled type="email" />
                     </div>
 
                     <div>
                         <Label for="address">Address 1</Label>
-                        <Input id="address" v-model="form.address_1" class="w-full"
-                               placeholder="No. X, Somewhere in China town"
+                        <Input id="address" v-model="form.address_1"
+                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled
                                type="text" />
-                        <InputError v-if="form.errors.address_1" :message="form.errors.address_1" />
                     </div>
 
                     <div>
                         <Label for="address_2">Address 2</Label>
-                        <Input id="address_2" v-model="form.address_2" class="w-full"
-                               placeholder="No. X, Somewhere in China town"
+                        <Input id="address_2" v-model="form.address_2"
+                               class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled
                                type="text" />
-                        <InputError v-if="form.errors.address_2" :message="form.errors.address_2" />
                     </div>
                 </fieldset>
 
@@ -96,19 +65,9 @@
                     <div>
                         <Label for="serial_no">Serial No</Label>
                         <div class="relative">
-                            <Input id="serial_no" :value="random_no"
+                            <Input id="serial_no" v-model="form.serial_no"
                                    class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled
-                                   placeholder="XXXXXXXXXXXX" type="number" />
-                            <div class="absolute inset-y-0 right-0">
-                                <SecondaryButton class="h-full" @click="generateSN">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path clip-rule="evenodd"
-                                              d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-                                              fill-rule="evenodd" />
-                                    </svg>
-                                </SecondaryButton>
-                            </div>
+                                   placeholder="XXXXXXXXXXXX" type="text" />
                         </div>
                         <InputError v-if="form.errors.serial_no" :message="form.errors.serial_no" />
                     </div>
@@ -136,6 +95,10 @@
                             <Label for="description">Description</Label>
                             <Input id="description" v-model="desc.description" class="w-full" placeholder="XXXXXXXXXXXX"
                                    type="text" />
+
+                            <!-- pass the invoice details id when submitting, in order to use this to update the db -->
+                            <Input v-model="desc.receipt_details_id" class="w-full" type="hidden" />
+
                             <InputError v-if="form.errors[`info.${index}.description`]"
                                         :message="form.errors[`info.${index}.description`]" />
                         </div>
@@ -167,15 +130,19 @@
                         </div>
                     </fieldset>
 
-                    <div class="flex flex-col gap-y-3 mt-3 w-fit">
-                        <Button v-show="index === form.info.length - 1" @click="addDescription">
-                            Add New Description
-                        </Button>
-                        <DangerButton v-show="index || ( !index && form.info.length > 1)"
-                                      @click="removeDescription(index)">
-                            Remove Description
-                        </DangerButton>
-                    </div>
+
+                    <!-- BUG TO FIX (FUTURE FEATURE)-->
+                    <!-- Currently disable adding new description. Data can only be updated, no insertion for now.-->
+
+                    <!-- <div class="flex flex-col gap-y-3 mt-3 w-fit">-->
+                    <!--     <Button v-show="index === form.info.length - 1" @click="addDescription">-->
+                    <!--         Add New Description-->
+                    <!--     </Button>-->
+                    <!--     <DangerButton v-show="index || ( !index && form.info.length > 1)"-->
+                    <!--                   @click="removeDescription(index)">-->
+                    <!--         Remove Description-->
+                    <!--     </DangerButton>-->
+                    <!-- </div>-->
                 </div>
 
                 <fieldset
@@ -204,9 +171,10 @@
                 </fieldset>
 
                 <div class="flex gap-2 justify-end mt-4">
+                    <!-- fix: Reset functionality removes the description section -->
                     <!-- <SecondaryButton @click="resetForm">Reset</SecondaryButton>-->
                     <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
-                            @click.prevent="submit">Create
+                            @click.prevent="submit">Update
                     </Button>
                 </div>
             </div>
@@ -225,7 +193,7 @@
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link, useForm } from "@inertiajs/inertia-vue3";
     import { round } from "lodash";
-    import { defineComponent } from 'vue'
+    import { defineComponent } from 'vue';
     import vSelect from 'vue-select';
     import 'vue-select/dist/vue-select.css';
 
@@ -245,22 +213,13 @@
             Link
         },
 
-        props: ['customers', 'selected_customer'],
-
-        mounted() {
-            // populate customer fields on select existing customer
-            this.form.fullname = this.selected_customer.fullname
-            this.form.number = this.selected_customer.number
-            this.form.email = this.selected_customer.email
-            this.form.address_1 = this.selected_customer.address_1
-            this.form.address_2 = this.selected_customer.address_2
+        props: {
+            receipt: Object,
+            customers: Object,
         },
 
         data() {
             return {
-                existing: false, // set existing to false on start
-                random_no: null,
-                get_customer: null,
                 payment_options: [
                     {
                         id: 1,
@@ -274,26 +233,33 @@
             }
         },
 
-        setup() {
+        mounted() {
+            // since the item description is dynamic and could be 1 or more, we need to fetch the value from the db
+            // and push it into the info array declared in the form helper below 👇
+            this.receipt.receipt_details.forEach((value, index) => {
+                this.form.info.push({
+                    receipt_details_id: this.receipt.receipt_details[index].id,
+                    description: this.receipt.receipt_details[index].description,
+                    unit_price: this.receipt.receipt_details[index].unit_price,
+                    quantity: this.receipt.receipt_details[index].quantity,
+                    total: this.receipt.receipt_details[index].total,
+                })
+            })
+        },
+
+        setup(props) {
             const form = useForm({
-                fullname: null,
-                number: null,
-                email: null,
-                address_1: null,
-                address_2: null,
-                serial_no: null,
-                issue_date: null,
-                payment_method: null,
-                info: [
-                    {
-                        description: null,
-                        unit_price: null,
-                        quantity: null,
-                        total: null,
-                    }
-                ],
+                fullname: props.receipt.customer.fullname,
+                number: props.receipt.customer.number,
+                email: props.receipt.customer.email,
+                address_1: props.receipt.customer.address_1,
+                address_2: props.receipt.customer.address_2,
+                serial_no: props.receipt.serial_no,
+                issue_date: props.receipt.issue_date,
+                payment_method: props.receipt.payment_method,
+                info: [],
                 sum_total: null,
-                discount: 0,
+                discount: props.receipt.discount,
                 sub_total: null,
             })
 
@@ -329,25 +295,6 @@
         },
 
         methods: {
-            // toggle new or existing customers
-            toggleExisting: function () {
-                this.existing = !this.existing
-            },
-
-            // populate fields with customer data
-            updateFields: function (get_customer) {
-                this.$inertia.get(route('receipt.create'), {
-                    customer_id: get_customer.id,
-                    preserveScroll: true,
-                    preserveState: true,
-                })
-            },
-
-            // generate random number to use as serial number
-            generateSN: function () {
-                this.form.serial_no = this.random_no = Math.floor(Math.random() * (99999999 - 999999999998 + 1) + 999999999998)
-            },
-
             // add more description field
             addDescription: function () {
                 this.form.info.push({
@@ -361,6 +308,13 @@
             // remove a description field
             removeDescription: function (index) {
                 this.form.info.splice(index, 1)
+
+                // when removing a description field (fieldset), the corresponding data is also removed from the db
+                // and the page is reloaded
+                this.$inertia.delete(route('receipt.delete_info', this.receipt.receipt_details[index].description), {
+                    preserveState: false,
+                    preserveScroll: true
+                })
             },
 
             // round to two decimal places
@@ -370,28 +324,15 @@
 
             // submit form
             submit: function () {
-                this.form.post(route('receipt.store'))
+                this.form.put(route('receipt.update', this.receipt.id), {
+                    preserveScroll: true
+                })
             },
 
             resetForm() {
-                this.form.clearErrors()
-                this.form.reset()
-                this.random_no = ''
-                this.existing = false
+                this.form.clearErrors();
+                this.form.reset();
             },
         }
     })
 </script>
-
-<style scoped>
-    .toggle-checkbox:checked {
-        @apply: right-0 border-green-400;
-        right: 0;
-        border-color: #68D391;
-    }
-
-    .toggle-checkbox:checked + .toggle-label {
-        @apply: bg-green-400;
-        background-color: #68D391;
-    }
-</style>
