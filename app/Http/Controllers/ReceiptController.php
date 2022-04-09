@@ -176,10 +176,13 @@ class ReceiptController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Receipt $receipt
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy(Receipt $receipt)
+    public function destroy(Receipt $receipt): RedirectResponse
     {
-        //
+        $receipt->receipt_details()->delete();
+        $receipt->delete();
+
+        return redirect()->route('receipt.index')->banner('Receipt Deleted');
     }
 }
