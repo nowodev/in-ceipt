@@ -108,12 +108,16 @@ class ReceiptController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Receipt $receipt
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return Response|ResponseFactory
      */
-    public function show(Receipt $receipt)
+    public function show($id)
     {
-        //
+        $receipt = Receipt::query()->with('customer', 'receipt_details')->find($id);
+
+        return inertia('Backend/Receipt/Show', [
+            'receipt' => $receipt,
+        ]);
     }
 
     /**
