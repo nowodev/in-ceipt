@@ -132,13 +132,44 @@ class ReceiptController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\UpdateReceiptRequest $request
+     * @param UpdateReceiptRequest $request
      * @param Receipt $receipt
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(UpdateReceiptRequest $request, Receipt $receipt)
+    public function update(UpdateReceiptRequest $request, Receipt $receipt): RedirectResponse
     {
-        //
+        $cred = $request->validated();
+
+        $receipt->update([
+            'issue_date' => $cred['issue_date'],
+
+            // check if payment_method is an array. It will be a string if the payment method value isn't edited
+            'payment_method' => !is_array($cred['payment_method']) ? $cred['payment_method'] : $cred['payment_method']['label'],
+            'sum_total' => $cred['sum_total'],
+            'discount' => $cred['discount'],
+            'sub_total' => $cred['sub_total'],
+        ]);
+
+        // insert array of product information into the invoice_details table
+
+        // BUG TO FIX (FUTURE FEATURE)
+        // Currently disable adding new description. Data can only be updated, no insertion for now.
+        collect($cred['info'])->each(function (array $row) use ($receipt) {
+            $receipt->receipt_details()
+//                ->where('id', $row['invoice_details_id'])
+//                ->orWhere('unit_price', $row['unit_price'])
+                ->updateOrCreate(
+                    ['id' => $row['receipt_details_id'],],
+                    [
+                        'description' => $row['description'],
+                        'unit_price' => $row['unit_price'],
+                        'quantity' => $row['quantity'],
+                        'total' => $row['total'],
+                    ]
+                );
+        });
+
+        return redirect()->route('receipt.index')->banner('Receipt Updated');
     }
 
     /**
