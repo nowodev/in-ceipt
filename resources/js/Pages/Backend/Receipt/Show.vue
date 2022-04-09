@@ -32,8 +32,8 @@
             <DialogModal :show="showingModal" max-width="4xl" @close="closeModal">
                 <template #content>
                     <One v-if="selected === 1" id="one" :receipt="receipt" />
-                    <!--                    <Two v-if="selected === 2" id="two" :receipt="receipt" />-->
-                    <!--                    <Three v-if="selected === 3" id="three" :receipt="receipt" />-->
+                    <Two v-if="selected === 2" id="two" :receipt="receipt" />
+                    <Three v-if="selected === 3" id="three" :receipt="receipt" />
                 </template>
 
                 <template #footer>

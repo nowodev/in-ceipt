@@ -30,9 +30,9 @@
 
             <DialogModal max-width="4xl" :show="showingModal" @close="closeModal">
                 <template #content>
-                    <One v-if="selected === 1" v-bind:invoice="invoice" id="one" />
-                    <Two v-if="selected === 2" v-bind:invoice="invoice" id="two" />
-                    <Three v-if="selected === 3" v-bind:invoice="invoice" id="three" />
+                    <One v-if="selected === 1" :invoice="invoice" id="one" />
+                    <Two v-if="selected === 2" :invoice="invoice" id="two" />
+                    <Three v-if="selected === 3" :invoice="invoice" id="three" />
                 </template>
 
                 <template #footer>
