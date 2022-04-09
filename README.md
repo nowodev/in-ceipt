@@ -43,3 +43,4 @@ An opinionated invoice and receipt generator
 
 - [x] Add receipt form
 - [x] Perform CRUD on Receipt form
+- [ ] Update Db, forms, migrations and templates to show actual receipt data such as Amount paid, Amount left, etc.
