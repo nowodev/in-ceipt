@@ -29,7 +29,7 @@ Route::get('/', function () {
 });
 
 Route::get('setup', function () {
-   return inertia('Wizard/AccountSetup');
+    return inertia('Wizard/AccountSetup');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -40,6 +40,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(InvoiceController::class)->group(function () {
         Route::get('invoice/send-mail/{id}', 'sendMail')->name('invoice.send_mail');
         Route::delete('invoice/delete-info/{description}', 'deleteInfo')->name('invoice.delete_info');
+    });
+
+    Route::controller(ReceiptController::class)->group(function () {
+        Route::get('receipt/send-mail/{id}', 'sendMail')->name('receipt.send_mail');
+        Route::delete('receipt/delete-info/{description}', 'deleteInfo')->name('receipt.delete_info');
     });
 
     Route::controller(SettingsController::class)->group(function () {

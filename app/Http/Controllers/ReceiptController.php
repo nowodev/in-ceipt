@@ -6,6 +6,8 @@ use Inertia\Response;
 use App\Models\Receipt;
 use App\Models\Customer;
 use Inertia\ResponseFactory;
+use App\Models\ReceiptDetails;
+use App\Jobs\SendInvoiceMailJob;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Request;
@@ -184,5 +186,25 @@ class ReceiptController extends Controller
         $receipt->delete();
 
         return redirect()->route('receipt.index')->banner('Receipt Deleted');
+    }
+
+    // removing a description field (fieldset) from the db
+    public function deleteInfo($desc): RedirectResponse
+    {
+        $receipt_details = ReceiptDetails::query()->where('description', $desc)->first();
+        $receipt_details?->delete();
+
+        return redirect()->back()->banner('Description Removed');
+    }
+
+    public function sendMail($id): RedirectResponse
+    {
+        $receipt = Receipt::query()->with('user', 'customer')->findOrFail($id);
+        $user = $receipt->customer->email;
+
+        SendInvoiceMailJob::dispatch($user, $receipt);
+
+//        return new InvoiceCreatedMail($receipt);
+        return back()->banner("Receipt Sent to Customer's Mail");
     }
 }
