@@ -8,7 +8,7 @@ An opinionated invoice and receipt generator
 
 - [x] Add ability to prefetch customer from dropdown, which automatically populates other fields
 - [x] Validate unit price, subtotal and total as numerals
-- [ ] Preview form before creating invoice
+- [x] Preview form before creating invoice
 - [x] Add back arrow on form pages to return to previous screen
 - [x] Add settings for customizing one's store or company
 - [x] Calculate & display subtotal and total in form before sending it to the db
