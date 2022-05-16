@@ -119,13 +119,13 @@
                         <tr class="flex justify-between w-full">
                             <td class="px-6 py-4 space-y-3 w-4/5 whitespace-nowrap">
                                 <p class="text-sm text-gray-900 flex justify-between">
+                                    Account No.: <strong>{{ $page.props.user.account_number }}</strong>
+                                </p>
+                                <p class="text-sm text-gray-900 flex justify-between">
                                     Bank Name: <strong>{{ $page.props.user.bank_name }}</strong>
                                 </p>
                                 <p class="text-sm text-gray-900 flex justify-between">
-                                    Acc. Name: <strong>{{ $page.props.user.account_name }}</strong>
-                                </p>
-                                <p class="text-sm text-gray-900 flex justify-between">
-                                    Acc. No.: <strong>{{ $page.props.user.account_number }}</strong>
+                                    Account Name: <strong>{{ $page.props.user.account_name }}</strong>
                                 </p>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
