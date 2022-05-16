@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('customer_id')->index();
             $table->string('serial_no');
-            $table->date('payment_date');
             $table->date('issue_date');
+            $table->date('payment_date');
             $table->string('sum_total');
             $table->string('discount');
             $table->string('sub_total');

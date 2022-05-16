@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             CustomerSeeder::class,
-            InvoiceSeeder::class // generate invoice and it's respective info
+            InvoiceSeeder::class, // generate invoice and it's respective info
             // InvoiceDetailsSeeder::class // created when InvoiceSeeder is called
+            ReceiptSeeder::class,
         ]);
     }
 }
