@@ -79,6 +79,11 @@ class User extends Authenticatable
         return $this->hasMany(Customer::class);
     }
 
+    public function invoices(): HasMany
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
     public function getCompanyLogoUrlAttribute(): string
     {
         return $this->company_logo_path
