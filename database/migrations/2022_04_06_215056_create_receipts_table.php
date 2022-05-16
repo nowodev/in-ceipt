@@ -17,11 +17,14 @@ return new class extends Migration {
             $table->unsignedBigInteger('user_id')->index();
             $table->unsignedBigInteger('customer_id')->index();
             $table->string('serial_no');
+            $table->date('payment_date');
             $table->date('issue_date');
-            $table->string('payment_method');
             $table->string('sum_total');
             $table->string('discount');
             $table->string('sub_total');
+            $table->string('amount_paid');
+            $table->string('amount_owing');
+            $table->string('payment_method');
             $table->timestamps();
         });
 
