@@ -12,27 +12,27 @@
 
                 <div>
                     <Label>Full Name</Label>
-                    <h1>{{ preview.fullname }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.fullname }}</h3>
                 </div>
 
                 <div>
                     <Label>Mobile Number</Label>
-                    <h1>{{ preview.number }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.number }}</h3>
                 </div>
 
                 <div>
                     <Label>Email</Label>
-                    <h1>{{ preview.email }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.email }}</h3>
                 </div>
 
                 <div>
                     <Label>Address 1</Label>
-                    <h1>{{ preview.address_1 }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.address_1 }}</h3>
                 </div>
 
                 <div>
                     <Label for="address_2">Address 2</Label>
-                    <h1>{{ preview.address_2 }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.address_2 }}</h3>
                 </div>
             </fieldset>
 
@@ -42,17 +42,17 @@
 
                 <div>
                     <Label>Serial No</Label>
-                    <h1>{{ preview.serial_no }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.serial_no }}</h3>
                 </div>
 
                 <div>
                     <Label>Issue Date</Label>
-                    <h1>{{ preview.issue_date }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.issue_date }}</h3>
                 </div>
 
                 <div>
                     <Label>Due Date</Label>
-                    <h1>{{ preview.due_date }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.due_date }}</h3>
                 </div>
             </fieldset>
 
@@ -64,22 +64,22 @@
 
                     <div>
                         <Label>Description</Label>
-                        <h1>{{ desc.description }}</h1>
+                        <h3 class="font-bold text-lg">{{ desc.description }}</h3>
                     </div>
 
                     <div>
                         <Label>Unit Price</Label>
-                        <h1>{{ desc.unit_price }}</h1>
+                        <h3 class="font-bold text-lg">{{ desc.unit_price }}</h3>
                     </div>
 
                     <div>
                         <Label>Quantity</Label>
-                        <h1>{{ desc.quantity }}</h1>
+                        <h3 class="font-bold text-lg">{{ desc.quantity }}</h3>
                     </div>
 
                     <div>
                         <Label>Total</Label>
-                        <h1>{{ desc.total }}</h1>
+                        <h3 class="font-bold text-lg">{{ desc.total }}</h3>
                     </div>
                 </fieldset>
             </div>
@@ -90,17 +90,17 @@
 
                 <div>
                     <Label>Sum Total</Label>
-                    <h1>{{ preview.sum_total }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.sum_total }}</h3>
                 </div>
 
                 <div>
                     <Label>Discount (%)</Label>
-                    <h1>{{ preview.discount }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.discount }}</h3>
                 </div>
 
                 <div>
                     <Label class="">Sub Total</Label>
-                    <h1>{{ preview.sub_total }}</h1>
+                    <h3 class="font-bold text-lg">{{ preview.sub_total }}</h3>
                 </div>
             </fieldset>
         </div>
