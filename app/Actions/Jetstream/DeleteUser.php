@@ -2,6 +2,8 @@
 
 namespace App\Actions\Jetstream;
 
+use App\Models\InvoiceDetails;
+use App\Models\User;
 use Laravel\Jetstream\Contracts\DeletesUsers;
 
 class DeleteUser implements DeletesUsers
@@ -14,8 +16,9 @@ class DeleteUser implements DeletesUsers
      */
     public function delete($user)
     {
-        $user->setting()->delete();
-        $user->bank()->delete();
+        $user->customers()->delete();
+        $user->invoices()->delete();
+        InvoiceDetails::where('invoice_id', $user->id)->delete();
         $user->deleteProfilePhoto();
         $user->tokens->each->delete();
         $user->delete();
