@@ -38,6 +38,7 @@ An opinionated invoice and receipt generator
 - [x] User can insert logo
 - [x] User can remove/delete logo
 - [x] Add setup wizard after a new user registers.
+- [x] Create Invoice Seeder
 
 ### Receipt
 

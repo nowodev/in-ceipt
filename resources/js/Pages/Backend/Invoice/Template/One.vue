@@ -13,8 +13,9 @@
                     <h1 class="text-lg font-bold">{{ $page.props.user.address_1 }}</h1>
                     <h1 class="text-lg font-bold">{{ $page.props.user.email }}</h1>
                     <h1 class="text-lg font-bold">{{
-                            ($page.props.user.mobile_no ?? '080-------') + ', ' + ($page.props.user.office_no ?? '090-------')
-                        }}</h1>
+                            ($page.props.user.mobile_no ?? '080-------') + ', ' +
+                            ($page.props.user.office_no ?? '090-------')
+                    }}</h1>
                 </div>
 
                 <div class="mr-4">
@@ -22,9 +23,11 @@
                     <h2 class="text-lg">Issue Date: {{ invoice.issue_date }}</h2>
                     <h2 class="mt-3 text-xl">Invoice to:</h2>
                     <h2 class="text-lg font-bold">{{ invoice.customer.fullname }}</h2>
-                    <h2 class="text-lg font-bold">{{ invoice.customer.address_1 ?? '---------' }}</h2>
+                    <h2 class="text-lg font-bold">{{ invoice.customer.address_1 ?? '---------' }}
+                    </h2>
                     <h2 class="text-lg font-bold">{{ invoice.customer.email ?? '---------' }}</h2>
-                    <h2 class="text-lg font-bold">{{ invoice.customer.number ?? '090---------' }}</h2>
+                    <h2 class="text-lg font-bold">{{ invoice.customer.number ?? '090---------' }}
+                    </h2>
                 </div>
             </div>
 
@@ -58,15 +61,19 @@
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                    <tr v-for="(inv, index) in invoice.invoice_details" :key="inv.id">
+                                    <tr v-for="(inv, index) in invoice.invoice_details"
+                                        :key="inv.id">
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ index + 1 }}</div>
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ inv.description }}</div>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap md:whitespace-normal">
+                                            <div class="text-sm text-gray-900">{{ inv.description }}
+                                            </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            <div class="text-sm text-gray-900">{{ inv.unit_price }}</div>
+                                            <div class="text-sm text-gray-900">{{ inv.unit_price }}
+                                            </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ inv.quantity }}</div>
@@ -122,16 +129,20 @@
                                 </p>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <p class="text-sm text-left text-gray-900">{{ invoice.due_date }}</p>
+                                <p class="text-sm text-left text-gray-900">{{ invoice.due_date }}
+                                </p>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <div class="text-sm text-left text-gray-900">{{ invoice.sum_total }}</div>
+                                <div class="text-sm text-left text-gray-900">{{ invoice.sum_total }}
+                                </div>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <div class="text-sm text-left text-gray-900">{{ invoice.discount }}</div>
+                                <div class="text-sm text-left text-gray-900">{{ invoice.discount }}
+                                </div>
                             </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <div class="text-sm text-left text-gray-900">{{ invoice.sub_total }}</div>
+                                <div class="text-sm text-left text-gray-900">{{ invoice.sub_total }}
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -142,12 +153,12 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 
-    export default defineComponent({
-        name: "One",
-        props: {
-            invoice: Object,
-        },
-    })
+export default defineComponent({
+    name: "One",
+    props: {
+        invoice: Object,
+    },
+})
 </script>
