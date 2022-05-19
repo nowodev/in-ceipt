@@ -31,7 +31,7 @@ class StoreReceiptRequest extends FormRequest
             'address_2' => ['string', 'sometimes', 'nullable', 'max:255'],
             'serial_no' => ['required', 'integer', 'digits_between:7,14'], //optional
             'issue_date' => ['required', 'date'],
-            'payment_method' => ['required'],
+            'payment_date' => ['required', 'date'],
             'info.*.description' => ['required', 'string', 'max:255', 'unique:invoice_details'],
             'info.*.unit_price' => ['required', 'numeric'],
             'info.*.quantity' => ['required', 'integer'],
@@ -39,6 +39,9 @@ class StoreReceiptRequest extends FormRequest
             'sum_total' => ['required', 'numeric'],
             'discount' => ['required', 'integer'],
             'sub_total' => ['required', 'numeric'],
+            'amount_paid' => ['required', 'numeric', 'lte:sub_total'],
+            'amount_owing' => ['required', 'numeric'],
+            'payment_method' => ['required'],
         ];
     }
 

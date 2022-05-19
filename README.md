@@ -54,3 +54,4 @@ An opinionated invoice and receipt generator
     -   [x] Migrations
     -   [ ] Templates
     -   [x] Add Receipt Seeder
+-   [x] Validation to check if amount paid isn't greater than the sub total
