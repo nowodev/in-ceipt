@@ -55,3 +55,4 @@ An opinionated invoice and receipt generator
     -   [ ] Templates
     -   [x] Add Receipt Seeder
 -   [x] Validation to check if amount paid isn't greater than the sub total
+-   [ ] Get data from particular invoice (Prefill data from invoice serial number)

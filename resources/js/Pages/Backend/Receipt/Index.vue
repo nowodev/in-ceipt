@@ -42,6 +42,10 @@
                                             scope="col">
                                             Issue Date
                                         </th>
+                                        <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                            scope="col">
+                                            Payment Date
+                                        </th>
                                         <th class="relative px-6 py-3" scope="col">
                                             <span class="sr-only">Edit</span>
                                         </th>
@@ -60,6 +64,9 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             <div class="text-sm text-gray-900">{{ receipt.issue_date }}</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">{{ receipt.payment_date }}</div>
                                         </td>
                                         <td class="flex items-center px-6 py-4 space-x-4 text-sm font-medium whitespace-nowrap">
                                             <Link :href="route('receipt.show', receipt)" class="">
