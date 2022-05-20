@@ -79,10 +79,9 @@
                     </div>
 
                     <div>
-                        <Label for="due_date">Payment Method</Label>
-                        <v-select id="due_date" v-model="form.payment_method" :options="payment_options"
-                                  class="w-full" />
-                        <InputError v-if="form.errors.payment_method" :message="form.errors.payment_method" />
+                        <Label for="payment_date">Payment Date</Label>
+                        <Input id="payment_date" v-model="form.payment_date" class="w-full" type="date" />
+                        <InputError v-if="form.errors.payment_date" :message="form.errors.payment_date" />
                     </div>
                 </fieldset>
 
@@ -167,6 +166,27 @@
                         <Input v-model="get_sub_total" class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled
                                placeholder="0000.00" type="text" />
                         <InputError v-if="form.errors.sub_total" :message="form.errors.sub_total" />
+                    </div>
+
+                    <div>
+                        <Label for="amount_paid">Amount Paid</Label>
+                        <Input id="amount_paid" v-model="form.amount_paid" class="w-full" placeholder="0" type="number" />
+                        <InputError v-if="form.errors.amount_paid" :message="form.errors.amount_paid" />
+                    </div>
+
+                    <div>
+                        <Label>Amount Owing</Label>
+                        <Input v-model="get_owing" class="w-full bg-gray-200 shadow-md cursor-crosshair" disabled
+                               placeholder="0" type="text" />
+                        <InputError v-if="form.errors.amount_owing" :message="form.errors.amount_owing" />
+                    </div>
+
+
+                    <div>
+                        <Label for="payment_method">Payment Method</Label>
+                        <v-select id="payment_method" v-model="form.payment_method" :options="payment_options"
+                                  class="w-full" />
+                        <InputError v-if="form.errors.payment_method" :message="form.errors.payment_method" />
                     </div>
                 </fieldset>
 
@@ -256,11 +276,14 @@
                 address_2: props.receipt.customer.address_2,
                 serial_no: props.receipt.serial_no,
                 issue_date: props.receipt.issue_date,
-                payment_method: props.receipt.payment_method,
+                payment_date: props.receipt.payment_date,
                 info: [],
                 sum_total: null,
                 discount: props.receipt.discount,
                 sub_total: null,
+                amount_paid: props.receipt.amount_paid,
+                amount_owing: null,
+                payment_method: props.receipt.payment_method,
             })
 
             return { form }
@@ -292,6 +315,13 @@
                 this.form.sub_total = calculated_sub_total
                 return calculated_sub_total
             },
+
+            get_owing: function () {
+                let calculated_owing = this.get_sub_total - this.form.amount_paid
+                this.form.amount_owing = calculated_owing
+
+                return calculated_owing
+            }
         },
 
         methods: {

@@ -50,7 +50,7 @@ An opinionated invoice and receipt generator
 -   [x] Perform CRUD on Receipt form
 -   [ ] Update Items to show actual receipt data such as Amount paid, Amount left, etc.:
     -   [x] DB
-    -   [ ] Forms
+    -   [x] Forms
     -   [x] Migrations
     -   [ ] Templates
     -   [x] Add Receipt Seeder

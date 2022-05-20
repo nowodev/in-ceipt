@@ -85,10 +85,13 @@ class ReceiptController extends Controller
                 'customer_id' => $customer->id,
                 'serial_no' => $request['serial_no'],
                 'issue_date' => $request['issue_date'],
-                'payment_method' => $request['payment_method']['label'],
+                'payment_date' => $request['payment_date'],
                 'sum_total' => $request['sum_total'],
                 'discount' => $request['discount'],
                 'sub_total' => $request['sub_total'],
+                'amount_paid' => $request['amount_paid'],
+                'amount_owing' => $request['amount_owing'],
+                'payment_method' => $request['payment_method']['label'],
             ]);
 
             // insert array of product information into the invoice_details table
@@ -148,12 +151,15 @@ class ReceiptController extends Controller
 
         $receipt->update([
             'issue_date' => $cred['issue_date'],
+            'payment_date' => $cred['payment_date'],
 
             // check if payment_method is an array. It will be a string if the payment method value isn't edited
-            'payment_method' => !is_array($cred['payment_method']) ? $cred['payment_method'] : $cred['payment_method']['label'],
             'sum_total' => $cred['sum_total'],
             'discount' => $cred['discount'],
             'sub_total' => $cred['sub_total'],
+            'amount_paid' => $request['amount_paid'],
+            'amount_owing' => $request['amount_owing'],
+            'payment_method' => !is_array($cred['payment_method']) ? $cred['payment_method'] : $cred['payment_method']['label'],
         ]);
 
         // insert array of product information into the invoice_details table
