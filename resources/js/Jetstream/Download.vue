@@ -15,22 +15,18 @@
 
         methods: {
             downloadFile() {
-                const me = this;
+                const download = this;
 
-                const invoice = document.querySelector(me.dom);
+                const inceipt = document.querySelector(download.dom);
                 let opt = {
                     margin: 1,
-                    filename: me.name,
+                    filename: download.name,
                     image: { type: 'jpeg', quality: 0.98 },
                     html2canvas: { scale: 2 },
                     jsPDF: { format: 'A4', orientation: 'portrait' }
                 };
-                html2pdf().from(invoice).set(opt).save();
+                html2pdf().from(inceipt).set(opt).save();
             },
         },
     }
 </script>
-
-<style scoped>
-
-</style>

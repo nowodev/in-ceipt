@@ -6,7 +6,8 @@ An opinionated invoice and receipt generator
 
 ### General
 
--   [x] Add Genetal Seeder
+-   [x] Add General Seeder
+-   [ ] Feature: Create basic form and advanced form
 
 ### Invoice
 
@@ -25,7 +26,6 @@ An opinionated invoice and receipt generator
 -   [x] Add row => "No Records Found" on invoice index table when there's no invoice
 -   [x] Confirm dialog before invoice deletion
 -   [x] Create multiple invoice templates
--   [ ] Feature: Create basic form and advanced form
 -   [x] Perform CRUD operations on Customers
 -   [x] Make forms editable
 -   [ ] Fix bugs:
@@ -43,6 +43,7 @@ An opinionated invoice and receipt generator
 -   [x] User can remove/delete logo
 -   [x] Add setup wizard after a new user registers.
 -   [x] Create Invoice Seeder
+-   [x] Preview form before Edit
 
 ### Receipt
 
@@ -56,3 +57,4 @@ An opinionated invoice and receipt generator
     -   [x] Add Receipt Seeder
 -   [x] Validation to check if amount paid isn't greater than the sub total
 -   [ ] Get data from particular invoice (Prefill data from invoice serial number)
+-   [ ] Preview form before Create & Edit

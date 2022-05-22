@@ -216,7 +216,7 @@
 
             <DialogModal max-width="4xl" :show="showingModal" @close="closeModal">
                 <template #content>
-                    <Preview :preview="form" :total="total" />
+                    <InvoicePreview :preview="form" />
                 </template>
 
                 <template #footer>
@@ -236,7 +236,7 @@ import DangerButton from "@/Jetstream/DangerButton";
 import Input from "@/Jetstream/Input";
 import InputError from "@/Jetstream/InputError";
 import Label from "@/Jetstream/Label";
-import Preview from "../../../components/Preview.vue";
+import InvoicePreview from "@/Jetstream/InvoicePreview";
 import SecondaryButton from "@/Jetstream/SecondaryButton";
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { Link, useForm } from "@inertiajs/inertia-vue3";
@@ -251,7 +251,7 @@ export default defineComponent({
     name: "Create.vue",
 
     components: {
-        Preview,
+        InvoicePreview,
         vSelect,
         DangerButton,
         SecondaryButton,
@@ -289,7 +289,6 @@ export default defineComponent({
             random_no: null,
             get_customer: null,
             showingModal: null,
-            total: {}
         }
     },
 

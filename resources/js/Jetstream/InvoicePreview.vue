@@ -121,7 +121,7 @@ export default defineComponent({
         CardLayout,
     },
 
-    props: ['preview', 'total'],
+    props: ['preview'],
 
     data() {
         return {

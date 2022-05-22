@@ -21,7 +21,7 @@
 
             <div class="p-6 w-full bg-white sm:px-20">
                 <fieldset
-                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
                     <legend class="text-lg font-semibold">Customer Details</legend>
 
                     <div>
@@ -59,7 +59,7 @@
                 </fieldset>
 
                 <fieldset
-                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
                     <legend class="text-lg font-semibold">Invoice Details</legend>
 
                     <div>
@@ -87,7 +87,7 @@
 
                 <div v-for="(desc, index) in form.info" :key="index">
                     <fieldset
-                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
+                            class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
                         <legend class="text-lg font-semibold">Item Description {{ index + 1 }}</legend>
 
                         <div>
@@ -145,7 +145,7 @@
                 </div>
 
                 <fieldset
-                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
                     <legend class="text-lg font-semibold">Summary</legend>
 
                     <div>
@@ -170,6 +170,7 @@
                 </fieldset>
 
                 <div class="flex gap-2 justify-end mt-4">
+                    <Button @click="showModal">Preview</Button>
                     <!-- fix: Reset functionality removes the description section -->
                     <!-- <SecondaryButton @click="resetForm">Reset</SecondaryButton>-->
                     <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
@@ -177,6 +178,18 @@
                     </Button>
                 </div>
             </div>
+
+            <DialogModal max-width="4xl" :show="showingModal" @close="closeModal">
+                <template #content>
+                    <InvoicePreview :preview="form" />
+                </template>
+
+                <template #footer>
+                    <SecondaryButton @click="closeModal">
+                        Close
+                    </SecondaryButton>
+                </template>
+            </DialogModal>
         </CardLayout>
     </app-layout>
 </template>
@@ -185,6 +198,8 @@
     import Button from "@/Jetstream/Button";
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
+    import DialogModal from "@/Jetstream/DialogModal";
+    import InvoicePreview from "@/Jetstream/InvoicePreview";
     import Input from "@/Jetstream/Input";
     import InputError from "@/Jetstream/InputError";
     import Label from "@/Jetstream/Label";
@@ -198,6 +213,8 @@
         name: "Create.vue",
 
         components: {
+            InvoicePreview,
+            DialogModal,
             DangerButton,
             SecondaryButton,
             InputError,
@@ -212,6 +229,13 @@
         props: {
             invoice: Object,
             customers: Object,
+        },
+
+        data() {
+            return {
+                showingModal: null,
+                // total: {}
+            }
         },
 
         mounted() {
@@ -276,6 +300,14 @@
         },
 
         methods: {
+            showModal() {
+                this.showingModal = true
+            },
+
+            closeModal() {
+                this.showingModal = null
+            },
+
             // add more description field
             addDescription: function () {
                 this.form.info.push({
