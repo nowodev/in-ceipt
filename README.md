@@ -48,11 +48,11 @@ An opinionated invoice and receipt generator
 
 -   [x] Add receipt form
 -   [x] Perform CRUD on Receipt form
--   [ ] Update Items to show actual receipt data such as Amount paid, Amount left, etc.:
+-   [x] Update Items to show actual receipt data such as Amount paid, Amount left, etc.:
     -   [x] DB
     -   [x] Forms
     -   [x] Migrations
-    -   [ ] Templates
+    -   [x] Templates
     -   [x] Add Receipt Seeder
 -   [x] Validation to check if amount paid isn't greater than the sub total
 -   [ ] Get data from particular invoice (Prefill data from invoice serial number)

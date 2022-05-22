@@ -86,52 +86,44 @@
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr class="flex justify-between w-full">
-                            <th class="px-6 py-3 w-4/5 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                                scope="col">
-                                Payment Info
-                            </th>
-                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                                scope="col">
-                                Due By
-                            </th>
-                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                                scope="col">
-                                Sum Total
-                            </th>
-                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
-                                scope="col">
-                                Discount (%)
-                            </th>
                             <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
                                 scope="col">
                                 Total Due
+                            </th>
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
+                                Amount Paid
+                            </th>
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
+                                Amount Owing
+                            </th>
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
+                                Payment Date
+                            </th>
+                            <th class="px-6 py-3 w-1/2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase"
+                                scope="col">
+                                Payment Method
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <tr class="flex justify-between w-full">
-                            <td class="px-6 py-4 space-y-3 w-4/5 whitespace-nowrap">
-                                <p class="flex justify-between text-sm text-gray-900">
-                                    Bank Name: <strong>{{ $page.props.user.bank_name }}</strong>
-                                </p>
-                                <p class="flex justify-between text-sm text-gray-900">
-                                    Acc. Name: <strong>{{ $page.props.user.account_name }}</strong>
-                                </p>
-                                <p class="flex justify-between text-sm text-gray-900">
-                                    Acc. No.: <strong>{{ $page.props.user.account_number }}</strong>
-                                </p>
-                            </td>
-                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <p class="text-sm text-left text-gray-900">{{ receipt.due_date }}</p>
-                            </td>
-                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <div class="text-sm text-left text-gray-900">{{ receipt.sum_total }}</div>
-                            </td>
-                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
-                                <div class="text-sm text-left text-gray-900">{{ receipt.discount }}</div>
-                            </td>
                             <td class="px-6 py-4 w-1/2 whitespace-nowrap">
                                 <div class="text-sm text-left text-gray-900">{{ receipt.sub_total }}</div>
+                            </td>
+                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
+                                <div class="text-sm text-left text-gray-900">{{ receipt.amount_paid }}</div>
+                            </td>
+                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
+                                <div class="text-sm text-left text-gray-900">{{ receipt.amount_owing }}</div>
+                            </td>
+                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
+                                <p class="text-sm text-left text-gray-900">{{ receipt.payment_date }}</p>
+                            </td>
+                            <td class="px-6 py-4 w-1/2 whitespace-nowrap">
+                                <p class="text-sm text-left text-gray-900">{{ receipt.payment_method }}</p>
                             </td>
                         </tr>
                     </tbody>
