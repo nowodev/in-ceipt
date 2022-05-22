@@ -25,6 +25,11 @@ class Customer extends Model
         return $this->hasMany(Invoice::class, 'customer_id');
     }
 
+    public function receipts(): HasMany
+    {
+        return $this->hasMany(Receipt::class, 'customer_id');
+    }
+
     // scope to check if authenticated user has access to the customer
     public function scopeAuthUser($query)
     {

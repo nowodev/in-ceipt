@@ -46,7 +46,7 @@ class CustomersController extends Controller
 
     public function show($id)
     {
-        $customer = Customer::with('invoices')->find($id);
+        $customer = Customer::with('invoices', 'receipts')->find($id);
 
         return inertia('Backend/Customers/Show', [
             'customer' => $customer

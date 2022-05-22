@@ -143,6 +143,67 @@
                             </div>
                         </div>
                         <!-- End of invoice related information-->
+
+                        <!-- Receipt related information-->
+                        <div class="p-3 bg-white rounded-sm shadow-sm">
+                            <div>
+                                <div class="flex items-center mb-3 space-x-2 font-semibold leading-8 text-gray-900">
+                                    <span class="text-green-500">
+                                        <svg class="h-5" fill="none" stroke="currentColor"
+                                             viewBox="0 0 24 24"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                                                    stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="2" />
+                                        </svg>
+                                    </span>
+                                    <span class="tracking-wide">Receipt(s)</span>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-x-5">
+                                    <article v-for="(receipt, index) in customer.receipts" :key="receipt.id"
+                                             class="relative w-full rounded-md shadow-2xl duration-500 transform cursor-pointer hover:-translate-y-2">
+                                        <div class="flex absolute top-0 right-0 w-10 h-10 fill-blue-600">
+                                            <Link :href="route('receipt.show', receipt.id)" class="mx-auto my-auto">
+                                                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                                                    <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                                                    <path
+                                                            d="M384 320c-17.67 0-32 14.33-32 32v96H64V160h96c17.67 0 32-14.32 32-32s-14.33-32-32-32L64 96c-35.35 0-64 28.65-64 64V448c0 35.34 28.65 64 64 64h288c35.35 0 64-28.66 64-64v-96C416 334.3 401.7 320 384 320zM502.6 9.367C496.8 3.578 488.8 0 480 0h-160c-17.67 0-31.1 14.32-31.1 31.1c0 17.67 14.32 31.1 31.99 31.1h82.75L178.7 290.7c-12.5 12.5-12.5 32.76 0 45.26C191.2 348.5 211.5 348.5 224 336l224-226.8V192c0 17.67 14.33 31.1 31.1 31.1S512 209.7 512 192V31.1C512 23.16 508.4 15.16 502.6 9.367z" />
+                                                </svg>
+                                            </Link>
+                                        </div>
+                                        <div class="p-8 pb-3 my-2">
+                                            <p class="text-xl text-gray-500">{{ index + 1 }}.</p>
+                                            <h2 class="mt-2 text-xl">{{ receipt.serial_no }}</h2>
+                                            <dl class="mt-2">
+                                                <div class="grid grid-cols-2 bg-gray-50">
+                                                    <dt class="text-sm font-medium text-gray-500">Issue Date</dt>
+                                                    <dd class="text-gray-900">{{ receipt.issue_date }}</dd>
+                                                </div>
+                                                <div class="grid grid-cols-2 bg-gray-50">
+                                                    <dt class="text-sm font-medium text-gray-500">Payment Date</dt>
+                                                    <dd class="text-gray-900">{{ receipt.payment_date }}</dd>
+                                                </div>
+                                                <div class="grid grid-cols-2 bg-gray-50">
+                                                    <dt class="text-sm font-medium text-gray-500">Sub Total</dt>
+                                                    <dd class="text-gray-900">{{ receipt.sub_total }}</dd>
+                                                </div>
+                                                <div class="grid grid-cols-2 bg-gray-50">
+                                                    <dt class="text-sm font-medium text-gray-500">Paid</dt>
+                                                    <dd class="text-gray-900">{{ receipt.amount_paid }}</dd>
+                                                </div>
+                                                <div class="grid grid-cols-2 bg-gray-50">
+                                                    <dt class="text-sm font-medium text-gray-500">Owing</dt>
+                                                    <dd class="text-gray-900">{{ receipt.amount_owing }}</dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of invoice related information-->
                         <!-- End of profile tab -->
                     </div>
                 </div>
