@@ -17,13 +17,13 @@
         <CardLayout>
             <div class="flex justify-between p-6 bg-white border-b border-gray-200 sm:px-20">
                 <h1 class="text-4xl font-bold text-black">Fill the <span
-                    class="underline decoration-double decoration decoration-cyan-500">form</span></h1>
+                        class="underline decoration-double decoration decoration-cyan-500">form</span></h1>
             </div>
 
             <div class="p-6 w-full bg-white sm:px-20">
                 <div class="mb-4">
                     <div
-                        class="inline-block relative mr-2 w-10 align-middle transition duration-200 ease-in select-none">
+                            class="inline-block relative mr-2 w-10 align-middle transition duration-200 ease-in select-none">
                         <input id="toggle"
                                class="block absolute w-6 h-6 bg-white rounded-full border-4 appearance-none cursor-pointer toggle-checkbox"
                                name="toggle" type="checkbox" @click="toggleExisting" />
@@ -34,7 +34,7 @@
                 </div>
 
                 <fieldset
-                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
                     <legend class="text-lg font-semibold">Customer Details</legend>
 
                     <div>
@@ -49,9 +49,9 @@
                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"
                                      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path
-                                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round" />
+                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round" />
                                 </svg>
                             </Button>
                         </div>
@@ -90,7 +90,7 @@
                 </fieldset>
 
                 <fieldset
-                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
                     <legend class="text-lg font-semibold">Receipt Details</legend>
 
                     <div>
@@ -128,7 +128,7 @@
 
                 <div v-for="(desc, index) in form.info" :key="index">
                     <fieldset
-                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
+                            class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
                         <legend class="text-lg font-semibold">Item Description {{ index + 1 }}</legend>
 
                         <div>
@@ -178,7 +178,7 @@
                 </div>
 
                 <fieldset
-                    class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
                     <legend class="text-lg font-semibold">Summary</legend>
 
                     <div>
@@ -203,7 +203,8 @@
 
                     <div>
                         <Label for="amount_paid">Amount Paid</Label>
-                        <Input id="amount_paid" v-model="form.amount_paid" class="w-full" placeholder="0" type="number" />
+                        <Input id="amount_paid" v-model="form.amount_paid" class="w-full" placeholder="0"
+                               type="number" />
                         <InputError v-if="form.errors.amount_paid" :message="form.errors.amount_paid" />
                     </div>
 
@@ -224,12 +225,25 @@
                 </fieldset>
 
                 <div class="flex gap-2 justify-end mt-4">
+                    <Button @click="showModal">Preview</Button>
                     <!-- <SecondaryButton @click="resetForm">Reset</SecondaryButton>-->
                     <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
                             @click.prevent="submit">Create
                     </Button>
                 </div>
             </div>
+
+            <DialogModal max-width="4xl" :show="showingModal" @close="closeModal">
+                <template #content>
+                    <ReceiptPreview :preview="form" />
+                </template>
+
+                <template #footer>
+                    <SecondaryButton @click="closeModal">
+                        Close
+                    </SecondaryButton>
+                </template>
+            </DialogModal>
         </CardLayout>
     </app-layout>
 </template>
@@ -238,9 +252,11 @@
     import Button from "@/Jetstream/Button";
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
+    import DialogModal from "@/Jetstream/DialogModal";
     import Input from "@/Jetstream/Input";
     import InputError from "@/Jetstream/InputError";
     import Label from "@/Jetstream/Label";
+    import ReceiptPreview from "@/Jetstream/ReceiptPreview";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link, useForm } from "@inertiajs/inertia-vue3";
@@ -253,6 +269,8 @@
         name: "Create.vue",
 
         components: {
+            ReceiptPreview,
+            DialogModal,
             vSelect,
             DangerButton,
             SecondaryButton,
@@ -290,7 +308,8 @@
                         id: 2,
                         label: 'Transfer',
                     },
-                ]
+                ],
+                showingModal: null,
             }
         },
 
@@ -359,6 +378,14 @@
         },
 
         methods: {
+            showModal() {
+                this.showingModal = true
+            },
+
+            closeModal() {
+                this.showingModal = null
+            },
+
             // toggle new or existing customers
             toggleExisting: function () {
                 this.existing = !this.existing

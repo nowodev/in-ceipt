@@ -38,7 +38,7 @@
 
             <fieldset
                 class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border-gray-300 md:grid-cols-3">
-                <legend class="text-lg font-semibold">Invoice Details</legend>
+                <legend class="text-lg font-semibold">Receipt Details</legend>
 
                 <div>
                     <Label>Serial No</Label>
@@ -51,8 +51,8 @@
                 </div>
 
                 <div>
-                    <Label>Due Date</Label>
-                    <h3 class="font-bold text-lg">{{ preview.due_date }}</h3>
+                    <Label>Payment Date</Label>
+                    <h3 class="font-bold text-lg">{{ preview.payment_date }}</h3>
                 </div>
             </fieldset>
 
@@ -101,6 +101,21 @@
                 <div>
                     <Label class="">Sub Total</Label>
                     <h3 class="font-bold text-lg">{{ preview.sub_total }}</h3>
+                </div>
+
+                <div>
+                    <Label>Amount Paid</Label>
+                    <h3 class="font-bold text-lg">{{ preview.amount_paid }}</h3>
+                </div>
+
+                <div>
+                    <Label class="">Amount Owing</Label>
+                    <h3 class="font-bold text-lg">{{ preview.amount_owing }}</h3>
+                </div>
+
+                <div>
+                    <Label class="">Payment Method</Label>
+                    <h3 class="font-bold text-lg">{{ preview.payment_method?.label ?? preview.payment_method }}</h3>
                 </div>
             </fieldset>
         </div>

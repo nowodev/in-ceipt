@@ -55,6 +55,6 @@ An opinionated invoice and receipt generator
     -   [x] Migrations
     -   [x] Templates
     -   [x] Add Receipt Seeder
--   [x] Validation to check if amount paid isn't greater than the sub total
+-   [x] Validation to check if amount paid isn't greater than the subtotal
 -   [ ] Get data from particular invoice (Prefill data from invoice serial number)
--   [ ] Preview form before Create & Edit
+-   [x] Preview form before Create & Edit

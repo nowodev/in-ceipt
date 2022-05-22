@@ -191,6 +191,7 @@
                 </fieldset>
 
                 <div class="flex gap-2 justify-end mt-4">
+                    <Button @click="showModal">Preview</Button>
                     <!-- fix: Reset functionality removes the description section -->
                     <!-- <SecondaryButton @click="resetForm">Reset</SecondaryButton>-->
                     <Button :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
@@ -198,6 +199,18 @@
                     </Button>
                 </div>
             </div>
+
+            <DialogModal max-width="4xl" :show="showingModal" @close="closeModal">
+                <template #content>
+                    <ReceiptPreview :preview="form" />
+                </template>
+
+                <template #footer>
+                    <SecondaryButton @click="closeModal">
+                        Close
+                    </SecondaryButton>
+                </template>
+            </DialogModal>
         </CardLayout>
     </app-layout>
 </template>
@@ -206,9 +219,11 @@
     import Button from "@/Jetstream/Button";
     import CardLayout from "@/Jetstream/CardLayout";
     import DangerButton from "@/Jetstream/DangerButton";
+    import DialogModal from "@/Jetstream/DialogModal";
     import Input from "@/Jetstream/Input";
     import InputError from "@/Jetstream/InputError";
     import Label from "@/Jetstream/Label";
+    import ReceiptPreview from "@/Jetstream/ReceiptPreview";
     import SecondaryButton from "@/Jetstream/SecondaryButton";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link, useForm } from "@inertiajs/inertia-vue3";
@@ -221,6 +236,8 @@
         name: "Create.vue",
 
         components: {
+            ReceiptPreview,
+            DialogModal,
             vSelect,
             DangerButton,
             SecondaryButton,
@@ -249,7 +266,8 @@
                         id: 2,
                         label: 'Transfer',
                     },
-                ]
+                ],
+                showingModal: null,
             }
         },
 
@@ -325,6 +343,19 @@
         },
 
         methods: {
+            showModal() {
+                this.showingModal = true
+            },
+
+            closeModal() {
+                this.showingModal = null
+            },
+
+            // toggle new or existing customers
+            toggleExisting: function () {
+                this.existing = !this.existing
+            },
+
             // add more description field
             addDescription: function () {
                 this.form.info.push({

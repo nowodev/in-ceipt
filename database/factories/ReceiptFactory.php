@@ -35,7 +35,7 @@ class ReceiptFactory extends Factory
             'sub_total' => round($sum_total * ((100 - $discount) / 100), 2),
             'amount_paid' => $amount_paid,
             'amount_owing' => 1000,
-            'payment_method' => $this->faker->randomElement(['cash', 'card', 'transfer'])
+            'payment_method' => $this->faker->randomElement(['Cash', 'Card', 'Transfer'])
         ];
     }
 }
