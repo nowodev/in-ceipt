@@ -230,14 +230,14 @@
 </template>
 
 <script>
-import Button from "@/Jetstream/Button";
-import CardLayout from "@/Jetstream/CardLayout";
-import DangerButton from "@/Jetstream/DangerButton";
-import Input from "@/Jetstream/Input";
-import InputError from "@/Jetstream/InputError";
-import Label from "@/Jetstream/Label";
-import InvoicePreview from "@/Jetstream/InvoicePreview";
-import SecondaryButton from "@/Jetstream/SecondaryButton";
+import Button from "@/Jetstream/Button.vue";
+import CardLayout from "@/Jetstream/CardLayout.vue";
+import DangerButton from "@/Jetstream/DangerButton.vue";
+import Input from "@/Jetstream/Input.vue";
+import InputError from "@/Jetstream/InputError.vue";
+import Label from "@/Jetstream/Label.vue";
+import InvoicePreview from "@/Jetstream/InvoicePreview.vue";
+import SecondaryButton from "@/Jetstream/SecondaryButton.vue";
 import AppLayout from '@/Layouts/AppLayout.vue'
 import { Link, useForm } from "@inertiajs/inertia-vue3";
 import { round } from "lodash";
@@ -245,7 +245,7 @@ import { defineComponent } from 'vue'
 import vSelect from 'vue-select';
 import 'vue-select/dist/vue-select.css';
 
-import DialogModal from "@/Jetstream/DialogModal";
+import DialogModal from "@/Jetstream/DialogModal.vue";
 
 export default defineComponent({
     name: "Create.vue",

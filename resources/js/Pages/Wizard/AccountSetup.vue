@@ -111,12 +111,12 @@
 </template>
 
 <script>
-    import Button from "@/Jetstream/Button";
-    import DangerButton from "@/Jetstream/DangerButton";
-    import Input from "@/Jetstream/Input";
-    import InputError from "@/Jetstream/InputError";
-    import Label from "@/Jetstream/Label";
-    import SecondaryButton from "@/Jetstream/SecondaryButton";
+    import Button from "@/Jetstream/Button.vue";
+    import DangerButton from "@/Jetstream/DangerButton.vue";
+    import Input from "@/Jetstream/Input.vue";
+    import InputError from "@/Jetstream/InputError.vue";
+    import Label from "@/Jetstream/Label.vue";
+    import SecondaryButton from "@/Jetstream/SecondaryButton.vue";
     import { useForm } from "@inertiajs/inertia-vue3";
 
     export default {

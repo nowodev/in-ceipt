@@ -124,8 +124,8 @@
 
 
 <script>
-import CardLayout from "@/Jetstream/CardLayout";
-import Label from "@/Jetstream/Label";
+import CardLayout from "@/Jetstream/CardLayout.vue";
+import Label from "@/Jetstream/Label.vue";
 import { defineComponent } from 'vue'
 
 export default defineComponent({
