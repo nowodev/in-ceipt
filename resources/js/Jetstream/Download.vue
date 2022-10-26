@@ -4,7 +4,7 @@
 
 <script>
     import html2pdf from "html2pdf.js";
-    import Button from "@/Jetstream/Button";
+    import Button from "@/Jetstream/Button.vue";
 
     export default {
         name: "Download",

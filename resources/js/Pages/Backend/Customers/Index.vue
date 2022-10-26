@@ -132,13 +132,13 @@
 </template>
 
 <script>
-    import Button from "@/Jetstream/Button";
-    import ButtonLink from "@/Jetstream/ButtonLink";
-    import CardLayout from "@/Jetstream/CardLayout";
-    import DangerButton from "@/Jetstream/DangerButton";
-    import DialogModal from "@/Jetstream/DialogModal";
-    import Pagination from "@/Jetstream/Pagination";
-    import SecondaryButton from "@/Jetstream/SecondaryButton";
+    import Button from "@/Jetstream/Button.vue";
+    import ButtonLink from "@/Jetstream/ButtonLink.vue";
+    import CardLayout from "@/Jetstream/CardLayout.vue";
+    import DangerButton from "@/Jetstream/DangerButton.vue";
+    import DialogModal from "@/Jetstream/DialogModal.vue";
+    import Pagination from "@/Jetstream/Pagination.vue";
+    import SecondaryButton from "@/Jetstream/SecondaryButton.vue";
     import AppLayout from '@/Layouts/AppLayout.vue'
     import { Link } from "@inertiajs/inertia-vue3";
     import { defineComponent } from 'vue'

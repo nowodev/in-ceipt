@@ -213,7 +213,7 @@
 </template>
 
 <script>
-    import CardLayout from "@/Jetstream/CardLayout";
+    import CardLayout from "@/Jetstream/CardLayout.vue";
     import AppLayout from '@/Layouts/AppLayout.vue';
     import { Link } from "@inertiajs/inertia-vue3";
     import { defineComponent } from 'vue';

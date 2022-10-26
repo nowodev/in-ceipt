@@ -48,15 +48,15 @@
 </template>
 
 <script>
-    import Button from "@/Jetstream/Button";
-    import CardLayout from "@/Jetstream/CardLayout";
-    import DialogModal from "@/Jetstream/DialogModal";
-    import Download from "@/Jetstream/Download";
-    import SecondaryButton from "@/Jetstream/SecondaryButton";
+    import Button from "@/Jetstream/Button.vue";
+    import CardLayout from "@/Jetstream/CardLayout.vue";
+    import DialogModal from "@/Jetstream/DialogModal.vue";
+    import Download from "@/Jetstream/Download.vue";
+    import SecondaryButton from "@/Jetstream/SecondaryButton.vue";
     import AppLayout from '@/Layouts/AppLayout.vue';
-    import One from "@/Pages/Backend/Invoice/Template/One";
-    import Three from "@/Pages/Backend/Invoice/Template/Three";
-    import Two from "@/Pages/Backend/Invoice/Template/Two";
+    import One from "@/Pages/Backend/Invoice/Template/One.vue";
+    import Three from "@/Pages/Backend/Invoice/Template/Three.vue";
+    import Two from "@/Pages/Backend/Invoice/Template/Two.vue";
     import { Link } from "@inertiajs/inertia-vue3";
     import { defineComponent } from 'vue';
 
