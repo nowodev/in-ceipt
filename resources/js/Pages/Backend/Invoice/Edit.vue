@@ -21,7 +21,7 @@
 
             <div class="p-6 w-full bg-white sm:px-20">
                 <fieldset
-                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 space-y-4 rounded-lg border-2 border-gray-300 md:grid-cols-2">
                     <legend class="text-lg font-semibold">Customer Details</legend>
 
                     <div>
@@ -59,7 +59,7 @@
                 </fieldset>
 
                 <fieldset
-                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border-gray-300 md:grid-cols-3">
                     <legend class="text-lg font-semibold">Invoice Details</legend>
 
                     <div>
@@ -87,7 +87,7 @@
 
                 <div v-for="(desc, index) in form.info" :key="index">
                     <fieldset
-                            class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-2">
+                            class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border-gray-300 md:grid-cols-2">
                         <legend class="text-lg font-semibold">Item Description {{ index + 1 }}</legend>
 
                         <div>
@@ -129,23 +129,19 @@
                         </div>
                     </fieldset>
 
-
-                    <!-- BUG TO FIX (FUTURE FEATURE)-->
-                    <!-- Currently disable adding new description. Data can only be updated, no insertion for now.-->
-
-                    <!-- <div class="flex flex-col gap-y-3 mt-3 w-fit">-->
-                    <!--     <Button v-show="index === form.info.length - 1" @click="addDescription">-->
-                    <!--         Add New Description-->
-                    <!--     </Button>-->
-                    <!--     <DangerButton v-show="index || ( !index && form.info.length > 1)"-->
-                    <!--                   @click="removeDescription(index)">-->
-                    <!--         Remove Description-->
-                    <!--     </DangerButton>-->
-                    <!-- </div>-->
+                    <div class="flex flex-col gap-y-3 mt-3 w-fit">
+                        <Button v-show="index === form.info.length - 1" @click="addDescription">
+                            Add New Description
+                        </Button>
+                        <DangerButton v-show="index || ( !index && form.info.length > 1)"
+                                      @click="removeDescription(index)">
+                            Remove Description
+                        </DangerButton>
+                    </div>
                 </div>
 
                 <fieldset
-                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border border-gray-300 md:grid-cols-3">
+                        class="grid grid-cols-1 gap-x-4 px-4 pb-4 mt-4 space-y-4 rounded-lg border-2 border-gray-300 md:grid-cols-3">
                     <legend class="text-lg font-semibold">Summary</legend>
 
                     <div>
